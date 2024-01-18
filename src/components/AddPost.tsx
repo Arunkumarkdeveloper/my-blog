@@ -16,7 +16,7 @@ const AddPost = () => {
   };
 
   const NewtBlog = async () => {
-    await fetch("http://localhost:3000/api/blog", {
+    await fetch(`${process.env.API_URL}/api/blog`, {
       method: "POST",
       headers: {
         "Content-Type": "Application",

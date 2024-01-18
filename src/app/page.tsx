@@ -3,7 +3,7 @@ import EditPost from "@/components/EditPost";
 import Link from "next/link";
 
 const getBlogs = async () => {
-  const response = await fetch("http://localhost:3000/api/blog", {
+  const response = await fetch(`${process.env.API_URL}/api/blog`, {
     cache: "no-store",
   });
   return response.json();

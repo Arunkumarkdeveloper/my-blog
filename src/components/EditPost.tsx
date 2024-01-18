@@ -18,7 +18,7 @@ const EditPost = ({ post }: { post: any }) => {
 
   const editPost = async (id: string) => {
     setIsEdit(false);
-    const response = await fetch(`http://localhost:3000/api/blog/${id}`, {
+    const response = await fetch(`${process.env.API_URL}/api/blog/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "Application/json",
@@ -31,7 +31,7 @@ const EditPost = ({ post }: { post: any }) => {
   };
 
   const deletePost = async (id: string) => {
-    const response = await fetch(`http://localhost:3000/api/blog/${id}`, {
+    const response = await fetch(`${process.env.API_URL}/api/blog/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "Application/json",
