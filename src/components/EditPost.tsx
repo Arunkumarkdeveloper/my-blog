@@ -18,31 +18,25 @@ const EditPost = ({ post }: { post: any }) => {
 
   const editPost = async (id: string) => {
     setIsEdit(false);
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/blog/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "Application/json",
-        },
-        body: JSON.stringify(postData),
-      }
-    );
+    const response = await fetch(`/api/blog/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      body: JSON.stringify(postData),
+    });
     if (response.ok) {
       router.refresh();
     }
   };
 
   const deletePost = async (id: string) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/blog/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "Application/json",
-        },
-      }
-    );
+    const response = await fetch(`/api/blog/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    });
     if (response.ok) {
       router.refresh();
     }
