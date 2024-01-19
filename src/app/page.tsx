@@ -3,7 +3,7 @@ import EditPost from "@/components/EditPost";
 import Link from "next/link";
 
 const getBlogs = async () => {
-  const response = await fetch(`${process.env.API_URL}/api/blog`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blog`, {
     cache: "no-store",
   });
   return response.json();
@@ -11,6 +11,7 @@ const getBlogs = async () => {
 
 export default async function Page() {
   const posts = await getBlogs();
+
   return (
     <>
       <AddPost />

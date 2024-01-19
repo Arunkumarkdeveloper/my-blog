@@ -2,9 +2,12 @@ import ViewPost from "@/components/ViewPost";
 import { Metadata } from "next";
 
 const getPost = async (postId: any) => {
-  const response = await fetch(`${process.env.API_URL}/api/blog/${postId}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/blog/${postId}`,
+    {
+      cache: "no-store",
+    }
+  );
   return response.json();
 };
 
