@@ -3,8 +3,7 @@ import { headers } from "next/headers";
 
 const getPosts = async () => {
   const host = headers().get("host");
-  const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
-  const response = await fetch(`${protocal}://${host}/api/blog`, {
+  const response = await fetch(`https://${host}/api/blog`, {
     cache: "no-store",
   });
 
