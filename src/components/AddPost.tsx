@@ -16,7 +16,7 @@ const AddPost = () => {
   };
 
   const NewtBlog = async () => {
-    await fetch(`/api/blog`, {
+    await fetch(`../api/blog`, {
       method: "POST",
       headers: {
         "Content-Type": "Application",
