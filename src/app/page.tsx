@@ -1,10 +1,9 @@
 import AddPost from "@/components/AddPost";
 import EditPost from "@/components/EditPost";
-import { headers } from "next/headers";
+import Link from "next/link";
 
 const getBlogs = async () => {
-  const host = headers().get("host");
-  const response = await fetch(`https://${host}/api/blog`, {
+  const response = await fetch(`http://localhost:3000/api/blog`, {
     cache: "no-store",
   });
   return response.json();

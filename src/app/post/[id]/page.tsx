@@ -1,10 +1,8 @@
 import ViewPost from "@/components/ViewPost";
 import { Metadata } from "next";
-import { headers } from "next/headers";
 
 const getPost = async (postId: any) => {
-  const host = headers().get("host");
-  const response = await fetch(`https://${host}/api/blog/${postId}`, {
+  const response = await fetch(`http://localhost:3000/api/blog/${postId}`, {
     cache: "no-store",
   });
   return response.json();

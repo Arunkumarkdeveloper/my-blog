@@ -1,9 +1,7 @@
 import PostsList from "@/components/PostsList";
-import { headers } from "next/headers";
 
 const getPosts = async () => {
-  const host = headers().get("host");
-  const response = await fetch(`https://${host}/api/blog`, {
+  const response = await fetch(`http://localhost:3000/api/blog`, {
     cache: "no-store",
   });
 
