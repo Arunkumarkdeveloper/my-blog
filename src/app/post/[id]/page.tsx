@@ -1,8 +1,12 @@
 import ViewPost from "@/components/ViewPost";
 import { Metadata } from "next";
+import { headers } from "next/headers";
 
 const getPost = async (postId: any) => {
-  const response = await fetch(`http://localhost:3000/api/blog/${postId}`, {
+  const headersData = headers();
+  const protocol = headersData.get("x-forwarded-proto");
+  const host = headersData.get("host");
+  const response = await fetch(`${protocol}://${host}/api/blog/${postId}`, {
     cache: "no-store",
   });
   return response.json();

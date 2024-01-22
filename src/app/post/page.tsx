@@ -1,7 +1,11 @@
 import PostsList from "@/components/PostsList";
+import { headers } from "next/headers";
 
 const getPosts = async () => {
-  const response = await fetch(`http://localhost:3000/api/blog`, {
+  const headersData = headers();
+  const protocol = headersData.get("x-forwarded-proto");
+  const host = headersData.get("host");
+  const response = await fetch(`${protocol}://${host}/api/blog`, {
     cache: "no-store",
   });
 
