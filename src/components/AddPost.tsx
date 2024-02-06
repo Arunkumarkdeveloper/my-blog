@@ -10,10 +10,17 @@ const AddPost = () => {
   const [editorHtml, setEditorHtml] = useState("");
   const [affliteLink, setAffliteLink] = useState("");
 
+  let link = blogTitle
+    ?.match(/[^!@#$%^&*?{},.;:/+~()<>]/g)
+    ?.join("")
+    ?.toLocaleLowerCase()
+    ?.replaceAll(" ", "-");
+
   const postData = {
-    blogTitle,
-    editorHtml,
-    affliteLink,
+    blogTitle: blogTitle,
+    urlLink: link,
+    editorHtml: editorHtml,
+    affliteLink: affliteLink,
   };
 
   const NewtBlog = async () => {

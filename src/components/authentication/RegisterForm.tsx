@@ -39,7 +39,7 @@ export default function RegisterForm() {
       headers: {
         "Content-Type": "Application/json",
       },
-      body: JSON.stringify({ userName, email, password }),
+      body: JSON.stringify({ name: userName, email, password }),
     });
 
     if (response.ok) {

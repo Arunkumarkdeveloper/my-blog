@@ -10,10 +10,17 @@ const EditPost = ({ post }: { post: any }) => {
   const [affliteLink, setAffliteLink] = useState(post.affliteLink);
   const [isEdit, setIsEdit] = useState(false);
 
+  let link = blogTitle
+    ?.match(/[^!@#$%^&*?{},.;:/+~()<>]/g)
+    ?.join("")
+    ?.toLocaleLowerCase()
+    ?.replaceAll(" ", "-");
+
   const postData = {
-    blogTitle,
-    editorHtml,
-    affliteLink,
+    blogTitle: blogTitle,
+    urlLink: link,
+    editorHtml: editorHtml,
+    affliteLink: affliteLink,
   };
 
   const editPost = async (id: string) => {

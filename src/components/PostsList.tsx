@@ -6,9 +6,7 @@ export default function PostsList({ post }: { post: any }) {
       <h1>{post.blogTitle}</h1>
       <div dangerouslySetInnerHTML={{ __html: post.editorHtml }} />
       <button>{post.affliteLink}</button>
-      <Link href={`/post/${post._id}`} prefetch={false}>
-        View Post
-      </Link>
+      <Link href={`/post/${post.urlLink}`}>View Post</Link>
     </div>
   );
 }

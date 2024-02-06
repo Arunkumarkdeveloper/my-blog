@@ -7,6 +7,7 @@ export default function DashBoard() {
 
   return (
     <div>
+      <p>name: {session?.user?.name}</p>
       <p>email: {session?.user?.email}</p>
       <button onClick={() => signOut()}>Logout</button>
     </div>

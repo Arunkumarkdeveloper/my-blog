@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import PostsList from "@/components/PostsList";
 
 const getPosts = async () => {
@@ -6,6 +7,11 @@ const getPosts = async () => {
   });
 
   return response.json();
+};
+
+export const metadata: Metadata = {
+  title: "posts",
+  description: "post lists",
 };
 
 export default async function post() {

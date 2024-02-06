@@ -8,9 +8,10 @@ export const PUT = async (
 ) => {
   await ConnectDB();
   const id = params.id;
-  const { blogTitle, editorHtml, affliteLink } = await request.json();
+  const { blogTitle, urlLink, editorHtml, affliteLink } = await request.json();
   await BlogShcema.findByIdAndUpdate(id, {
     blogTitle,
+    urlLink,
     editorHtml,
     affliteLink,
   });
@@ -19,11 +20,11 @@ export const PUT = async (
 
 export const GET = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: any } }
 ) => {
   await ConnectDB();
   const id = params.id;
-  const blog = await BlogShcema.findOne({ _id: id });
+  const blog = await BlogShcema.findOne({ urlLink: id });
   return NextResponse.json(blog, { status: 200 });
 };
 
