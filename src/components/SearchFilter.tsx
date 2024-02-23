@@ -1,39 +1,40 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SearchFilter({ postData }: { postData: any }) {
-  const [searchPost, setSearchPost] = useState("");
+  const _search = useSelector((state: any) => state.search.value);
 
   const data = postData.filter((post: any) => {
     return (
-      post?.blogTitle.includes(searchPost) ||
-      post?.editorHtml.includes(searchPost)
+      post?.blogTitle?.toLowerCase()?.includes(_search?.toLowerCase()) ||
+      post?.description?.toLowerCase()?.includes(_search?.toLowerCase()) ||
+      post?.editorHtml?.toLowerCase()?.includes(_search?.toLowerCase())
     );
   });
 
-  console.log(data);
-
   return (
     <div>
-      <input
-        value={searchPost}
-        onChange={(e) => setSearchPost(e.target.value)}
-        placeholder="search posts"
-      />
       {data.map((post: any) => (
-        <div key={post._id}>
-          {searchPost && (
-            <React.Fragment>
-              <h1>{post.blogTitle}</h1>
-              <div dangerouslySetInnerHTML={{ __html: post.editorHtml }} />
-              <button>
-                <a href={post.affliteLink} target="_blank">
-                  link
-                </a>
-              </button>
-            </React.Fragment>
-          )}
-        </div>
+        <>
+          <div
+            key={post._id}
+            className="d-flex justify-content-center mb-50 mt-50"
+          >
+            <div className="posts">
+              <Link href={`/post/${post.urlLink}`} prefetch={true}>
+                <div className="post-group">
+                  <img src={post.image} className="posts-image mr-25" />
+                  <div>
+                    <h6 className="fw-600 mb-10">{post.blogTitle}</h6>
+                    <p>{post.description.toString().slice(0, 145)} . . .</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </>
       ))}
     </div>
   );

@@ -1,5 +1,14 @@
+import Header from "@/frontend/Header";
 import { AuthProvider } from "./providers";
 import { Metadata } from "next";
+import Footer from "@/frontend/Footer";
+import "bootstrap/dist/css/bootstrap.css";
+import "../../public/css/footer.css";
+import "../../public/css/header.css";
+import "../../public/css/main.css";
+import "../../public/css/post.css";
+
+import ReduxProvider from "@/redux/ReduxProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -13,8 +22,20 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css?family=Poppins"
+          rel="stylesheet"
+        ></link>
+      </head>
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        <ReduxProvider>
+          <AuthProvider>
+            <Header />
+            {children}
+            <Footer />
+          </AuthProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

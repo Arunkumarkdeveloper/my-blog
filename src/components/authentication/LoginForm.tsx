@@ -30,22 +30,27 @@ export default function LoginForm() {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      {error && <div>{error}</div>}
-      <button>login</button>
-      <Link href={"/register"}>Register</Link>
-    </form>
+    <div className="auth-page">
+      <form onSubmit={handleSubmit} className="d-flex flex-column w-25">
+        <h4 className="mb-20 fw-800">Login</h4>
+        <input
+          type="email"
+          className="auth-input mb-20"
+          placeholder="Enter your email address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          className="auth-input mb-20"
+          placeholder="Enter your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {error && <div>{error}</div>}
+        <button className="auth-btn mb-20">Login</button>
+        <Link href={"/register"}>Register</Link>
+      </form>
+    </div>
   );
 }

@@ -1,14 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import EditorQuill from "./EditorQuill";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 const AddPost = () => {
   const router = useRouter();
+  const [image, setImage] = useState("");
   const [blogTitle, setBlogTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [editorHtml, setEditorHtml] = useState("");
-  const [affliteLink, setAffliteLink] = useState("");
 
   let link = blogTitle
     ?.match(/[^!@#$%^&*?{},.;:/+~()<>]/g)
@@ -17,10 +17,11 @@ const AddPost = () => {
     ?.replaceAll(" ", "-");
 
   const postData = {
+    image: image,
     blogTitle: blogTitle,
+    description: description,
     urlLink: link,
     editorHtml: editorHtml,
-    affliteLink: affliteLink,
   };
 
   const NewtBlog = async () => {
@@ -36,16 +37,21 @@ const AddPost = () => {
   const { data: session } = useSession();
 
   return (
-    <div>
+    <div className="d-flex flex-column gap-2 w-50">
       <h2>email: {session?.user?.email}</h2>
+      <input placeholder="image" onChange={(e) => setImage(e.target.value)} />
       <input
         placeholder="BlogTitle"
         onChange={(e) => setBlogTitle(e.target.value)}
       />
-      <EditorQuill editorHtml={editorHtml} setEditorHtml={setEditorHtml} />
       <input
-        placeholder="AffliteLink"
-        onChange={(e) => setAffliteLink(e.target.value)}
+        placeholder="description"
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <textarea
+        value={editorHtml}
+        onChange={(e) => setEditorHtml(e.target.value)}
+        rows={20}
       />
       <button onClick={NewtBlog}>Post</button>
     </div>

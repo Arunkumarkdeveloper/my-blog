@@ -8,12 +8,14 @@ export const PUT = async (
 ) => {
   await ConnectDB();
   const id = params.id;
-  const { blogTitle, urlLink, editorHtml, affliteLink } = await request.json();
+  const { image, blogTitle, description, urlLink, editorHtml } =
+    await request.json();
   await BlogShcema.findByIdAndUpdate(id, {
+    image,
     blogTitle,
+    description,
     urlLink,
     editorHtml,
-    affliteLink,
   });
   return NextResponse.json({ message: "blog updated..." }, { status: 201 });
 };

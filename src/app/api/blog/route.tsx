@@ -4,8 +4,15 @@ import BlogShcema from "@/backend/BlogShcema";
 
 export const POST = async (request: NextRequest) => {
   await ConnectDB();
-  const { blogTitle, urlLink, editorHtml, affliteLink } = await request.json();
-  await BlogShcema.create({ blogTitle, urlLink, editorHtml, affliteLink });
+  const { image, blogTitle, description, urlLink, editorHtml } =
+    await request.json();
+  await BlogShcema.create({
+    image,
+    blogTitle,
+    description,
+    urlLink,
+    editorHtml,
+  });
   return NextResponse.json({ message: "New blog created..." }, { status: 201 });
 };
 

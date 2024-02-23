@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import EditorQuill from "./EditorQuill";
 import { useRouter } from "next/navigation";
 
 const EditPost = ({ post }: { post: any }) => {
   const router = useRouter();
-  const [blogTitle, setBlogTitle] = useState(post.blogTitle);
-  const [editorHtml, setEditorHtml] = useState(post.editorHtml);
-  const [affliteLink, setAffliteLink] = useState(post.affliteLink);
+  const [image, setImage] = useState("");
+  const [blogTitle, setBlogTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [editorHtml, setEditorHtml] = useState("");
   const [isEdit, setIsEdit] = useState(false);
 
   let link = blogTitle
@@ -17,12 +17,12 @@ const EditPost = ({ post }: { post: any }) => {
     ?.replaceAll(" ", "-");
 
   const postData = {
+    image: image,
     blogTitle: blogTitle,
+    description: description,
     urlLink: link,
     editorHtml: editorHtml,
-    affliteLink: affliteLink,
   };
-
   const editPost = async (id: string) => {
     setIsEdit(false);
     const response = await fetch(`/api/blog/${id}`, {
@@ -61,15 +61,21 @@ const EditPost = ({ post }: { post: any }) => {
       {isEdit && (
         <div>
           <input
+            placeholder="image"
+            onChange={(e) => setImage(e.target.value)}
+          />
+          <input
             placeholder="BlogTitle"
-            value={blogTitle}
             onChange={(e) => setBlogTitle(e.target.value)}
           />
-          <EditorQuill editorHtml={editorHtml} setEditorHtml={setEditorHtml} />
           <input
-            placeholder="AffliteLink"
-            value={affliteLink}
-            onChange={(e) => setAffliteLink(e.target.value)}
+            placeholder="description"
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <textarea
+            value={editorHtml}
+            onChange={(e) => setEditorHtml(e.target.value)}
+            rows={20}
           />
           <button onClick={() => editPost(post._id)}>Post</button>
         </div>

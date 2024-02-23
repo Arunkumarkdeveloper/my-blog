@@ -1,5 +1,7 @@
 import { Metadata } from "next";
-import PostsList from "@/components/PostsList";
+// import SearchFilter from "@/components/SearchFilter";
+import dynamic from "next/dynamic";
+const SearchFilter = dynamic(() => import("@/components/SearchFilter"));
 
 const getPosts = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blog`, {
@@ -15,13 +17,11 @@ export const metadata: Metadata = {
 };
 
 export default async function post() {
-  const posts = await getPosts();
+  const postData = await getPosts();
 
   return (
     <div>
-      {posts.map((post: any) => (
-        <PostsList key={post._id} post={post} />
-      ))}
+      <SearchFilter postData={postData.reverse()} />
     </div>
   );
 }
