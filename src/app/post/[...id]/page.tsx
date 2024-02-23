@@ -56,7 +56,7 @@ export async function generateMetadata({
     openGraph: {
       title: post?.blogTitle,
       description: post?.blogTitle,
-      url: `${process.env.NEXT_AUTH_URL}/post/${post?.blogTitle}`,
+      url: `${process.env.NEXT_PUBLIC_API_URL}/post/${post?.blogTitle}`,
       siteName: "Find Best One",
       locale: "en_US",
       type: "article",

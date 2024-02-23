@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import authOptions from "@/backend/authOptions";
 import LoginForm from "@/components/authentication/LoginForm";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
