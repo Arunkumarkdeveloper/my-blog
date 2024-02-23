@@ -1,10 +1,8 @@
 import { Metadata } from "next";
-// import SearchFilter from "@/components/SearchFilter";
-import dynamic from "next/dynamic";
-const SearchFilter = dynamic(() => import("@/components/SearchFilter"));
+import SearchFilter from "@/components/SearchFilter";
 
 const getPosts = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blog`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog`, {
     cache: "no-store",
   });
 

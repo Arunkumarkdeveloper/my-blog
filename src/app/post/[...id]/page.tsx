@@ -4,7 +4,7 @@ const ViewPost = dynamic(() => import("@/components/ViewPost"));
 
 const getPost = async (postId: any) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/blog/${postId}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/blog/${postId}`,
     {
       cache: "no-store",
     }
@@ -13,7 +13,7 @@ const getPost = async (postId: any) => {
 };
 
 const getPosts = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blog`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog`, {
     cache: "no-store",
   });
 
@@ -22,7 +22,7 @@ const getPosts = async () => {
 
 const getCommands = async () => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/comment`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/comment`,
     {
       cache: "no-store",
     }
@@ -56,7 +56,7 @@ export async function generateMetadata({
     openGraph: {
       title: post?.blogTitle,
       description: post?.blogTitle,
-      url: `${process.env.NEXT_PUBLIC_API_URL}/post/${post?.blogTitle}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/post/${post?.blogTitle}`,
       siteName: "Find Best One",
       locale: "en_US",
       type: "article",
