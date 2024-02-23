@@ -8,6 +8,6 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
       allow: "/",
       disallow: "/private",
     },
-    sitemap: `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`,
+    sitemap: `${process.env.NEXT_PUBLIC_API_URL}/sitemap.xml`,
   };
 }
