@@ -63,8 +63,16 @@ export default async function page({ params }: { params: { id: any } }) {
   if (!API_URL) {
     return null;
   }
-  const post = await getPost(params.id);
-  const comment = await getCommands();
-  const postData = await getPosts();
+
+  const _post = getPost(params.id);
+  const _comment = getCommands();
+  const _postData = getPosts();
+
+  const [post, comment, postData] = await Promise.all([
+    _post,
+    _comment,
+    _postData,
+  ]);
+
   return <ViewPost post={post} comment={comment} suggestPosts={postData} />;
 }
