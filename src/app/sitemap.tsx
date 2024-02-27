@@ -1,8 +1,9 @@
 "use server";
 import { MetadataRoute } from "next";
+import { API_URL } from "@/frontend/Path";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blog`, {
+  const response = await fetch(`${API_URL}/api/blog`, {
     cache: "no-store",
   });
 
@@ -10,18 +11,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const postEntries: MetadataRoute.Sitemap = posts.map(
     ({ urlLink, updatedAt }: any) => ({
-      url: `${process.env.NEXT_PUBLIC_API_URL}/post/${urlLink}`,
+      url: `${API_URL}/post/${urlLink}`,
       lastModified: new Date(updatedAt),
     })
   );
 
   return [
     {
-      url: `${process.env.NEXT_PUBLIC_API_URL}/home`,
+      url: `${API_URL}/home`,
       lastModified: new Date(),
     },
     {
-      url: `${process.env.NEXT_PUBLIC_API_URL}/post`,
+      url: `${API_URL}/post`,
       lastModified: new Date(),
     },
     ...postEntries,

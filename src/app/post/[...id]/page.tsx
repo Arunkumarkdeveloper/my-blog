@@ -1,19 +1,17 @@
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 const ViewPost = dynamic(() => import("@/components/ViewPost"));
+import { API_URL } from "@/frontend/Path";
 
 const getPost = async (postId: any) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/blog/${postId}`,
-    {
-      cache: "no-store",
-    }
-  );
+  const response = await fetch(`${API_URL}/api/blog/${postId}`, {
+    cache: "no-store",
+  });
   return response.json();
 };
 
 const getPosts = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blog`, {
+  const response = await fetch(`${API_URL}/api/blog`, {
     cache: "no-store",
   });
 
@@ -21,12 +19,9 @@ const getPosts = async () => {
 };
 
 const getCommands = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/comment`,
-    {
-      cache: "no-store",
-    }
-  );
+  const response = await fetch(`${API_URL}/api/comment`, {
+    cache: "no-store",
+  });
 
   return response.json();
 };
@@ -56,7 +51,7 @@ export async function generateMetadata({
     openGraph: {
       title: post?.blogTitle,
       description: post?.blogTitle,
-      url: `${process.env.NEXT_PUBLIC_API_URL}/post/${post?.blogTitle}`,
+      url: `${API_URL}/post/${post?.blogTitle}`,
       siteName: "Find Best One",
       locale: "en_US",
       type: "article",
@@ -65,6 +60,9 @@ export async function generateMetadata({
 }
 
 export default async function page({ params }: { params: { id: any } }) {
+  if (!API_URL) {
+    return null;
+  }
   const post = await getPost(params.id);
   const comment = await getCommands();
   const postData = await getPosts();

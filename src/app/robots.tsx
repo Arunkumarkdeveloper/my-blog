@@ -1,5 +1,6 @@
 "use server";
 import { MetadataRoute } from "next";
+import { API_URL } from "@/frontend/Path";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   return {
@@ -8,6 +9,6 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
       allow: "/",
       disallow: "/private",
     },
-    //sitemap: `${process.env.NEXT_PUBLIC_API_URL}/sitemap.xml`,
+    sitemap: `${API_URL}/sitemap.xml`,
   };
 }

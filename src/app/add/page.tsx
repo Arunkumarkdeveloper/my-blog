@@ -1,14 +1,18 @@
 import AddPost from "@/components/AddPost";
 import EditPost from "@/components/EditPost";
+import { API_URL } from "@/frontend/Path";
 
 const getBlogs = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blog`, {
+  const response = await fetch(`${API_URL}/api/blog`, {
     cache: "no-store",
   });
   return response.json();
 };
 
 export default async function Page() {
+  if (!API_URL) {
+    return null;
+  }
   const posts = await getBlogs();
 
   return (
