@@ -1,0 +1,29 @@
+@media (max-width: 600px) {
+    .auth-page form {
+        width: 70%;
+    }
+}
+
+@media (min-width: 600px) {
+    .auth-page form {
+        width: 40%;
+    }
+}
+
+@media (min-width: 768px) {
+    .auth-page form {
+        width: 40%;
+    }
+}
+
+@media (min-width: 992px) {
+    .auth-page form {
+        width: 30%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .auth-page form {
+        width: 20%;
+    }
+}

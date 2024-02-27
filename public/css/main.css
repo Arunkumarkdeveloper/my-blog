@@ -982,11 +982,19 @@
     align-items: center;
 }
 
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
 .auth-page {
     min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.auth-page form {
+    width: 20%;
 }
 
 .auth-input {

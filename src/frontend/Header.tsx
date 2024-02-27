@@ -6,9 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setValue } from "@/redux/searchSlice";
 import Link from "next/link";
 import Image from "next/image";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function Header() {
   const router = useRouter();
+  const { data: session } = useSession();
   const [showHeader, setShowHeader] = useState(false);
 
   const handleShowNavbar = () => {
@@ -48,24 +51,42 @@ export default function Header() {
           quality={100}
           onClick={handleShowNavbar}
         />
-        <div className={`nav-elements  ${showHeader && "active"}`}>
-          <div className="header-items">
+        <div className={showHeader ? "nav-elements active" : "nav-elements"}>
+          <div className="header-items" onClick={() => setShowHeader(false)}>
             <span>
-              <Link href="/" prefetch={false}>
-                Home
-              </Link>
+              <Link href="/">Home</Link>
             </span>
             <span>
-              <Link href="/post" prefetch={false}>
-                Posts
-              </Link>
+              <Link href="/post">Posts</Link>
             </span>
-            {/* <span>Disclaimer</span> */}
+            <span>
+              <Link href="/add">add post</Link>
+            </span>
             <span>About</span>
-            <span>
-              <Link href="/login" prefetch={false}>
-                Login
-              </Link>
+
+            {!session ? (
+              <span>
+                <Link href="/login">Login</Link>{" "}
+              </span>
+            ) : (
+              <span className="cursor-pointer" onClick={() => signOut()}>
+                Logout
+              </span>
+            )}
+
+            <span className="header-profile">
+              {session
+                ? session?.user?.name?.slice(0, 1).toUpperCase()
+                : !session && (
+                    <Image
+                      src="/image/profile.svg"
+                      width={45}
+                      height={45}
+                      alt="Profile"
+                      quality={100}
+                      onClick={handleShowNavbar}
+                    />
+                  )}
             </span>
           </div>
         </div>

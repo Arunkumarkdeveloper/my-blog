@@ -50,28 +50,34 @@ export default function RegisterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="name"
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      {error && <div>{error}</div>}
-      <button>Register</button>
-      <Link href={"/login"}>login</Link>
-    </form>
+    <div className="auth-page">
+      <form onSubmit={handleSubmit} className="d-flex flex-column">
+        <h4 className="mb-20 fw-800">Register</h4>
+        <input
+          type="text"
+          placeholder="Enter your username"
+          className="auth-input mb-20"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="Enter your email address"
+          className="auth-input mb-20"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Enter your password"
+          className="auth-input mb-20"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {error && <div>{error}</div>}
+        <button className="auth-btn mb-20">Register</button>
+        <Link href={"/login"}>login</Link>
+      </form>
+    </div>
   );
 }

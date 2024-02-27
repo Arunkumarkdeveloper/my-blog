@@ -20,6 +20,8 @@ export default function ViewPost({
     return _id === cmt?.postId;
   });
 
+  console.log("postComments: ", postComments);
+
   const router = useRouter();
   const [comments, setComments] = useState("");
   const { data: session } = useSession();
@@ -38,6 +40,7 @@ export default function ViewPost({
     });
 
     if (response.ok) {
+      console.log("response: ", response);
       router.refresh();
       setComments("");
     }
@@ -51,10 +54,12 @@ export default function ViewPost({
           <hr />
           <p>{description}</p>
           <img src={image} />
-          <div
-            className="mb-30"
-            dangerouslySetInnerHTML={{ __html: editorHtml }}
-          />
+          {editorHtml.map((_html_editor: string, index: number) => (
+            <div
+              key={index}
+              dangerouslySetInnerHTML={{ __html: _html_editor }}
+            ></div>
+          ))}
           <hr />
         </div>
       </div>

@@ -13,11 +13,15 @@ export default async function Page() {
 
   return (
     <>
-      <AddPost />
-      <div>
-        {posts.map((post: any) => (
-          <EditPost key={post._id} post={post} />
-        ))}
+      <div className="d-flex justify-content-center mt-30 mb-50">
+        <AddPost />
+      </div>
+      <div className="d-flex justify-content-center mt-30 mb-50 flex-column align-items-center">
+        <div className="w-50">
+          {posts.reverse().map((post: any) => (
+            <EditPost key={post._id} post={post} />
+          ))}
+        </div>
       </div>
     </>
   );

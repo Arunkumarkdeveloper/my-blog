@@ -2,13 +2,16 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import PostEditor from "./PostEditor";
 
 const AddPost = () => {
   const router = useRouter();
   const [image, setImage] = useState("");
   const [blogTitle, setBlogTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [editorHtml, setEditorHtml] = useState("");
+  const [editorHtml, setEditorHtml] = useState([]);
+
+  console.log("editorHtml: ", editorHtml);
 
   let link = blogTitle
     ?.match(/[^!@#$%^&*?{},.;:/+~()<>]/g)
@@ -34,27 +37,33 @@ const AddPost = () => {
     });
     router.refresh();
   };
-  const { data: session } = useSession();
 
   return (
-    <div className="d-flex flex-column gap-2 w-50">
-      <h2>email: {session?.user?.email}</h2>
-      <input placeholder="image" onChange={(e) => setImage(e.target.value)} />
-      <input
-        placeholder="BlogTitle"
-        onChange={(e) => setBlogTitle(e.target.value)}
-      />
-      <input
-        placeholder="description"
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <textarea
-        value={editorHtml}
-        onChange={(e) => setEditorHtml(e.target.value)}
-        rows={20}
-      />
-      <button onClick={NewtBlog}>Post</button>
-    </div>
+    <React.Fragment>
+      <div
+        id="post"
+        className="d-flex flex-column justify-content-center gap-2 w-50"
+      >
+        <button onClick={NewtBlog}>Post</button>
+        <input
+          placeholder="BlogTitle"
+          onChange={(e) => setBlogTitle(e.target.value)}
+          className="auth-input"
+        />
+        <input
+          placeholder="description"
+          onChange={(e) => setDescription(e.target.value)}
+          className="auth-input"
+        />
+        <input
+          placeholder="image"
+          onChange={(e) => setImage(e.target.value)}
+          className="auth-input"
+        />
+
+        <PostEditor postData={postData} setEditorHtml={setEditorHtml} />
+      </div>
+    </React.Fragment>
   );
 };
 
