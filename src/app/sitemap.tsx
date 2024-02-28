@@ -1,4 +1,3 @@
-"use server";
 import { MetadataRoute } from "next";
 import { API_URL } from "@/frontend/Path";
 
