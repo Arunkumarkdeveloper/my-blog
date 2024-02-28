@@ -17,7 +17,7 @@ const getPosts = async () => {
     cache: "no-store",
   });
   noStore();
-  return response.json();
+  return await response.json();
 };
 
 const getCommands = async () => {
