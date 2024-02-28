@@ -2,11 +2,13 @@ import { Metadata } from "next";
 import dynamic from "next/dynamic";
 const ViewPost = dynamic(() => import("@/components/ViewPost"));
 import { API_URL } from "@/frontend/Path";
+import { unstable_noStore as noStore } from "next/cache";
 
 const getPost = async (postId: any) => {
   const response = await fetch(`${API_URL}/api/blog/${postId}`, {
     cache: "no-store",
   });
+  noStore();
   return response.json();
 };
 
@@ -14,7 +16,7 @@ const getPosts = async () => {
   const response = await fetch(`${API_URL}/api/blog`, {
     cache: "no-store",
   });
-
+  noStore();
   return response.json();
 };
 
@@ -22,7 +24,7 @@ const getCommands = async () => {
   const response = await fetch(`${API_URL}/api/comment`, {
     cache: "no-store",
   });
-
+  noStore();
   return response.json();
 };
 

@@ -1,10 +1,13 @@
 import { MetadataRoute } from "next";
 import { API_URL } from "@/frontend/Path";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const response = await fetch(`${API_URL}/api/blog`, {
     cache: "no-store",
   });
+
+  noStore();
 
   const posts = await response.json();
 
