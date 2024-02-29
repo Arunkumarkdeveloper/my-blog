@@ -1,0 +1,12 @@
+.home_bg {
+    display: flex;
+    background-color: #424244;
+    color: #f4f4f4;
+    align-items: center;
+    justify-content: space-around;
+    height: 400px;
+}
+
+.home_bg_text {
+    width: 50%;
+}

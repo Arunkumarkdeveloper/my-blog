@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import toast, { Toaster } from "react-hot-toast";
 
 const EditPost = ({ post }: { post: any }) => {
   const router = useRouter();
@@ -25,6 +26,10 @@ const EditPost = ({ post }: { post: any }) => {
     urlLink: link,
     editorHtml: editorHtml,
   };
+
+  const post_deleted = () => toast.success("Post deleted!");
+  const post_updated = () => toast.success("Post updated!");
+
   const editPost = async (id: string) => {
     setIsEdit(false);
     const response = await fetch(`/api/blog/${id}`, {
@@ -36,6 +41,7 @@ const EditPost = ({ post }: { post: any }) => {
     });
     if (response.ok) {
       router.refresh();
+      post_updated();
     }
   };
 
@@ -54,15 +60,28 @@ const EditPost = ({ post }: { post: any }) => {
       },
     });
 
-    if (response.ok && response_cmts.ok) {
+    const response_likes = await fetch(`/api/like/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    });
+
+    if (response.ok && response_cmts.ok && response_likes.ok) {
       router.refresh();
+      post_deleted();
     }
   };
 
-  console.log(editorHtml);
+  const handleChange = (e: any, index: number) => {
+    const updatedEditorHtml = [...editorHtml];
+    updatedEditorHtml[index] = e.target.value;
+    setEditorHtml(updatedEditorHtml);
+  };
 
   return (
     <>
+      <Toaster position="top-center" />
       <div className="mb-30">
         <Link href={`/post/${post.urlLink}`} prefetch={true}>
           <div className="post-group">
@@ -93,31 +112,44 @@ const EditPost = ({ post }: { post: any }) => {
         />
         {isEdit && (
           <div id="post" className="d-flex flex-column gap-3 mb-10 mt-20">
-            <input
+            <span className="fw-700">BlogTitle</span>
+            <textarea
               placeholder="BlogTitle"
               value={blogTitle}
               onChange={(e) => setBlogTitle(e.target.value)}
               className="auth-input"
+              style={{ lineHeight: "2.5" }}
+              rows={1}
             />
-            <input
+            <span className="fw-700">Description</span>
+            <textarea
               placeholder="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               className="auth-input"
+              style={{ lineHeight: "2.5" }}
+              rows={2}
             />
-            <input
+            <span className="fw-700">Image URL</span>
+            <textarea
               placeholder="image"
               value={image}
               onChange={(e) => setImage(e.target.value)}
               className="auth-input"
-            />
-            {/* <textarea
-              value={editorHtml}
-              onChange={(e) => setEditorHtml(e.target.value)}
-              className="auth-input"
               style={{ lineHeight: "2.5" }}
-              rows={20}
-            /> */}
+              rows={1}
+            />
+            <span className="fw-700">EditorHtml</span>
+            {editorHtml.map((_editHtml: string, index: number) => (
+              <textarea
+                key={index}
+                value={_editHtml}
+                onChange={(e) => handleChange(e, index)}
+                className="auth-input"
+                style={{ lineHeight: "2.5" }}
+                rows={4}
+              />
+            ))}
           </div>
         )}
         {isEdit && (

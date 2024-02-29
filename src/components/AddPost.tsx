@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import PostEditor from "./PostEditor";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddPost = () => {
   const router = useRouter();
@@ -10,8 +11,6 @@ const AddPost = () => {
   const [blogTitle, setBlogTitle] = useState("");
   const [description, setDescription] = useState("");
   const [editorHtml, setEditorHtml] = useState([]);
-
-  console.log("editorHtml: ", editorHtml);
 
   let link = blogTitle
     ?.match(/[^!@#$%^&*?{},.;:/+~()<>]/g)
@@ -27,24 +26,27 @@ const AddPost = () => {
     editorHtml: editorHtml,
   };
 
+  const new_post_added = () => toast.success("New Post added!");
+
   const NewtBlog = async () => {
-    await fetch(`/api/blog`, {
+    const response = await fetch(`/api/blog`, {
       method: "POST",
       headers: {
         "Content-Type": "Application",
       },
       body: JSON.stringify(postData),
     });
-    router.refresh();
+
+    if (response.ok) {
+      router.refresh();
+      new_post_added();
+    }
   };
 
   return (
     <React.Fragment>
-      <div
-        id="post"
-        className="d-flex flex-column justify-content-center gap-2 w-50"
-      >
-        <button onClick={NewtBlog}>Post</button>
+      <Toaster position="top-center" />
+      <div className="d-flex flex-column justify-content-center gap-2 editor-post">
         <input
           placeholder="BlogTitle"
           onChange={(e) => setBlogTitle(e.target.value)}
@@ -61,7 +63,11 @@ const AddPost = () => {
           className="auth-input"
         />
 
-        <PostEditor postData={postData} setEditorHtml={setEditorHtml} />
+        <PostEditor
+          postData={postData}
+          setEditorHtml={setEditorHtml}
+          NewtBlog={NewtBlog}
+        />
       </div>
     </React.Fragment>
   );

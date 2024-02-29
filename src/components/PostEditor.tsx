@@ -5,9 +5,11 @@ import Image from "next/image";
 export default function PostEditor({
   postData,
   setEditorHtml,
+  NewtBlog,
 }: {
   postData: any;
   setEditorHtml: any;
+  NewtBlog: any;
 }) {
   const [input1, setInput1] = useState("");
   const [link, setLink] = useState("");
@@ -59,14 +61,11 @@ export default function PostEditor({
     setLink("");
   }, [postData.editorHtml.length]);
 
-  console.log(postData.editorHtml);
-
   return (
-    <div id="post" style={{ height: "100%" }}>
+    <div style={{ height: "100%" }}>
       <select
         onChange={(e: any) => setHtmlTags(e.target.value)}
-        className="auth-input mb-10 mt-25"
-        style={{ width: "20%" }}
+        className="auth-input mb-10 mt-25 editor-select"
       >
         {_tags.map((tag, index) => (
           <option key={tag.id} value={index}>
@@ -75,19 +74,19 @@ export default function PostEditor({
         ))}
       </select>
 
-      <div className="d-flex align-items-center">
+      <div className="d-flex align-items-center gap-2">
         {_tags[htmlTags]?._openTag !== `<img>` && (
-          <input
+          <textarea
             value={input1}
             onChange={(e) => setInput1(e.target.value)}
-            className="auth-input mr-10"
+            className="auth-input mr-10 mb-10"
             placeholder={`Type ${_tags[htmlTags]?._openTag} text`}
           />
         )}
 
         {_tags[htmlTags]?._openTag === `<button>` ||
         _tags[htmlTags]?._openTag === `<img>` ? (
-          <input
+          <textarea
             value={link}
             onChange={(e) => setLink(e.target.value)}
             placeholder={`${_tags[htmlTags]?._openTag} link`}
@@ -106,11 +105,25 @@ export default function PostEditor({
         />
       </div>
 
+      <div className="d-flex align-items-end justify-content-between gap-2 mt-30">
+        <h6 className="fw-800">Preview Post</h6>
+        <div onClick={NewtBlog} className="cursor-pointer">
+          <span className="mr-10">
+            <Image
+              src="/image/add_post.png"
+              alt="Add post"
+              width={30}
+              height={30}
+              style={{ width: "30px" }}
+            />
+          </span>
+          <span className="fw-600">Add New Post</span>
+        </div>
+      </div>
+      <hr />
       <div id="post">
-        <h6>Preview Post</h6>
         <div className="mt-20">
           <h2 className="fw-900">{postData.blogTitle}</h2>
-          <hr />
           <p>{postData.description}</p>
           <img src={postData.image} />
           {postData.editorHtml.map((_html_editor: string, index: number) => (

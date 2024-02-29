@@ -7,6 +7,7 @@ import "../../public/css/footer.css";
 import "../../public/css/header.css";
 import "../../public/css/main.css";
 import "../../public/css/post.css";
+import "../../public/css/home.css";
 import "../../public/css/responsive.css";
 
 import ReduxProvider from "@/redux/ReduxProvider";

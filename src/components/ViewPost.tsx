@@ -4,15 +4,19 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import toast, { Toaster } from "react-hot-toast";
+import Image from "next/image";
 
 export default function ViewPost({
   post,
   comment,
   suggestPosts,
+  like,
 }: {
   post: any;
   comment: any;
   suggestPosts: any;
+  like: any;
 }) {
   const { _id, image, blogTitle, description, editorHtml } = post;
 
@@ -20,29 +24,72 @@ export default function ViewPost({
     return _id === cmt?.postId;
   });
 
-  console.log("postComments: ", postComments);
-
   const router = useRouter();
   const [comments, setComments] = useState("");
   const { data: session } = useSession();
 
-  const AddComment = async () => {
-    const response = await fetch(`/api/comment/${_id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-      body: JSON.stringify({
-        postId: _id,
-        user: session?.user?.name,
-        commentText: comments,
-      }),
-    });
+  const toast_success = () => toast.success("Comment added!");
+  const please_login = () => toast.error("Login please!");
 
-    if (response.ok) {
-      console.log("response: ", response);
-      router.refresh();
-      setComments("");
+  const AddComment = async () => {
+    if (session) {
+      const response = await fetch(`/api/comment/${_id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+        body: JSON.stringify({
+          postId: _id,
+          user: session?.user?.name,
+          commentText: comments,
+        }),
+      });
+
+      if (response.ok) {
+        router.refresh();
+        setComments("");
+        toast_success();
+      }
+    } else {
+      please_login();
+      setTimeout(() => {
+        router.push("/login");
+      }, 3000);
+    }
+  };
+
+  const _likes = like.filter((count: any) => {
+    return _id === count.postId;
+  });
+
+  const [likeCount, setLikeCount] = useState(_likes.length);
+
+  const _active_like = _likes.filter(
+    (item: any) => session?.user?.email === item.userId
+  );
+
+  console.log(_active_like);
+
+  const AddLike = async () => {
+    if (session && _active_like.length === 0) {
+      setLikeCount(_likes.length + 1);
+
+      const response = await fetch(`/api/like/${_id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+        body: JSON.stringify({ userId: session?.user?.email }),
+      });
+
+      if (response.ok) {
+        router.refresh();
+      }
+    } else if (!session) {
+      please_login();
+      setTimeout(() => {
+        router.push("/login");
+      }, 3000);
     }
   };
 
@@ -60,9 +107,29 @@ export default function ViewPost({
               dangerouslySetInnerHTML={{ __html: _html_editor }}
             ></div>
           ))}
+          <div className="d-flex w-25 align-items-center gap-3">
+            <span>
+              <Image
+                src={
+                  _active_like.length === 0
+                    ? "/image/like.png"
+                    : "/image/like_active.png"
+                }
+                alt="like"
+                width={25}
+                height={25}
+                onClick={AddLike}
+                className={
+                  _active_like.length === 0 && session ? "cursor-pointer" : ""
+                }
+              />
+            </span>
+            <span className="fw-600 mt-5">{_likes.length}</span>
+          </div>
           <hr />
         </div>
       </div>
+
       <div id="post-comment" className="d-flex justify-content-center">
         <div className="view-post">
           <h6 className="fw-700 mb-15 mt-10">Comments</h6>
@@ -73,6 +140,7 @@ export default function ViewPost({
               placeholder="Add a comment"
             />
           </div>
+          <Toaster position="top-center" />
           <button className="mb-30 cmt-btn" onClick={AddComment}>
             Send
           </button>

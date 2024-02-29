@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -9,13 +10,16 @@ export default function RegisterForm() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+
+  const register_success = () => toast.success("Registerd successfully!");
+  const fields_necessary = () => toast.error("All fields are necessary.");
+  const user_exist = () => toast.error("User already exist!");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (!userName || !email || !password) {
-      setError("All fields are necessary.");
+      fields_necessary();
       return;
     }
 
@@ -30,7 +34,7 @@ export default function RegisterForm() {
     const user = await existUser.json();
 
     if (user) {
-      setError("user already exist!");
+      user_exist();
       return;
     }
 
@@ -43,14 +47,18 @@ export default function RegisterForm() {
     });
 
     if (response.ok) {
-      setError("Registerd successfully!");
+      register_success();
       const form = e.target;
       form.reset();
+      setTimeout(() => {
+        router.push("/login");
+      }, 3000);
     }
   };
 
   return (
     <div className="auth-page">
+      <Toaster position="top-center" />
       <form onSubmit={handleSubmit} className="d-flex flex-column">
         <h4 className="mb-20 fw-800">Register</h4>
         <input
@@ -74,7 +82,6 @@ export default function RegisterForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {error && <div>{error}</div>}
         <button className="auth-btn mb-20">Register</button>
         <Link href={"/login"}>login</Link>
       </form>

@@ -1,5 +1,6 @@
 .posts {
     width: 50%;
+    word-wrap: break-word;
 }
 
 .post-group {
@@ -17,6 +18,7 @@
 #post {
     font-size: 14px !important;
     color: #484848;
+    word-wrap: break-word;
 }
 
 #post h1 {
@@ -136,10 +138,21 @@ a {
     color: #333333;
 }
 
+.editor-post {
+    width: 50%;
+}
+
+.editor-select {
+    width: 20%;
+}
+
+.edit-delete-post {
+    width: 50%;
+}
 
 @media (max-width: 600px) {
     .posts {
-        width: 80%;
+        width: 85%;
     }
 
     .post-group {
@@ -153,13 +166,13 @@ a {
     }
 
     .view-post {
-        width: 80%;
+        width: 85%;
     }
 }
 
 @media (max-width: 768px) {
     .posts {
-        width: 80%;
+        width: 85%;
     }
 
     .post-group {
@@ -173,13 +186,13 @@ a {
     }
 
     .view-post {
-        width: 80%;
+        width: 85%;
     }
 }
 
 @media (min-width: 768px) {
     .posts {
-        width: 80%;
+        width: 85%;
     }
 
     .post-group {
@@ -193,7 +206,7 @@ a {
     }
 
     .view-post {
-        width: 80%;
+        width: 85%;
     }
 }
 

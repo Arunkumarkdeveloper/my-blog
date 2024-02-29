@@ -21,7 +21,7 @@ export default async function Page() {
         <AddPost />
       </div>
       <div className="d-flex justify-content-center mt-30 mb-50 flex-column align-items-center">
-        <div className="w-50">
+        <div className="edit-delete-post">
           {posts.reverse().map((post: any) => (
             <EditPost key={post._id} post={post} />
           ))}

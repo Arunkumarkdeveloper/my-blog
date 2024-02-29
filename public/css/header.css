@@ -38,7 +38,7 @@ body {
     background: #FFFFFF;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><path fill='%23838D99' d='M13.22 14.63a8 8 0 1 1 1.41-1.41l4.29 4.29a1 1 0 1 1-1.41 1.41l-4.29-4.29zm-.66-2.07a6 6 0 1 0-8.49-8.49 6 6 0 0 0 8.49 8.49z'></path></svg>");
     background-repeat: no-repeat;
-    background-position: 12px 10px;
+    background-position: 12px 11px;
     background-size: 20px 20px;
     border: 1px solid #ced4da;
     border-radius: 20px;
@@ -141,7 +141,7 @@ body {
     .search {
         line-height: 1;
         padding: .7em 1em .5em 2.5em;
-        width: 60%;
+        width: 70%;
     }
 }
 
@@ -149,10 +149,11 @@ body {
     .container {
         width: 100% !important;
         padding: 0 10px !important;
+        background-position: 12px 20px;
     }
 
     .search {
         line-height: 1;
-        padding: .7em 1em .5em 2.5em;
+        padding: .7em 1em .5em 3em;
     }
 }

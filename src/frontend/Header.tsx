@@ -60,7 +60,7 @@ export default function Header() {
               <Link href="/post">Posts</Link>
             </span>
             <span>
-              <Link href="/add">add post</Link>
+              <Link href="/add">Editor</Link>
             </span>
             <span>About</span>
 

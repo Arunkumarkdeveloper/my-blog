@@ -28,6 +28,14 @@ const getCommands = async () => {
   return response.json();
 };
 
+const getLikes = async (postId: any) => {
+  const response = await fetch(`${API_URL}/api/like`, {
+    cache: "no-store",
+  });
+  noStore();
+  return response.json();
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -69,12 +77,21 @@ export default async function page({ params }: { params: { id: any } }) {
   const _post = getPost(params.id);
   const _comment = getCommands();
   const _postData = getPosts();
+  const _likes = getLikes(params.id);
 
-  const [post, comment, postData] = await Promise.all([
+  const [post, comment, postData, like] = await Promise.all([
     _post,
     _comment,
     _postData,
+    _likes,
   ]);
 
-  return <ViewPost post={post} comment={comment} suggestPosts={postData} />;
+  return (
+    <ViewPost
+      post={post}
+      comment={comment}
+      suggestPosts={postData}
+      like={like}
+    />
+  );
 }
