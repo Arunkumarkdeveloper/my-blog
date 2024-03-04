@@ -35,7 +35,7 @@ export default function Header() {
   const openProfile = () => setIsPrifile(!isProfile);
   const closeProfile = () => setIsPrifile(false);
 
-  let _screen = screen.width;
+  let _screen = window.screen.width;
 
   return (
     <nav className="navbar">
