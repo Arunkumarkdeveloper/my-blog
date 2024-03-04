@@ -21,40 +21,38 @@
     word-wrap: break-word;
 }
 
+#post div {
+    margin-bottom: 15px;
+}
+
 #post h1 {
     font-weight: 800 !important;
-    line-height: 1.3;
+    line-height: 1.5;
 }
 
 #post h2 {
     font-weight: 800 !important;
-    margin-top: 20px;
-    line-height: 1.3;
+    line-height: 1.5;
 }
 
 #post h3 {
     font-weight: 800 !important;
-    margin-top: 30px;
-    line-height: 1.3;
+    line-height: 2;
 }
 
 #post h4 {
     font-weight: 800 !important;
-    line-height: 1.3;
+    line-height: 2;
 }
 
 #post h5 {
     font-weight: 800 !important;
-    line-height: 1.3;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    line-height: 2;
 }
 
 #post h6 {
     font-weight: 800 !important;
-    line-height: 1.3;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    line-height: 2;
 }
 
 #post img {
@@ -66,6 +64,22 @@
 }
 
 #post p {
+    line-height: 2;
+}
+
+#post u {
+    line-height: 2;
+}
+
+#post b {
+    line-height: 2;
+}
+
+#post i {
+    line-height: 2;
+}
+
+#post ul li {
     line-height: 2;
 }
 
@@ -82,13 +96,23 @@
     user-select: none;
     background-color: #0ea900;
     border: 1px solid transparent;
-    padding: 10px 15px;
+    padding: 12px 17px;
     border-radius: 100px;
+    margin-bottom: 10px;
+
+}
+
+#post button:hover {
+    background-color: #0f8e03;
 }
 
 #post button a {
     text-decoration: none;
     color: #ffffff;
+}
+
+#post-comment {
+    word-break: break-all !important;
 }
 
 #post-comment textarea {

@@ -31,3 +31,16 @@ export const DELETE = async (
     { status: 201 }
   );
 };
+
+export const PUT = async (
+  request: NextRequest,
+  { params }: { params: { id: any } }
+) => {
+  await ConnectDB();
+  const { userId } = await request.json();
+  const likes = await LikeSchema.find();
+  const post_likes = likes.filter((like) => params.id === like.postId);
+  const post_user = post_likes.filter((user) => userId === user.userId);
+  await LikeSchema.findByIdAndDelete(post_user.map((item) => item._id));
+  return NextResponse.json({ message: "Unliked this post!" }, { status: 201 });
+};

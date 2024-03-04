@@ -36,6 +36,14 @@ const getLikes = async (postId: any) => {
   return response.json();
 };
 
+const getSavedPosts = async () => {
+  const response = await fetch(`${API_URL}/api/saved-post`, {
+    cache: "no-store",
+  });
+  noStore();
+  return response.json();
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -78,12 +86,14 @@ export default async function page({ params }: { params: { id: any } }) {
   const _comment = getCommands();
   const _postData = getPosts();
   const _likes = getLikes(params.id);
+  const _savedPosts = getSavedPosts();
 
-  const [post, comment, postData, like] = await Promise.all([
+  const [post, comment, postData, like, savedPosts] = await Promise.all([
     _post,
     _comment,
     _postData,
     _likes,
+    _savedPosts,
   ]);
 
   return (
@@ -92,6 +102,7 @@ export default async function page({ params }: { params: { id: any } }) {
       comment={comment}
       suggestPosts={postData}
       like={like}
+      savedPosts={savedPosts}
     />
   );
 }

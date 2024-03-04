@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
@@ -12,11 +12,13 @@ export default function ViewPost({
   comment,
   suggestPosts,
   like,
+  savedPosts,
 }: {
   post: any;
   comment: any;
   suggestPosts: any;
   like: any;
+  savedPosts: any;
 }) {
   const { _id, image, blogTitle, description, editorHtml } = post;
 
@@ -25,11 +27,41 @@ export default function ViewPost({
   });
 
   const router = useRouter();
-  const [comments, setComments] = useState("");
   const { data: session } = useSession();
+
+  const [comments, setComments] = useState("");
+  const [isLike, setIsLike] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
   const toast_success = () => toast.success("Comment added!");
   const please_login = () => toast.error("Login please!");
+
+  const liked = () => toast.success("You are Liked this post!");
+  const unliked = () => toast.error("You are Unliked this post!");
+
+  const saved = () => toast.success("This post are Saved!");
+  const unsaved = () => toast.error("This post are Unsaved!");
+
+  const _likes = like.filter((count: any) => {
+    return _id === count.postId;
+  });
+
+  const _active_like = _likes.filter(
+    (item: any) => session?.user?.email === item.userId
+  );
+
+  const savedCount = savedPosts.filter((post: any) => {
+    return _id === post.postId;
+  });
+
+  const checkIsSavedPost = savedCount.filter((checkSaved: any) => {
+    return session?.user?.email === checkSaved.userId;
+  });
+
+  useEffect(() => {
+    setIsLike(false);
+    setIsSaved(false);
+  }, [_likes.length, savedCount.length]);
 
   const AddComment = async () => {
     if (session) {
@@ -58,21 +90,9 @@ export default function ViewPost({
     }
   };
 
-  const _likes = like.filter((count: any) => {
-    return _id === count.postId;
-  });
-
-  const [likeCount, setLikeCount] = useState(_likes.length);
-
-  const _active_like = _likes.filter(
-    (item: any) => session?.user?.email === item.userId
-  );
-
-  console.log(_active_like);
-
   const AddLike = async () => {
-    if (session && _active_like.length === 0) {
-      setLikeCount(_likes.length + 1);
+    if (session && _active_like.length <= 0 && !isLike) {
+      setIsLike(true);
 
       const response = await fetch(`/api/like/${_id}`, {
         method: "POST",
@@ -84,12 +104,62 @@ export default function ViewPost({
 
       if (response.ok) {
         router.refresh();
+        liked();
       }
     } else if (!session) {
       please_login();
       setTimeout(() => {
         router.push("/login");
       }, 3000);
+    } else if (session && _active_like.length === 1) {
+      const response_likes = await fetch(`/api/like/${_id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+        body: JSON.stringify({ userId: session?.user?.email }),
+      });
+
+      if (response_likes.ok) {
+        router.refresh();
+        unliked();
+      }
+    }
+  };
+
+  const SavedPost = async () => {
+    if (session && checkIsSavedPost.length <= 0 && !isSaved) {
+      setIsSaved(true);
+      const response = await fetch(`/api/saved-post/${_id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+        body: JSON.stringify({ userId: session?.user?.email }),
+      });
+
+      if (response.ok) {
+        router.refresh();
+        saved();
+      }
+    } else if (!session) {
+      please_login();
+      setTimeout(() => {
+        router.push("/login");
+      }, 3000);
+    } else if (session && checkIsSavedPost.length === 1) {
+      const response = await fetch(`/api/saved-post/${_id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+        body: JSON.stringify({ userId: session?.user?.email }),
+      });
+
+      if (response.ok) {
+        router.refresh();
+        unsaved();
+      }
     }
   };
 
@@ -103,28 +173,62 @@ export default function ViewPost({
           <img src={image} />
           {editorHtml.map((_html_editor: string, index: number) => (
             <div
+              className={
+                _html_editor.slice(0, 8) == "<button>"
+                  ? "d-flex justify-content-center"
+                  : ""
+              }
               key={index}
               dangerouslySetInnerHTML={{ __html: _html_editor }}
             ></div>
           ))}
-          <div className="d-flex w-25 align-items-center gap-3">
-            <span>
-              <Image
-                src={
-                  _active_like.length === 0
-                    ? "/image/like.png"
-                    : "/image/like_active.png"
-                }
-                alt="like"
-                width={25}
-                height={25}
-                onClick={AddLike}
-                className={
-                  _active_like.length === 0 && session ? "cursor-pointer" : ""
-                }
-              />
+          <div className="d-flex align-items-center gap-5">
+            <span className="d-flex align-items-center gap-2">
+              <span>
+                <Image
+                  src={
+                    _active_like.length === 0
+                      ? "/image/like.png"
+                      : "/image/like_active.png"
+                  }
+                  alt="like"
+                  width={25}
+                  height={25}
+                  onClick={AddLike}
+                  className="cursor-pointer"
+                />
+              </span>
+              <span className="fw-600 mt-5">{_likes.length}</span>
             </span>
-            <span className="fw-600 mt-5">{_likes.length}</span>
+            <span className="d-flex align-items-center gap-2">
+              <span>
+                <Image
+                  src={
+                    checkIsSavedPost.length === 0
+                      ? "/image/unsaved.png"
+                      : "/image/saved.png"
+                  }
+                  alt="like"
+                  width={25}
+                  height={25}
+                  onClick={SavedPost}
+                  className="cursor-pointer"
+                />
+              </span>
+              <span className="fw-600 mt-5">{savedCount.length}</span>
+            </span>
+            <span className="d-flex align-items-center gap-2">
+              <span>
+                <Image
+                  src="/image/comments.png"
+                  alt="comments"
+                  width={25}
+                  height={25}
+                  className="cursor-pointer"
+                />
+              </span>
+              <span className="fw-600 mt-5">{postComments.length}</span>
+            </span>
           </div>
           <hr />
         </div>

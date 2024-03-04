@@ -10,13 +10,13 @@ export default function Footer() {
         <div className="d-flex align-items-center mb-20">
           <Image
             src="/image/logo.png"
-            width={50}
-            height={50}
+            width={45}
+            height={45}
             alt="Find Best One"
             quality={100}
             className="mr-20"
           />
-          <span className="fw-700 font-20">FIND BEST ONE</span>
+          <span className="fw-700 font-18">FIND BEST ONE</span>
         </div>
         <p>©2024, findbestone.com, All rights reserved</p>
       </div>

@@ -128,6 +128,11 @@ export default function PostEditor({
           <img src={postData.image} />
           {postData.editorHtml.map((_html_editor: string, index: number) => (
             <div
+              className={
+                _html_editor.slice(0, 8) == "<button>"
+                  ? "d-flex justify-content-center"
+                  : ""
+              }
               key={index}
               dangerouslySetInnerHTML={{ __html: _html_editor }}
             ></div>
