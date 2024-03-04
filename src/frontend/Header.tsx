@@ -35,7 +35,18 @@ export default function Header() {
   const openProfile = () => setIsPrifile(!isProfile);
   const closeProfile = () => setIsPrifile(false);
 
-  let _screen = window.screen.width;
+  const [screenWidth, setScreenWidth]: any = useState(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <nav className="navbar">
@@ -83,7 +94,7 @@ export default function Header() {
             <span>
               <Link href="/add">Editor</Link>
             </span>
-            {_screen > 1200 && (
+            {screenWidth > 1200 && (
               <span className="cursor-pointer" onClick={openProfile}>
                 {session ? (
                   <span className="header-profile">
@@ -103,7 +114,7 @@ export default function Header() {
                 )}
               </span>
             )}
-            {_screen < 1200 && (
+            {screenWidth < 1200 && (
               <>
                 {session && (
                   <span>
@@ -141,7 +152,7 @@ export default function Header() {
                 )}
               </>
             )}
-            {isProfile && _screen > 1200 && (
+            {isProfile && screenWidth > 1200 && (
               <div className="profile-popup">
                 {!session ? (
                   <React.Fragment>
