@@ -96,7 +96,7 @@ body {
     .nav-elements {
         position: absolute;
         right: 0;
-        top: 70px;
+        top: 60px;
         background-color: #e6ffd8;
         width: 0px;
         height: calc(100vh - 60px);
@@ -121,8 +121,9 @@ body {
 
     .search {
         line-height: 1;
-        padding: .7em 1em .5em 2.5em;
+        padding: 12px 0px 12px 40px;
         width: 60%;
+        background-position: 12px 12px;
     }
 
     .header-items {
@@ -144,8 +145,9 @@ body {
 
     .search {
         line-height: 1;
-        padding: .7em 1em .5em 2.5em;
+        padding: 10px 0px 10px 40px;
         width: 60%;
+        background-position: 12px 12px;
     }
 }
 
@@ -157,8 +159,9 @@ body {
 
     .search {
         line-height: 1;
-        padding: .7em 1em .5em 2.5em;
+        padding: 12px 0px 12px 40px;
         width: 70%;
+        padding: 10px 0px 10px 40px;
     }
 }
 
@@ -166,11 +169,11 @@ body {
     .container {
         width: 100% !important;
         padding: 0 10px !important;
-        background-position: 12px 20px;
+        background-position: 12px 12px;
     }
 
     .search {
         line-height: 1;
-        padding: .7em 1em .5em 3em;
+        padding: 10px 0px 10px 40px;
     }
 }
