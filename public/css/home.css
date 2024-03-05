@@ -45,3 +45,23 @@
         width: 100%;
     }
 }
+
+#about p {
+    line-height: 2;
+}
+
+#about ol li {
+    line-height: 2;
+}
+
+.about-page {
+    width: 50%;
+}
+
+.footer-points {
+    color: #ececec !important;
+}
+
+.footer-points:hover {
+    color: #cecece !important;
+}

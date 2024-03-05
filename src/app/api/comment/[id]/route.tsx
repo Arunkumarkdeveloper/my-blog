@@ -7,8 +7,13 @@ export const POST = async (
   { params }: { params: { id: any } }
 ) => {
   await ConnectDB();
-  const { user, commentText } = await request.json();
-  await CommentShcema.create({ postId: params.id, user, commentText });
+  const { userName, userId, commentText } = await request.json();
+  await CommentShcema.create({
+    postId: params.id,
+    userName,
+    userId,
+    commentText,
+  });
   return NextResponse.json(
     { message: "comment add to this post" },
     { status: 201 }

@@ -52,7 +52,7 @@ export async function generateMetadata({
   const post = await getPost(params?.id);
   return {
     title: post?.blogTitle,
-    description: `This is the page of ${post?.blogTitle}`,
+    description: post?.description,
     keywords: [post?.blogTitle, "product", "offer", "best"],
     robots: {
       index: true,
@@ -68,7 +68,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title: post?.blogTitle,
-      description: post?.blogTitle,
+      description: post?.description,
       url: `${API_URL}/post/${post?.blogTitle}`,
       siteName: "Find Best One",
       locale: "en_US",

@@ -33,14 +33,21 @@ export default function ViewPost({
   const [isLike, setIsLike] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
+  const [commentId, setIsCommentId] = useState(comments);
+  const [text, setText] = useState(comments);
+  const [isEditComment, setIsEditComment] = useState(false);
+
   const toast_success = () => toast.success("Comment added!");
   const please_login = () => toast.error("Login please!");
 
   const liked = () => toast.success("You are Liked this post!");
-  const unliked = () => toast.error("You are Unliked this post!");
+  const unliked = () => toast.success("You are Unliked this post!");
 
   const saved = () => toast.success("This post are Saved!");
-  const unsaved = () => toast.error("This post are Unsaved!");
+  const unsaved = () => toast.success("This post are Unsaved!");
+
+  const edit_comment = () => toast.success("comment Updated!");
+  const delete_comment = () => toast.success("comment Deleted!");
 
   const _likes = like.filter((count: any) => {
     return _id === count.postId;
@@ -72,7 +79,8 @@ export default function ViewPost({
         },
         body: JSON.stringify({
           postId: _id,
-          user: session?.user?.name,
+          userName: session?.user?.name,
+          userId: session?.user?.email,
           commentText: comments,
         }),
       });
@@ -88,6 +96,48 @@ export default function ViewPost({
         router.push("/login");
       }, 3000);
     }
+  };
+
+  const UpdateComment = async (cmts: any) => {
+    setIsEditComment(false);
+    const response = await fetch(`/api/edit-comment/${cmts._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "Applcation/json",
+      },
+      body: JSON.stringify({
+        postId: cmts.postId,
+        userName: cmts.userName,
+        userId: cmts.userId,
+        commentText: text,
+        currentUserId: session?.user?.email,
+      }),
+    });
+
+    if (response.ok) {
+      router.refresh();
+      edit_comment();
+    }
+  };
+
+  const DeleteComment = async (commentId: any) => {
+    const response = await fetch(`/api/edit-comment/${commentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    });
+
+    if (response.ok) {
+      router.refresh();
+      delete_comment();
+    }
+  };
+
+  const EditComment = async (cmts: any) => {
+    setIsEditComment(!isEditComment);
+    setIsCommentId(cmts._id);
+    setText(cmts.commentText);
   };
 
   const AddLike = async () => {
@@ -174,7 +224,7 @@ export default function ViewPost({
           {editorHtml.map((_html_editor: string, index: number) => (
             <div
               className={
-                _html_editor.slice(0, 8) == "<button>"
+                _html_editor.slice(0, 2) == "<a"
                   ? "d-flex justify-content-center"
                   : ""
               }
@@ -251,11 +301,60 @@ export default function ViewPost({
           {postComments?.reverse()?.map((cmts: any) => (
             <div key={cmts._id} className="d-flex gap-3 mb-15">
               <div className="user-circle">
-                {cmts.user.toString().slice(0, 1).toUpperCase()}
+                {cmts.userName.toString().slice(0, 1).toUpperCase()}
               </div>
-              <div>
-                <p>{cmts.user}</p>
-                <p style={{ lineHeight: "2" }}>{cmts.commentText}</p>
+              <div className="w-100">
+                <p>{cmts.userName}</p>
+
+                {isEditComment === true &&
+                commentId === cmts._id &&
+                session?.user?.email === cmts.userId ? (
+                  <div className="mb-10">
+                    <div
+                      className="d-flex mb-10 justify-content-end cursor-pointer"
+                      onClick={() => UpdateComment(cmts)}
+                    >
+                      <Image
+                        src="/image/update.png"
+                        width={20}
+                        height={20}
+                        alt="Delete post"
+                        className="cursor-pointer"
+                        quality={100}
+                      />
+                      <span className="ml-10">Update</span>
+                    </div>
+                    <textarea
+                      value={text}
+                      onChange={(e) => setText(e.target.value)}
+                      placeholder="Add a comment"
+                    />
+                  </div>
+                ) : (
+                  <p style={{ lineHeight: "2" }}>{cmts.commentText}</p>
+                )}
+                {session?.user?.email === cmts.userId && (
+                  <div className="d-flex gap-3 mb-15">
+                    <Image
+                      src="/image/edit.png"
+                      width={15}
+                      height={15}
+                      alt="Delete post"
+                      className="cursor-pointer"
+                      quality={100}
+                      onClick={() => EditComment(cmts)}
+                    />
+                    <Image
+                      src="/image/delete.png"
+                      width={15}
+                      height={15}
+                      alt="Delete post"
+                      className="cursor-pointer"
+                      quality={100}
+                      onClick={() => DeleteComment(cmts._id)}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           ))}

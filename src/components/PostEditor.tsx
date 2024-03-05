@@ -36,16 +36,16 @@ export default function PostEditor({
 
   if (_tags[htmlTags]?._openTag === `<button>`) {
     keyTag =
-      _tags[htmlTags]?._openTag +
       `<a ` +
       `href=` +
       `"${link}"` +
       " " +
       `target="_blank"` +
       `>` +
+      _tags[htmlTags]?._openTag +
       `${input1}` +
-      `</a>` +
-      `${_tags[htmlTags]?._closeTag}`;
+      `${_tags[htmlTags]?._closeTag}` +
+      `</a>`;
   } else if (_tags[htmlTags]?._openTag === `<img>`) {
     keyTag = `<img ` + `src=` + `"${link}"` + ` />`;
   } else {
@@ -129,7 +129,7 @@ export default function PostEditor({
           {postData.editorHtml.map((_html_editor: string, index: number) => (
             <div
               className={
-                _html_editor.slice(0, 8) == "<button>"
+                _html_editor.slice(0, 2) == "<a"
                   ? "d-flex justify-content-center"
                   : ""
               }
