@@ -67,7 +67,19 @@ const EditPost = ({ post }: { post: any }) => {
       },
     });
 
-    if (response.ok && response_cmts.ok && response_likes.ok) {
+    const response_saved_posts = await fetch(`/api/saved-posts/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    });
+
+    if (
+      response.ok &&
+      response_cmts.ok &&
+      response_likes.ok &&
+      response_saved_posts.ok
+    ) {
       router.refresh();
       post_deleted();
     }

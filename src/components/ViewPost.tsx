@@ -220,11 +220,14 @@ export default function ViewPost({
           <h2 className="fw-900">{blogTitle}</h2>
           <hr />
           <p>{description}</p>
-          <img src={image} />
+          <div className="d-flex justify-content-center">
+            <img src={image} />
+          </div>
           {editorHtml.map((_html_editor: string, index: number) => (
             <div
               className={
-                _html_editor.slice(0, 2) == "<a"
+                _html_editor.slice(0, 2) == "<a" ||
+                _html_editor.slice(0, 4) == "<img"
                   ? "d-flex justify-content-center"
                   : ""
               }
@@ -245,7 +248,7 @@ export default function ViewPost({
                   width={25}
                   height={25}
                   onClick={AddLike}
-                  className="cursor-pointer"
+                  className="cursor-pointer w-100"
                 />
               </span>
               <span className="fw-600 mt-5">{_likes.length}</span>
@@ -262,7 +265,7 @@ export default function ViewPost({
                   width={25}
                   height={25}
                   onClick={SavedPost}
-                  className="cursor-pointer"
+                  className="cursor-pointer w-100"
                 />
               </span>
               <span className="fw-600 mt-5">{savedCount.length}</span>
@@ -274,7 +277,7 @@ export default function ViewPost({
                   alt="comments"
                   width={25}
                   height={25}
-                  className="cursor-pointer"
+                  className="cursor-pointer w-100"
                 />
               </span>
               <span className="fw-600 mt-5">{postComments.length}</span>
@@ -304,7 +307,7 @@ export default function ViewPost({
                 {cmts.userName.toString().slice(0, 1).toUpperCase()}
               </div>
               <div className="w-100">
-                <p>{cmts.userName}</p>
+                <p className="fw-600">{cmts.userName}</p>
 
                 {isEditComment === true &&
                 commentId === cmts._id &&

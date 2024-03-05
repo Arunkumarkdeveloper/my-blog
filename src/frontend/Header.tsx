@@ -35,6 +35,12 @@ export default function Header() {
   const openProfile = () => setIsPrifile(!isProfile);
   const closeProfile = () => setIsPrifile(false);
 
+  if (isProfile === true) {
+    setTimeout(() => {
+      setIsPrifile(false);
+    }, 5000);
+  }
+
   const [screenWidth, setScreenWidth]: any = useState(null);
 
   useEffect(() => {

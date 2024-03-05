@@ -1,11 +1,13 @@
 .home_bg {
-    display: flex;
-    background-color: #424244;
-    color: #f4f4f4;
-    align-items: center;
-    justify-content: space-around;
+    color: #282828;
     height: 500px;
     place-items: center;
+    background-image: url("../image/home-bg.png");
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .home_bg_text {
@@ -13,12 +15,11 @@
 }
 
 .text {
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-weight: bolder;
     text-transform: uppercase;
-    font-size: 30px;
-    -webkit-text-stroke: 1px #eee;
-    color: transparent;
-    letter-spacing: 5px;
+    color: #282828;
+    letter-spacing: 4px;
     position: relative;
     width: fit-content;
 }
@@ -30,12 +31,11 @@
     position: absolute;
     left: 0;
     top: 0;
-    color: #ff7a00;
-    -webkit-text-stroke: 3px #ff7a00;
+    color: #0EA900;
     width: 0;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 3px solid #ff7a00;
+    border-right: 1px solid #0EA900;
     animation: text-fill 2s ease-in-out alternate infinite;
 }
 

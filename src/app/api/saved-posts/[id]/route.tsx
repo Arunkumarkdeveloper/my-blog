@@ -23,3 +23,21 @@ export const GET = async (
 
   return NextResponse.json(_array);
 };
+
+export const DELETE = async (
+  request: NextRequest,
+  { params }: { params: { id: any } }
+) => {
+  await ConnectDB();
+  const deleteSaved = await SavedPosts.find({ postId: params.id });
+  const deletedSavedId = deleteSaved.map((post) => post._id);
+
+  for (let i = 0; i < deleteSaved.length; i++) {
+    await SavedPosts.findByIdAndDelete(deletedSavedId[i]);
+  }
+
+  return NextResponse.json(
+    { message: "saved posts are deleted" },
+    { status: 201 }
+  );
+};
