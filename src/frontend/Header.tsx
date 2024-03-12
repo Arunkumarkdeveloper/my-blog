@@ -35,12 +35,6 @@ export default function Header() {
   const openProfile = () => setIsPrifile(!isProfile);
   const closeProfile = () => setIsPrifile(false);
 
-  if (isProfile === true) {
-    setTimeout(() => {
-      setIsPrifile(false);
-    }, 5000);
-  }
-
   const [screenWidth, setScreenWidth]: any = useState(null);
 
   useEffect(() => {
@@ -58,12 +52,11 @@ export default function Header() {
     <nav className="navbar">
       <div className="container">
         <Link href="/">
-          <Image
-            src="/image/logo.png"
+          <img
+            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.png"
             width={45}
             height={45}
             alt="Find Best One"
-            quality={100}
           />
         </Link>
         <input
@@ -72,13 +65,12 @@ export default function Header() {
           placeholder="Search post"
           onChange={handleChange}
         />
-        <Image
-          src="/image/hamburger.png"
+        <img
+          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/hamburger.png"
           className="menu-icon"
           width={30}
           height={30}
           alt="Hamburger"
-          quality={100}
           onClick={handleShowNavbar}
         />
         <div className={showHeader ? "nav-elements active" : "nav-elements"}>
@@ -97,9 +89,11 @@ export default function Header() {
             <span>
               <Link href="/about">About</Link>
             </span>
-            <span>
-              <Link href="/add">Editor</Link>
-            </span>
+            {session?.user?.email === "arunkumarkdeveloper@gmail.com" && (
+              <span>
+                <Link href="/add">Editor</Link>
+              </span>
+            )}
             {screenWidth > 1200 && (
               <span className="cursor-pointer" onClick={openProfile}>
                 {session ? (
@@ -108,12 +102,11 @@ export default function Header() {
                   </span>
                 ) : (
                   !session && (
-                    <Image
-                      src="/image/profile.png"
+                    <img
+                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/profile.png"
                       width={35}
                       height={35}
                       alt="Profile"
-                      quality={100}
                       onClick={handleShowNavbar}
                     />
                   )
@@ -144,8 +137,8 @@ export default function Header() {
                         onClick={() => signOut()}
                       >
                         <span className="mr-10">
-                          <Image
-                            src="/image/logout.png"
+                          <img
+                            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logout.png"
                             alt="User Name"
                             width={20}
                             height={20}
@@ -162,10 +155,10 @@ export default function Header() {
               <div className="profile-popup">
                 {!session ? (
                   <React.Fragment>
-                    <span>
+                    <span onClick={() => setIsPrifile(false)}>
                       <span className="mr-15">
-                        <Image
-                          src="/image/login.png"
+                        <img
+                          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/login.png"
                           alt="User Name"
                           width={20}
                           height={20}
@@ -175,10 +168,10 @@ export default function Header() {
                         <Link href="/login">Login</Link>
                       </span>
                     </span>
-                    <span>
+                    <span onClick={() => setIsPrifile(false)}>
                       <span className="mr-15">
-                        <Image
-                          src="/image/register.png"
+                        <img
+                          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/register.png"
                           alt="User Name"
                           width={20}
                           height={20}
@@ -191,10 +184,13 @@ export default function Header() {
                   </React.Fragment>
                 ) : (
                   <React.Fragment>
-                    <span>
+                    <span
+                      className="cursor-pointer"
+                      onClick={() => setIsPrifile(false)}
+                    >
                       <span className="mr-10">
-                        <Image
-                          src="/image/user.png"
+                        <img
+                          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/user.png"
                           alt="User Name"
                           width={20}
                           height={20}
@@ -203,10 +199,10 @@ export default function Header() {
                       <span>{session?.user?.name}</span>
                     </span>
                     {session && (
-                      <span>
+                      <span onClick={() => setIsPrifile(false)}>
                         <span className="mr-10">
-                          <Image
-                            src="/image/saved.png"
+                          <img
+                            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/saved.png"
                             alt="User Name"
                             width={20}
                             height={20}
@@ -220,15 +216,17 @@ export default function Header() {
                       </span>
                     )}
                     <span className="cursor-pointer" onClick={() => signOut()}>
-                      <span className="mr-10">
-                        <Image
-                          src="/image/logout.png"
-                          alt="User Name"
-                          width={20}
-                          height={20}
-                        />
-                      </span>
-                      <span>Logout</span>
+                      <div onClick={() => setIsPrifile(false)}>
+                        <span className="mr-10">
+                          <img
+                            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logout.png"
+                            alt="User Name"
+                            width={20}
+                            height={20}
+                          />
+                        </span>
+                        <span>Logout</span>
+                      </div>
                     </span>
                   </React.Fragment>
                 )}

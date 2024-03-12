@@ -27,7 +27,7 @@ export default function SearchFilter({ postData }: { postData: any }) {
           <div className="posts">
             <Link href={`/post/${post?.urlLink}`} prefetch={true}>
               <div className="post-group">
-                <img src={post?.image} className="posts-image mr-25" />
+                <img src={post?.image} className="posts-image" />
                 <div>
                   <h6 className="fw-600 mb-10">{post?.blogTitle}</h6>
                   <p>{post?.description.toString().slice(0, 145)} . . .</p>

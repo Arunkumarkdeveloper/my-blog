@@ -35,7 +35,7 @@ const EditPost = ({ post }: { post: any }) => {
     const response = await fetch(`/api/blog/${id}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "Application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(postData),
     });
@@ -49,28 +49,28 @@ const EditPost = ({ post }: { post: any }) => {
     const response = await fetch(`/api/blog/${id}`, {
       method: "DELETE",
       headers: {
-        "Content-Type": "Application/json",
+        "Content-Type": "application/json",
       },
     });
 
     const response_cmts = await fetch(`/api/comment/${id}`, {
       method: "DELETE",
       headers: {
-        "Content-Type": "Application/json",
+        "Content-Type": "application/json",
       },
     });
 
     const response_likes = await fetch(`/api/like/${id}`, {
       method: "DELETE",
       headers: {
-        "Content-Type": "Application/json",
+        "Content-Type": "application/json",
       },
     });
 
     const response_saved_posts = await fetch(`/api/saved-posts/${id}`, {
       method: "DELETE",
       headers: {
-        "Content-Type": "Application/json",
+        "Content-Type": "application/json",
       },
     });
 
@@ -97,30 +97,28 @@ const EditPost = ({ post }: { post: any }) => {
       <div className="mb-30">
         <Link href={`/post/${post.urlLink}`} prefetch={true}>
           <div className="post-group">
-            <img src={post.image} className="posts-image mr-25" />
+            <img src={post.image} className="posts-image mr-15" />
             <div>
               <h6 className="fw-600 mb-10">{post.blogTitle}</h6>
               <p>{post.description.toString().slice(0, 145)} . . .</p>
             </div>
           </div>
         </Link>
-        <Image
-          src="/image/edit.png"
+        <img
+          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/edit.png"
           width={15}
           height={15}
           onClick={() => setIsEdit(!isEdit)}
           alt="Edit post"
-          className="cursor-pointer mr-15"
-          quality={100}
+          className="cursor-pointer mr-15 mt-10"
         />
-        <Image
-          src="/image/delete.png"
+        <img
+          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.png"
           width={15}
           height={15}
           onClick={() => deletePost(post._id)}
           alt="Delete post"
-          className="cursor-pointer"
-          quality={100}
+          className="cursor-pointer mt-10"
         />
         {isEdit && (
           <div id="post" className="d-flex flex-column gap-3 mb-10 mt-20">
@@ -166,14 +164,13 @@ const EditPost = ({ post }: { post: any }) => {
         )}
         {isEdit && (
           <div onClick={() => editPost(post._id)} className="cursor-pointer">
-            <Image
-              src="/image/update.png"
+            <img
+              src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/update.png"
               width={20}
               height={20}
               onClick={() => editPost(post._id)}
               alt="Update post"
               className="cursor-pointer mr-5"
-              quality={100}
             />
             <span>Update</span>
           </div>

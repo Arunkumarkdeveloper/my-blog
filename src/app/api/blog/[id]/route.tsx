@@ -1,23 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ConnectDB } from "@/backend/ConnectDB";
 import BlogShcema from "@/backend/BlogShcema";
+import { getServerSession } from "next-auth";
+import authOptions from "@/backend/authOptions";
 
 export const PUT = async (
   request: NextRequest,
   { params }: { params: { id: string } }
 ) => {
-  await ConnectDB();
-  const id = params.id;
-  const { image, blogTitle, description, urlLink, editorHtml } =
-    await request.json();
-  await BlogShcema.findByIdAndUpdate(id, {
-    image,
-    blogTitle,
-    description,
-    urlLink,
-    editorHtml,
-  });
-  return NextResponse.json({ message: "blog updated..." }, { status: 201 });
+  const session = await getServerSession(authOptions);
+  if (session) {
+    await ConnectDB();
+    const id = params.id;
+    const { image, blogTitle, description, urlLink, editorHtml } =
+      await request.json();
+    await BlogShcema.findByIdAndUpdate(id, {
+      image,
+      blogTitle,
+      description,
+      urlLink,
+      editorHtml,
+    });
+    return NextResponse.json({ message: "blog updated..." }, { status: 201 });
+  } else {
+    return NextResponse.json({ message: "Unauthorized user" });
+  }
 };
 
 export const GET = async (
@@ -34,8 +41,13 @@ export const DELETE = async (
   request: NextRequest,
   { params }: { params: { id: string } }
 ) => {
-  await ConnectDB();
-  const id = params.id;
-  await BlogShcema.findByIdAndDelete(id);
-  return NextResponse.json({ message: "blog deleted..." }, { status: 200 });
+  const session = await getServerSession(authOptions);
+  if (session) {
+    await ConnectDB();
+    const id = params.id;
+    await BlogShcema.findByIdAndDelete(id);
+    return NextResponse.json({ message: "blog deleted..." }, { status: 200 });
+  } else {
+    return NextResponse.json({ message: "Unauthorized user" });
+  }
 };

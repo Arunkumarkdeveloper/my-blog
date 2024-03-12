@@ -1,4 +1,50 @@
 import React from "react";
+import type { Metadata } from "next";
+import { API_URL } from "@/frontend/Path";
+
+export const metadata: Metadata = {
+  title: "about",
+  description: "This is the about page for findbestone.com",
+  keywords: [
+    "find,best,one,findbestone,findbestone.com,product,offers,good,about",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: `${API_URL}/about`,
+    languages: {
+      "en-US": `/en-US/`,
+      "de-DE": `/de-DE/`,
+    },
+  },
+  openGraph: {
+    title: "about",
+    description: "This is the about page for findbestone.com",
+    url: `${API_URL}/about`,
+    siteName: "findbestone.com",
+    locale: "en_US",
+    type: "article",
+    authors: ["Arunkumarkdeveloper"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "findbestone.com",
+    title: "about",
+    description: "This is the about page for findbestone.com",
+    creator: "Arunkumarkdeveloper",
+  },
+};
 
 export default function page() {
   return (

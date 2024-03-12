@@ -6,6 +6,7 @@ const BlogSchema = new mongoose.Schema(
     blogTitle: { type: String, required: true, unique: true },
     description: { type: String, required: true },
     urlLink: { type: String, required: true, unique: true },
+    seoKeywords: { type: Array, required: true },
     editorHtml: { type: Array, required: true },
   },
   {

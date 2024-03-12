@@ -5,6 +5,7 @@
 
 .post-group {
     display: flex;
+    align-items: center;
 }
 
 .posts-image {
@@ -172,114 +173,4 @@ a {
 
 .edit-delete-post {
     width: 50%;
-}
-
-@media (max-width: 600px) {
-    .posts {
-        width: 85%;
-    }
-
-    .post-group {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .posts-image {
-        width: 25%;
-        height: fit-content;
-    }
-
-    .view-post {
-        width: 85%;
-    }
-
-    #post img {
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 25px;
-        margin-top: 25px;
-    }
-}
-
-@media (max-width: 768px) {
-    .posts {
-        width: 85%;
-    }
-
-    .post-group {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .posts-image {
-        width: 25%;
-        height: fit-content;
-    }
-
-    .view-post {
-        width: 85%;
-    }
-
-    #post img {
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 25px;
-        margin-top: 25px;
-    }
-}
-
-@media (min-width: 768px) {
-    .posts {
-        width: 85%;
-    }
-
-    .post-group {
-        display: flex;
-        align-items: center;
-    }
-
-    .posts-image {
-        width: 25%;
-    }
-
-    .view-post {
-        width: 85%;
-    }
-
-    #post img {
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 25px;
-        margin-top: 25px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .posts {
-        width: 50%;
-    }
-
-    .post-group {
-        display: flex;
-        align-items: center;
-    }
-
-    .posts-image {
-        width: 25%;
-    }
-
-    .view-post {
-        width: 50%;
-    }
-
-    #post img {
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 25px;
-        margin-top: 25px;
-    }
 }

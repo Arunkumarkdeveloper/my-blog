@@ -38,12 +38,12 @@ body {
     background: #FFFFFF;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><path fill='%23838D99' d='M13.22 14.63a8 8 0 1 1 1.41-1.41l4.29 4.29a1 1 0 1 1-1.41 1.41l-4.29-4.29zm-.66-2.07a6 6 0 1 0-8.49-8.49 6 6 0 0 0 8.49 8.49z'></path></svg>");
     background-repeat: no-repeat;
-    background-position: 12px 11px;
+    background-position: 12px 10px;
     background-size: 20px 20px;
     border: 1px solid #ced4da;
     border-radius: 20px;
     min-width: 35%;
-    padding: 12px 0px 12px 40px;
+    padding: 10px 0px 10px 40px;
     outline: none;
 }
 
@@ -97,7 +97,7 @@ body {
         position: absolute;
         right: 0;
         top: 60px;
-        background-color: #dcffd8;
+        background-color: #dee0df;
         width: 0px;
         height: calc(100vh - 60px);
         transition: all 0.2s ease-in;

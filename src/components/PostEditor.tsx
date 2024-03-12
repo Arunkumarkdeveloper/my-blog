@@ -93,24 +93,24 @@ export default function PostEditor({
             className="auth-input mr-10"
           />
         ) : null}
-        <Image
-          src="/image/add.png"
+        <img
+          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.png"
           width={30}
           height={30}
           onClick={addItem}
           alt="Delete post"
           className="cursor-pointer"
           style={{ width: "30px" }}
-          quality={100}
         />
       </div>
 
       <div className="d-flex align-items-end justify-content-between gap-2 mt-30">
         <h6 className="fw-800">Preview Post</h6>
+
         <div onClick={NewtBlog} className="cursor-pointer">
           <span className="mr-10">
-            <Image
-              src="/image/add_post.png"
+            <img
+              src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add_post.png"
               alt="Add post"
               width={30}
               height={30}
@@ -125,11 +125,14 @@ export default function PostEditor({
         <div className="mt-20">
           <h2 className="fw-900">{postData.blogTitle}</h2>
           <p>{postData.description}</p>
-          <img src={postData.image} />
+          <div className="d-flex justify-content-center">
+            <img src={postData.image} />
+          </div>
           {postData.editorHtml.map((_html_editor: string, index: number) => (
             <div
               className={
-                _html_editor.slice(0, 2) == "<a"
+                _html_editor.slice(0, 2) == "<a" ||
+                _html_editor.slice(0, 4) == "<img"
                   ? "d-flex justify-content-center"
                   : ""
               }

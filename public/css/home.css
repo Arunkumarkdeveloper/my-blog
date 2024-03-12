@@ -1,24 +1,21 @@
 .home_bg {
     color: #282828;
-    height: 500px;
+    height: 450px;
     place-items: center;
-    background-image: url("../image/home-bg.png");
+    background-image: url("https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/56fa2162d78fcc6f55b1b10a66994e4fc3f74d44/icons/home.svg");
     background-size: cover;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.home_bg_text {
-    width: 50%;
+    /* opacity: 80%; */
 }
 
 .text {
     /* font-family: 'Montserrat', sans-serif; */
     font-weight: bolder;
     text-transform: uppercase;
-    color: #282828;
+    color: #ffffff;
     letter-spacing: 4px;
     position: relative;
     width: fit-content;
@@ -31,11 +28,12 @@
     position: absolute;
     left: 0;
     top: 0;
-    color: #0EA900;
+    color: #20d404;
+    text-shadow: 0 1.5px 1px #000000;
     width: 0;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 1px solid #0EA900;
+    border-right: 1px solid #20d404;
     animation: text-fill 2s ease-in-out alternate infinite;
 }
 
@@ -64,4 +62,41 @@
 
 .footer-points:hover {
     color: #cecece !important;
+}
+
+.finding-group-icons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.finding-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.not-found {
+    min-height: 90vh;
+}
+
+.feedback {
+    width: 60%;
+    line-height: 2;
+}
+
+.card {
+    padding: 25px 40px 5px 40px;
+    border-radius: 30px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    border-color: #f2f7ff;
+}
+
+.feed-group {
+    width: 90%;
+    margin-bottom: 25px;
+}
+
+.card:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .3);
 }

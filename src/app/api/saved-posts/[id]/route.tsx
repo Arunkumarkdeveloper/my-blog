@@ -3,6 +3,8 @@ import SavedPosts from "@/backend/SavedPosts";
 import { ConnectDB } from "@/backend/ConnectDB";
 import BlogShcema from "@/backend/BlogShcema";
 import { decode as base64_decode, encode as base64_encode } from "base-64";
+import { getServerSession } from "next-auth";
+import authOptions from "@/backend/authOptions";
 
 export const GET = async (
   request: NextRequest,
@@ -28,16 +30,21 @@ export const DELETE = async (
   request: NextRequest,
   { params }: { params: { id: any } }
 ) => {
-  await ConnectDB();
-  const deleteSaved = await SavedPosts.find({ postId: params.id });
-  const deletedSavedId = deleteSaved.map((post) => post._id);
+  const session = await getServerSession(authOptions);
+  if (session) {
+    await ConnectDB();
+    const deleteSaved = await SavedPosts.find({ postId: params.id });
+    const deletedSavedId = deleteSaved.map((post) => post._id);
 
-  for (let i = 0; i < deleteSaved.length; i++) {
-    await SavedPosts.findByIdAndDelete(deletedSavedId[i]);
+    for (let i = 0; i < deleteSaved.length; i++) {
+      await SavedPosts.findByIdAndDelete(deletedSavedId[i]);
+    }
+
+    return NextResponse.json(
+      { message: "saved posts are deleted" },
+      { status: 201 }
+    );
+  } else {
+    return NextResponse.json({ message: "Unauthorized user" });
   }
-
-  return NextResponse.json(
-    { message: "saved posts are deleted" },
-    { status: 201 }
-  );
 };

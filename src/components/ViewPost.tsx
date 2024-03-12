@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
+import debounce from "debounce";
 
 export default function ViewPost({
   post,
@@ -75,7 +76,7 @@ export default function ViewPost({
       const response = await fetch(`/api/comment/${_id}`, {
         method: "POST",
         headers: {
-          "Content-Type": "Application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           postId: _id,
@@ -124,7 +125,7 @@ export default function ViewPost({
     const response = await fetch(`/api/edit-comment/${commentId}`, {
       method: "DELETE",
       headers: {
-        "Content-Type": "Application/json",
+        "Content-Type": "application/json",
       },
     });
 
@@ -147,7 +148,7 @@ export default function ViewPost({
       const response = await fetch(`/api/like/${_id}`, {
         method: "POST",
         headers: {
-          "Content-Type": "Application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ userId: session?.user?.email }),
       });
@@ -165,7 +166,7 @@ export default function ViewPost({
       const response_likes = await fetch(`/api/like/${_id}`, {
         method: "PUT",
         headers: {
-          "Content-Type": "Application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ userId: session?.user?.email }),
       });
@@ -183,7 +184,7 @@ export default function ViewPost({
       const response = await fetch(`/api/saved-post/${_id}`, {
         method: "POST",
         headers: {
-          "Content-Type": "Application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ userId: session?.user?.email }),
       });
@@ -201,7 +202,7 @@ export default function ViewPost({
       const response = await fetch(`/api/saved-post/${_id}`, {
         method: "PUT",
         headers: {
-          "Content-Type": "Application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ userId: session?.user?.email }),
       });
@@ -238,16 +239,16 @@ export default function ViewPost({
           <div className="d-flex align-items-center gap-5">
             <span className="d-flex align-items-center gap-2">
               <span>
-                <Image
+                <img
                   src={
                     _active_like.length === 0
-                      ? "/image/like.png"
-                      : "/image/like_active.png"
+                      ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like.png"
+                      : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like_active.png"
                   }
                   alt="like"
                   width={25}
                   height={25}
-                  onClick={AddLike}
+                  onClick={debounce(AddLike, 2000)}
                   className="cursor-pointer w-100"
                 />
               </span>
@@ -255,16 +256,16 @@ export default function ViewPost({
             </span>
             <span className="d-flex align-items-center gap-2">
               <span>
-                <Image
+                <img
                   src={
                     checkIsSavedPost.length === 0
-                      ? "/image/unsaved.png"
-                      : "/image/saved.png"
+                      ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/unsaved.png"
+                      : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/saved.png"
                   }
                   alt="like"
                   width={25}
                   height={25}
-                  onClick={SavedPost}
+                  onClick={debounce(SavedPost, 2000)}
                   className="cursor-pointer w-100"
                 />
               </span>
@@ -272,8 +273,8 @@ export default function ViewPost({
             </span>
             <span className="d-flex align-items-center gap-2">
               <span>
-                <Image
-                  src="/image/comments.png"
+                <img
+                  src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/comments.png"
                   alt="comments"
                   width={25}
                   height={25}
@@ -317,13 +318,12 @@ export default function ViewPost({
                       className="d-flex mb-10 justify-content-end cursor-pointer"
                       onClick={() => UpdateComment(cmts)}
                     >
-                      <Image
-                        src="/image/update.png"
+                      <img
+                        src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/update.png"
                         width={20}
                         height={20}
                         alt="Delete post"
                         className="cursor-pointer"
-                        quality={100}
                       />
                       <span className="ml-10">Update</span>
                     </div>
@@ -338,22 +338,20 @@ export default function ViewPost({
                 )}
                 {session?.user?.email === cmts.userId && (
                   <div className="d-flex gap-3 mb-15">
-                    <Image
-                      src="/image/edit.png"
+                    <img
+                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/edit.png"
                       width={15}
                       height={15}
                       alt="Delete post"
                       className="cursor-pointer"
-                      quality={100}
                       onClick={() => EditComment(cmts)}
                     />
-                    <Image
-                      src="/image/delete.png"
+                    <img
+                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.png"
                       width={15}
                       height={15}
                       alt="Delete post"
                       className="cursor-pointer"
-                      quality={100}
                       onClick={() => DeleteComment(cmts._id)}
                     />
                   </div>
@@ -362,6 +360,7 @@ export default function ViewPost({
             </div>
           ))}
           <hr />
+          <h6 className="fw-700">Suggests Posts</h6>
           {suggestPosts
             ?.slice(0, 10)
             ?.reverse()
@@ -374,7 +373,7 @@ export default function ViewPost({
                   <div className="posts w-100">
                     <Link href={`/post/${post.urlLink}`} prefetch={true}>
                       <div className="post-group">
-                        <img src={post.image} className="posts-image mr-25" />
+                        <img src={post.image} className="posts-image mr-15" />
                         <div>
                           <h6 className="fw-600 mb-10">{post.blogTitle}</h6>
                           <p>

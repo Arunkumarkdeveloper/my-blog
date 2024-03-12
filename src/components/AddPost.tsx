@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import PostEditor from "./PostEditor";
 import toast, { Toaster } from "react-hot-toast";
+import SEOKeywords from "./SEOKeywords";
 
 const AddPost = () => {
   const router = useRouter();
@@ -11,6 +12,7 @@ const AddPost = () => {
   const [blogTitle, setBlogTitle] = useState("");
   const [description, setDescription] = useState("");
   const [editorHtml, setEditorHtml] = useState([]);
+  const [keywords, setKeywords] = useState([]);
 
   let link = blogTitle
     ?.match(/[^!@#$%^&*?{},.;:/+~()<>]/g)
@@ -24,6 +26,7 @@ const AddPost = () => {
     description: description,
     urlLink: link,
     editorHtml: editorHtml,
+    seoKeywords: keywords,
   };
 
   const new_post_added = () => toast.success("New Post added!");
@@ -47,6 +50,12 @@ const AddPost = () => {
     <React.Fragment>
       <Toaster position="top-center" />
       <div className="d-flex flex-column justify-content-center gap-2 editor-post">
+        <SEOKeywords postData={postData} setKeywords={setKeywords} />
+        {postData.seoKeywords.map((keyword: any, index: number) => (
+          <ul key={index}>
+            <li>{keyword}</li>
+          </ul>
+        ))}
         <input
           placeholder="BlogTitle"
           onChange={(e) => setBlogTitle(e.target.value)}
@@ -62,7 +71,6 @@ const AddPost = () => {
           onChange={(e) => setImage(e.target.value)}
           className="auth-input"
         />
-
         <PostEditor
           postData={postData}
           setEditorHtml={setEditorHtml}

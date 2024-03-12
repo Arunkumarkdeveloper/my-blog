@@ -1,4 +1,29 @@
 @media (max-width: 600px) {
+    .view-post {
+        width: 90%;
+    }
+
+    #post img {
+        width: 90%;
+    }
+
+    .posts {
+        width: 90%;
+        word-wrap: break-word;
+    }
+
+    .post-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 10px;
+    }
+
+    .posts-image {
+        width: 90%;
+    }
+
     .auth-page form {
         width: 70%;
     }
@@ -12,15 +37,63 @@
     }
 
     .edit-delete-post {
-        width: 85%;
+        width: 90%;
     }
 
     .about-page {
-        width: 85%;
+        width: 90%;
+    }
+
+    .finding-group {
+        background-color: #edefee;
+        padding: 50px 10%;
+    }
+
+    .finding-group-icons {
+        display: grid;
+        grid-template-columns: auto auto !important;
+        justify-content: center;
+        align-items: center;
+        row-gap: 25px;
+        column-gap: 25px;
+    }
+
+    .feedback {
+        width: 90%;
+        line-height: 2;
+    }
+
+    .feed-group {
+        width: 100%;
     }
 }
 
 @media (min-width: 600px) {
+    .view-post {
+        width: 80%;
+    }
+
+    #post img {
+        width: 80%;
+    }
+
+    .posts {
+        width: 90%;
+        word-wrap: break-word;
+    }
+
+    .post-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        column-gap: 10px;
+    }
+
+    .posts-image {
+        width: 25%;
+    }
+
     .auth-page form {
         width: 40%;
     }
@@ -35,6 +108,10 @@
 
     .about-page {
         width: 70%;
+    }
+
+    .feedback {
+        width: 80%;
     }
 }
 
@@ -54,11 +131,50 @@
     }
 
     .edit-delete-post {
-        width: 85%;
+        width: 90%;
+    }
+
+    .finding-group {
+        background-color: #edefee;
+        padding: 50px 10%;
+    }
+
+    .finding-group-icons {
+        display: grid;
+        grid-template-columns: auto auto !important;
+        justify-content: center;
+        align-items: center;
+        row-gap: 25px;
+        column-gap: 25px;
     }
 }
 
 @media (min-width: 768px) {
+    .view-post {
+        width: 70%;
+    }
+
+    #post img {
+        width: 60%;
+    }
+
+    .posts {
+        width: 70%;
+        word-wrap: break-word;
+    }
+
+    .post-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        column-gap: 10px;
+    }
+
+    .posts-image {
+        width: 25%;
+    }
+
     .auth-page form {
         width: 40%;
     }
@@ -70,15 +186,83 @@
     .about-page {
         width: 60%;
     }
+
+    .feedback {
+        width: 75%;
+    }
+
+    .finding-group-icons {
+        display: grid;
+        grid-template-columns: auto auto !important;
+        justify-content: center;
+        align-items: center;
+        row-gap: 25px;
+        column-gap: 25px;
+    }
 }
 
 @media (min-width: 992px) {
+    .view-post {
+        width: 60%;
+    }
+
+    .posts {
+        width: 70%;
+        word-wrap: break-word;
+    }
+
+    .post-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        column-gap: 10px;
+    }
+
+    .posts-image {
+        width: 25%;
+    }
+
     .auth-page form {
         width: 30%;
+    }
+
+    .feedback {
+        width: 70%;
+    }
+
+    .finding-group-icons {
+        display: grid;
+        grid-template-columns: auto auto auto auto !important;
+        justify-content: center;
+        align-items: center;
+        column-gap: 50px;
     }
 }
 
 @media (min-width: 1200px) {
+    .view-post {
+        width: 50%;
+    }
+
+    .posts {
+        width: 60%;
+        word-wrap: break-word;
+    }
+
+    .post-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        column-gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .posts-image {
+        width: 25%;
+    }
+
     .auth-page form {
         width: 20%;
     }
@@ -97,5 +281,9 @@
 
     .about-page {
         width: 50%;
+    }
+
+    .feedback {
+        width: 60%;
     }
 }

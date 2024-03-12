@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,17 +12,16 @@ export default function Footer() {
       <div>
         <div className="d-flex align-items-center mb-20">
           <Link href="/">
-            <Image
-              src="/image/logo.png"
+            <img
+              src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.png"
               width={45}
               height={45}
               alt="Find Best One"
-              quality={100}
             />
           </Link>
           <span className="fw-700 font-18 pl-10">FIND BEST ONE</span>
         </div>
-        <p> Findbestone.com ©2024, All rights reserved</p>
+        <p> Findbestone.com ©{new Date().getFullYear()}</p>
       </div>
       <div>
         <h6 className="fw-700 mb-20 footer-header">Website</h6>
@@ -42,11 +40,7 @@ export default function Footer() {
             Disclaimer
           </Link>
         </p>
-        <p>
-          <Link href="/terms-privacy" className="footer-points">
-            Terms and Privacy
-          </Link>
-        </p>
+        <p>Terms and Privacy</p>
       </div>
       <div>
         <h6 className="fw-700 mb-20 footer-header">Company</h6>

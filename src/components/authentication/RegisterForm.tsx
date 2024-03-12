@@ -26,7 +26,7 @@ export default function RegisterForm() {
     const existUser = await fetch("/api/exist-user", {
       method: "POST",
       headers: {
-        "Content-Type": "Application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ email }),
     });
@@ -41,7 +41,7 @@ export default function RegisterForm() {
     const response = await fetch("/api/register", {
       method: "POST",
       headers: {
-        "Content-Type": "Application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: userName, email, password }),
     });
