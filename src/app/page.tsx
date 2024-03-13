@@ -29,7 +29,7 @@ export default async function Page() {
           <div className="finding-group-icons mb-40">
             <div className="d-flex flex-column align-items-center justify-content-center card">
               <img
-                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/need.png"
+                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/need.webp"
                 alt="Need"
                 width={70}
                 height={70}
@@ -39,7 +39,7 @@ export default async function Page() {
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center card">
               <img
-                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/choice.png"
+                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/choice.webp"
                 alt="Preference"
                 width={70}
                 height={70}
@@ -49,7 +49,7 @@ export default async function Page() {
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center card">
               <img
-                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/budget.png"
+                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/budget.webp"
                 alt="Budget"
                 width={70}
                 height={70}
@@ -59,7 +59,7 @@ export default async function Page() {
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center card">
               <img
-                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/quality.png"
+                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/quality.webp"
                 alt="Quality"
                 width={70}
                 height={70}

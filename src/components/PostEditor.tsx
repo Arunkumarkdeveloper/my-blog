@@ -94,7 +94,7 @@ export default function PostEditor({
           />
         ) : null}
         <img
-          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.png"
+          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.webp"
           width={30}
           height={30}
           onClick={addItem}
@@ -110,7 +110,7 @@ export default function PostEditor({
         <div onClick={NewtBlog} className="cursor-pointer">
           <span className="mr-10">
             <img
-              src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add_post.png"
+              src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add_post.webp"
               alt="Add post"
               width={30}
               height={30}

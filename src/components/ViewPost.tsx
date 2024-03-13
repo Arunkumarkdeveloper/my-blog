@@ -242,13 +242,13 @@ export default function ViewPost({
                 <img
                   src={
                     _active_like.length === 0
-                      ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like.png"
-                      : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like_active.png"
+                      ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like.webp"
+                      : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like_active.webp"
                   }
                   alt="like"
-                  width={25}
-                  height={25}
-                  onClick={debounce(AddLike, 2000)}
+                  width={20}
+                  height={20}
+                  onClick={AddLike}
                   className="cursor-pointer w-100"
                 />
               </span>
@@ -259,13 +259,13 @@ export default function ViewPost({
                 <img
                   src={
                     checkIsSavedPost.length === 0
-                      ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/unsaved.png"
-                      : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/saved.png"
+                      ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/unsaved.webp"
+                      : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/saved.webp"
                   }
                   alt="like"
-                  width={25}
-                  height={25}
-                  onClick={debounce(SavedPost, 2000)}
+                  width={20}
+                  height={20}
+                  onClick={SavedPost}
                   className="cursor-pointer w-100"
                 />
               </span>
@@ -274,10 +274,10 @@ export default function ViewPost({
             <span className="d-flex align-items-center gap-2">
               <span>
                 <img
-                  src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/comments.png"
+                  src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/comments.webp"
                   alt="comments"
-                  width={25}
-                  height={25}
+                  width={20}
+                  height={20}
                   className="cursor-pointer w-100"
                 />
               </span>
@@ -319,7 +319,7 @@ export default function ViewPost({
                       onClick={() => UpdateComment(cmts)}
                     >
                       <img
-                        src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/update.png"
+                        src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/update.webp"
                         width={20}
                         height={20}
                         alt="Delete post"
@@ -339,7 +339,7 @@ export default function ViewPost({
                 {session?.user?.email === cmts.userId && (
                   <div className="d-flex gap-3 mb-15">
                     <img
-                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/edit.png"
+                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/edit.webp"
                       width={15}
                       height={15}
                       alt="Delete post"
@@ -347,7 +347,7 @@ export default function ViewPost({
                       onClick={() => EditComment(cmts)}
                     />
                     <img
-                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.png"
+                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.webp"
                       width={15}
                       height={15}
                       alt="Delete post"

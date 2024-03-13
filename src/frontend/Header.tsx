@@ -53,7 +53,7 @@ export default function Header() {
       <div className="container">
         <Link href="/">
           <img
-            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.png"
+            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.webp"
             width={45}
             height={45}
             alt="Find Best One"
@@ -66,7 +66,7 @@ export default function Header() {
           onChange={handleChange}
         />
         <img
-          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/hamburger.png"
+          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/hamburger.webp"
           className="menu-icon"
           width={30}
           height={30}
@@ -103,7 +103,7 @@ export default function Header() {
                 ) : (
                   !session && (
                     <img
-                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/profile.png"
+                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/profile.webp"
                       width={35}
                       height={35}
                       alt="Profile"
@@ -138,7 +138,7 @@ export default function Header() {
                       >
                         <span className="mr-10">
                           <img
-                            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logout.png"
+                            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logout.webp"
                             alt="User Name"
                             width={20}
                             height={20}
@@ -158,7 +158,7 @@ export default function Header() {
                     <span onClick={() => setIsPrifile(false)}>
                       <span className="mr-15">
                         <img
-                          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/login.png"
+                          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/login.webp"
                           alt="User Name"
                           width={20}
                           height={20}
@@ -171,7 +171,7 @@ export default function Header() {
                     <span onClick={() => setIsPrifile(false)}>
                       <span className="mr-15">
                         <img
-                          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/register.png"
+                          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/register.webp"
                           alt="User Name"
                           width={20}
                           height={20}
@@ -190,7 +190,7 @@ export default function Header() {
                     >
                       <span className="mr-10">
                         <img
-                          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/user.png"
+                          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/user.webp"
                           alt="User Name"
                           width={20}
                           height={20}
@@ -202,7 +202,7 @@ export default function Header() {
                       <span onClick={() => setIsPrifile(false)}>
                         <span className="mr-10">
                           <img
-                            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/saved.png"
+                            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/saved.webp"
                             alt="User Name"
                             width={20}
                             height={20}
@@ -219,7 +219,7 @@ export default function Header() {
                       <div onClick={() => setIsPrifile(false)}>
                         <span className="mr-10">
                           <img
-                            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logout.png"
+                            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logout.webp"
                             alt="User Name"
                             width={20}
                             height={20}

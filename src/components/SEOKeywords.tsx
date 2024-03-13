@@ -32,7 +32,7 @@ export default function SEOKeywords({
       >
         <span className="mr-10">
           <img
-            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.png"
+            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.webp"
             width={30}
             height={30}
             alt="Delete post"
