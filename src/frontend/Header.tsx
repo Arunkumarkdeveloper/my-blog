@@ -62,7 +62,7 @@ export default function Header() {
         <input
           value={_search}
           className="search"
-          placeholder="Search post"
+          placeholder="Search"
           onChange={handleChange}
         />
         <img
@@ -89,7 +89,7 @@ export default function Header() {
             <span>
               <Link href="/about">About</Link>
             </span>
-            {session?.user?.email === "arunkumarkdeveloper@gmail.com" && (
+            {session?.user?.email === "findbestone1@gmail.com" && (
               <span>
                 <Link href="/add">Editor</Link>
               </span>

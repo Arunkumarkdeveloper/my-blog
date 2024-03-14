@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Page() {
   return (
@@ -12,7 +13,7 @@ export default async function Page() {
             Find Best One
           </h2>
           <p
-            className="text-center"
+            className="text-center mb-20"
             style={{
               lineHeight: "2",
               color: "#c8c8c8",
@@ -22,6 +23,9 @@ export default async function Page() {
           >
             Finding the best products can depend on various factors!
           </p>
+          <Link href="/post">
+            <button className="home-button">Find yours</button>
+          </Link>
         </div>
       </div>
       <div className="d-flex flex-column align-items-center mb-50">

@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
-import debounce from "debounce";
+import Loading from "@/frontend/Loading";
 
 export default function ViewPost({
   post,
@@ -25,6 +25,10 @@ export default function ViewPost({
 
   const postComments = comment.filter((cmt: any) => {
     return _id === cmt?.postId;
+  });
+
+  const _suggests = suggestPosts.filter((post: any) => {
+    return _id !== post._id;
   });
 
   const router = useRouter();
@@ -215,179 +219,181 @@ export default function ViewPost({
   };
 
   return (
-    <React.Fragment>
-      <div id="post" className="d-flex justify-content-center">
-        <div className="view-post mt-20">
-          <h2 className="fw-900">{blogTitle}</h2>
-          <hr />
-          <p>{description}</p>
-          <div className="d-flex justify-content-center">
-            <img src={image} />
+    <React.Suspense fallback={<Loading />}>
+      <React.Fragment>
+        <div id="post" className="d-flex justify-content-center">
+          <div className="view-post mt-20">
+            <h2 className="fw-900">{blogTitle}</h2>
+            <hr />
+            <p>{description}</p>
+            <div className="d-flex justify-content-center">
+              <img src={image} />
+            </div>
+            {editorHtml.map((_html_editor: string, index: number) => (
+              <div
+                className={
+                  _html_editor.slice(0, 2) == "<a" ||
+                  _html_editor.slice(0, 4) == "<img"
+                    ? "d-flex justify-content-center"
+                    : ""
+                }
+                key={index}
+                dangerouslySetInnerHTML={{ __html: _html_editor }}
+              ></div>
+            ))}
+            <div className="d-flex align-items-center gap-5">
+              <span className="d-flex align-items-center gap-2">
+                <span>
+                  <img
+                    src={
+                      _active_like.length === 0
+                        ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like.webp"
+                        : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like_active.webp"
+                    }
+                    alt="like"
+                    width={20}
+                    height={20}
+                    onClick={AddLike}
+                    className="cursor-pointer w-100"
+                  />
+                </span>
+                <span className="fw-600 mt-5">{_likes.length}</span>
+              </span>
+              <span className="d-flex align-items-center gap-2">
+                <span>
+                  <img
+                    src={
+                      checkIsSavedPost.length === 0
+                        ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/unsaved.webp"
+                        : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/saved.webp"
+                    }
+                    alt="like"
+                    width={20}
+                    height={20}
+                    onClick={SavedPost}
+                    className="cursor-pointer w-100"
+                  />
+                </span>
+                <span className="fw-600 mt-5">{savedCount.length}</span>
+              </span>
+              <span className="d-flex align-items-center gap-2">
+                <span>
+                  <img
+                    src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/comments.webp"
+                    alt="comments"
+                    width={20}
+                    height={20}
+                    className="cursor-pointer w-100"
+                  />
+                </span>
+                <span className="fw-600 mt-5">{postComments.length}</span>
+              </span>
+            </div>
+            <hr />
           </div>
-          {editorHtml.map((_html_editor: string, index: number) => (
-            <div
-              className={
-                _html_editor.slice(0, 2) == "<a" ||
-                _html_editor.slice(0, 4) == "<img"
-                  ? "d-flex justify-content-center"
-                  : ""
-              }
-              key={index}
-              dangerouslySetInnerHTML={{ __html: _html_editor }}
-            ></div>
-          ))}
-          <div className="d-flex align-items-center gap-5">
-            <span className="d-flex align-items-center gap-2">
-              <span>
-                <img
-                  src={
-                    _active_like.length === 0
-                      ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like.webp"
-                      : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like_active.webp"
-                  }
-                  alt="like"
-                  width={20}
-                  height={20}
-                  onClick={AddLike}
-                  className="cursor-pointer w-100"
-                />
-              </span>
-              <span className="fw-600 mt-5">{_likes.length}</span>
-            </span>
-            <span className="d-flex align-items-center gap-2">
-              <span>
-                <img
-                  src={
-                    checkIsSavedPost.length === 0
-                      ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/unsaved.webp"
-                      : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/saved.webp"
-                  }
-                  alt="like"
-                  width={20}
-                  height={20}
-                  onClick={SavedPost}
-                  className="cursor-pointer w-100"
-                />
-              </span>
-              <span className="fw-600 mt-5">{savedCount.length}</span>
-            </span>
-            <span className="d-flex align-items-center gap-2">
-              <span>
-                <img
-                  src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/comments.webp"
-                  alt="comments"
-                  width={20}
-                  height={20}
-                  className="cursor-pointer w-100"
-                />
-              </span>
-              <span className="fw-600 mt-5">{postComments.length}</span>
-            </span>
-          </div>
-          <hr />
         </div>
-      </div>
 
-      <div id="post-comment" className="d-flex justify-content-center">
-        <div className="view-post">
-          <h6 className="fw-700 mb-15 mt-10">Comments</h6>
-          <div className="mb-10">
-            <textarea
-              value={comments}
-              onChange={(e) => setComments(e.target.value)}
-              placeholder="Add a comment"
-            />
-          </div>
-          <Toaster position="top-center" />
-          <button className="mb-30 cmt-btn" onClick={AddComment}>
-            Send
-          </button>
-          {postComments?.reverse()?.map((cmts: any) => (
-            <div key={cmts._id} className="d-flex gap-3 mb-15">
-              <div className="user-circle">
-                {cmts.userName.toString().slice(0, 1).toUpperCase()}
-              </div>
-              <div className="w-100">
-                <p className="fw-600">{cmts.userName}</p>
+        <div id="post-comment" className="d-flex justify-content-center">
+          <div className="view-post">
+            <h6 className="fw-700 mb-15 mt-10">Comments</h6>
+            <div className="mb-10">
+              <textarea
+                value={comments}
+                onChange={(e) => setComments(e.target.value)}
+                placeholder="Add a comment"
+              />
+            </div>
+            <Toaster position="top-center" />
+            <button className="mb-30 cmt-btn" onClick={AddComment}>
+              Send
+            </button>
+            {postComments?.reverse()?.map((cmts: any) => (
+              <div key={cmts._id} className="d-flex gap-3 mb-15">
+                <div className="user-circle">
+                  {cmts.userName.toString().slice(0, 1).toUpperCase()}
+                </div>
+                <div className="w-100">
+                  <p className="fw-600">{cmts.userName}</p>
 
-                {isEditComment === true &&
-                commentId === cmts._id &&
-                session?.user?.email === cmts.userId ? (
-                  <div className="mb-10">
-                    <div
-                      className="d-flex mb-10 justify-content-end cursor-pointer"
-                      onClick={() => UpdateComment(cmts)}
-                    >
+                  {isEditComment === true &&
+                  commentId === cmts._id &&
+                  session?.user?.email === cmts.userId ? (
+                    <div className="mb-10">
+                      <div
+                        className="d-flex mb-10 justify-content-end cursor-pointer"
+                        onClick={() => UpdateComment(cmts)}
+                      >
+                        <img
+                          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/update.webp"
+                          width={20}
+                          height={20}
+                          alt="Delete post"
+                          className="cursor-pointer"
+                        />
+                        <span className="ml-10">Update</span>
+                      </div>
+                      <textarea
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        placeholder="Add a comment"
+                      />
+                    </div>
+                  ) : (
+                    <p style={{ lineHeight: "2" }}>{cmts.commentText}</p>
+                  )}
+                  {session?.user?.email === cmts.userId && (
+                    <div className="d-flex gap-3 mb-15">
                       <img
-                        src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/update.webp"
-                        width={20}
-                        height={20}
+                        src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/edit.webp"
+                        width={15}
+                        height={15}
                         alt="Delete post"
                         className="cursor-pointer"
+                        onClick={() => EditComment(cmts)}
                       />
-                      <span className="ml-10">Update</span>
+                      <img
+                        src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.webp"
+                        width={15}
+                        height={15}
+                        alt="Delete post"
+                        className="cursor-pointer"
+                        onClick={() => DeleteComment(cmts._id)}
+                      />
                     </div>
-                    <textarea
-                      value={text}
-                      onChange={(e) => setText(e.target.value)}
-                      placeholder="Add a comment"
-                    />
-                  </div>
-                ) : (
-                  <p style={{ lineHeight: "2" }}>{cmts.commentText}</p>
-                )}
-                {session?.user?.email === cmts.userId && (
-                  <div className="d-flex gap-3 mb-15">
-                    <img
-                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/edit.webp"
-                      width={15}
-                      height={15}
-                      alt="Delete post"
-                      className="cursor-pointer"
-                      onClick={() => EditComment(cmts)}
-                    />
-                    <img
-                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.webp"
-                      width={15}
-                      height={15}
-                      alt="Delete post"
-                      className="cursor-pointer"
-                      onClick={() => DeleteComment(cmts._id)}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-          <hr />
-          <h6 className="fw-700">Suggests Posts</h6>
-          {suggestPosts
-            ?.slice(0, 10)
-            ?.reverse()
-            .map((post: any) => (
-              <>
-                <div
-                  key={post._id}
-                  className="d-flex justify-content-center mb-30 mt-30"
-                >
-                  <div className="posts w-100">
-                    <Link href={`/post/${post.urlLink}`} prefetch={true}>
-                      <div className="post-group">
-                        <img src={post.image} className="posts-image mr-15" />
-                        <div>
-                          <h6 className="fw-600 mb-10">{post.blogTitle}</h6>
-                          <p>
-                            {post.description.toString().slice(0, 145)} . . .
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
+                  )}
                 </div>
-              </>
+              </div>
             ))}
+            <hr />
+            <h6 className="fw-700 mb-20">Suggests Posts</h6>
+            {_suggests
+              ?.slice(0, 50)
+              ?.reverse()
+              .map((post: any) => (
+                <>
+                  <div
+                    key={post._id}
+                    className="d-flex justify-content-center mb-15"
+                  >
+                    <div className="posts w-100">
+                      <Link href={`/post/${post.urlLink}`}>
+                        <div className="post-group">
+                          <img src={post.image} className="posts-image mr-15" />
+                          <div>
+                            <h6 className="fw-600 mb-10">{post.blogTitle}</h6>
+                            <p>
+                              {post.description.toString().slice(0, 145)} . . .
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                </>
+              ))}
+          </div>
         </div>
-      </div>
-    </React.Fragment>
+      </React.Fragment>
+    </React.Suspense>
   );
 }

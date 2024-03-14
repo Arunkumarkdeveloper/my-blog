@@ -21,7 +21,7 @@ export default function Footer() {
           </Link>
           <span className="fw-700 font-18 pl-10">FIND BEST ONE</span>
         </div>
-        <p> Findbestone.com ©{new Date().getFullYear()}</p>
+        <p>Copyright ©{new Date().getFullYear()} findbestone.com</p>
       </div>
       <div>
         <h6 className="fw-700 mb-20 footer-header">Website</h6>
@@ -40,7 +40,11 @@ export default function Footer() {
             Disclaimer
           </Link>
         </p>
-        <p>Terms and Privacy</p>
+        <p>
+          <Link href="/terms-privacy" className="footer-points">
+            Terms and Privacy
+          </Link>
+        </p>
       </div>
       <div>
         <h6 className="fw-700 mb-20 footer-header">Company</h6>

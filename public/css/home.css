@@ -11,6 +11,28 @@
     /* opacity: 80%; */
 }
 
+.home-button {
+    width: max-content;
+    min-width: 10%;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: #0ea900;
+    border: 1px solid transparent;
+    padding: 10px 17px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+
+.home-button:hover {
+    background-color: #0c8501;
+}
+
 .text {
     /* font-family: 'Montserrat', sans-serif; */
     font-weight: bolder;
@@ -49,6 +71,10 @@
 }
 
 #about ol li {
+    line-height: 2;
+}
+
+#about ul li {
     line-height: 2;
 }
 
@@ -99,4 +125,10 @@
 
 .card:hover {
     box-shadow: 0 3px 6px rgba(0, 0, 0, .3);
+}
+
+.no-posts {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
 }

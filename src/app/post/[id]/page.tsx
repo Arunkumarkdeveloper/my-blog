@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 const ViewPost = dynamic(() => import("@/components/ViewPost"));
 import { API_URL } from "@/frontend/Path";
 import { unstable_noStore as noStore } from "next/cache";
+import Loading from "@/frontend/Loading";
 
 export async function generateMetadata({
   params,
@@ -127,12 +128,14 @@ export default async function page({ params }: { params: { id: any } }) {
   ]);
 
   return (
-    <ViewPost
-      post={post}
-      comment={comment}
-      suggestPosts={postData}
-      like={like}
-      savedPosts={savedPosts}
-    />
+    <Suspense fallback={<Loading />}>
+      <ViewPost
+        post={post}
+        comment={comment}
+        suggestPosts={postData}
+        like={like}
+        savedPosts={savedPosts}
+      />
+    </Suspense>
   );
 }

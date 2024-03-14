@@ -20,16 +20,16 @@ export default async function Page() {
 
   const session = await getServerSession(authOptions);
 
-  if (session?.user?.email !== "arunkumarkdeveloper@gmail.com") {
+  if (session?.user?.email !== "findbestone1@gmail.com") {
     redirect("/");
   }
 
   return (
     <>
-      <div className="d-flex justify-content-center mt-30 mb-50">
+      <div className="d-flex justify-content-center mt-30 mb-30">
         <AddPost />
       </div>
-      <div className="d-flex justify-content-center mt-30 mb-50 flex-column align-items-center">
+      <div className="d-flex justify-content-center mt-30 mb-30 flex-column align-items-center">
         <div className="edit-delete-post">
           {posts.reverse().map((post: any) => (
             <EditPost key={post._id} post={post} />

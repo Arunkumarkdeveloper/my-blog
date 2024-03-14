@@ -10,8 +10,10 @@ import "../../public/css/post.css";
 import "../../public/css/home.css";
 import "../../public/css/responsive.css";
 import { API_URL } from "@/frontend/Path";
+import Loading from "@/frontend/Loading";
 
 import ReduxProvider from "@/redux/ReduxProvider";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: {
@@ -74,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ReduxProvider>
           <AuthProvider>
             <Header />
-            {children}
+            <Suspense fallback={<Loading />}>{children}</Suspense>
             <Footer />
           </AuthProvider>
         </ReduxProvider>

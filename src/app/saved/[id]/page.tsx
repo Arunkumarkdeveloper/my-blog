@@ -15,14 +15,11 @@ export default async function page({ params }: { params: { id: any } }) {
   const savedPostsLists = await getSavedPosts(userId);
 
   return (
-    <div>
+    <div className="mt-30 mb-30">
       {savedPostsLists?.reverse().map((post: any) => (
-        <div
-          key={post?._id}
-          className="d-flex justify-content-center mb-50 mt-50"
-        >
+        <div key={post?._id} className="d-flex justify-content-center mb-15">
           <div className="posts">
-            <Link href={`/post/${post?.urlLink}`} prefetch={true}>
+            <Link href={`/post/${post?.urlLink}`}>
               <div className="post-group">
                 <img src={post?.image} className="posts-image" />
                 <div>

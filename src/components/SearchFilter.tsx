@@ -18,14 +18,11 @@ export default function SearchFilter({ postData }: { postData: any }) {
   });
 
   return (
-    <div>
+    <div className="mt-30">
       {data?.map((post: any) => (
-        <div
-          key={post?._id}
-          className="d-flex justify-content-center mb-50 mt-50"
-        >
+        <div key={post?._id} className="d-flex justify-content-center mb-15">
           <div className="posts">
-            <Link href={`/post/${post?.urlLink}`} prefetch={true}>
+            <Link href={`/post/${post?.urlLink}`}>
               <div className="post-group">
                 <img src={post?.image} className="posts-image" />
                 <div>
@@ -37,6 +34,11 @@ export default function SearchFilter({ postData }: { postData: any }) {
           </div>
         </div>
       ))}
+      {data.length === 0 && (
+        <div className="no-posts">
+          <h2 className="fw-600">No Related Posts!</h2>
+        </div>
+      )}
     </div>
   );
 }
