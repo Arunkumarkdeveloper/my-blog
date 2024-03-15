@@ -61,7 +61,7 @@ export default async function post() {
   const postData = await getPosts();
 
   return (
-    <div>
+    <div style={{ minHeight: "50vh" }}>
       <SearchFilter postData={postData.reverse()} />
     </div>
   );

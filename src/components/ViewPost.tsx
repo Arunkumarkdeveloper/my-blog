@@ -244,7 +244,7 @@ export default function ViewPost({
                 dangerouslySetInnerHTML={{ __html: _html_editor }}
               ></div>
             ))}
-            <div className="d-flex align-items-center gap-5">
+            <div className="d-flex align-items-center gap-5 mt-40 mb-20">
               <span className="d-flex align-items-center gap-2">
                 <span>
                   <img

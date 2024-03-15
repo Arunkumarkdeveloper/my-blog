@@ -15,7 +15,7 @@ export default async function page({ params }: { params: { id: any } }) {
   const savedPostsLists = await getSavedPosts(userId);
 
   return (
-    <div className="mt-30 mb-30">
+    <div className="mt-30 mb-30" style={{ minHeight: "50vh" }}>
       {savedPostsLists?.reverse().map((post: any) => (
         <div key={post?._id} className="d-flex justify-content-center mb-15">
           <div className="posts">
