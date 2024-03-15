@@ -25,6 +25,7 @@ export default function SEOKeywords({
         value={input}
         onChange={(e) => setInput(e.target.value)}
         className="auth-input"
+        placeholder="SEO Keywords"
       />
       <div
         className="cursor-pointer d-flex align-items-center"

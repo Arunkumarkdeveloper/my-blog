@@ -21,7 +21,8 @@ export default function ViewPost({
   like: any;
   savedPosts: any;
 }) {
-  const { _id, image, blogTitle, description, editorHtml } = post;
+  const { _id, affiliateLink, image, blogTitle, description, editorHtml } =
+    post;
 
   const postComments = comment.filter((cmt: any) => {
     return _id === cmt?.postId;
@@ -227,7 +228,9 @@ export default function ViewPost({
             <hr />
             <p>{description}</p>
             <div className="d-flex justify-content-center">
-              <img src={image} />
+              <a href={affiliateLink} target="_blank">
+                <img src={image} />
+              </a>
             </div>
             {editorHtml.map((_html_editor: string, index: number) => (
               <div

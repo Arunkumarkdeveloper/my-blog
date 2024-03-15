@@ -56,8 +56,8 @@
     line-height: 2;
 }
 
-#post img {
-    width: 50%;
+#post a {
+    width: 60%;
     display: flex;
     justify-content: center;
     margin-bottom: 25px;
@@ -100,8 +100,9 @@
     padding: 12px 17px;
     border-radius: 100px;
     margin-bottom: 10px;
-
 }
+
+
 
 #post button:hover {
     background-color: #0f8e03;

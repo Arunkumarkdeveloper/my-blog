@@ -8,10 +8,18 @@ export const POST = async (request: NextRequest) => {
   const session = await getServerSession(authOptions);
   if (session) {
     await ConnectDB();
-    const { image, blogTitle, description, urlLink, seoKeywords, editorHtml } =
-      await request.json();
+    const {
+      image,
+      affiliateLink,
+      blogTitle,
+      description,
+      urlLink,
+      seoKeywords,
+      editorHtml,
+    } = await request.json();
     await BlogShcema.create({
       image,
+      affiliateLink,
       blogTitle,
       description,
       urlLink,

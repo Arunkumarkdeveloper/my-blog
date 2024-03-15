@@ -3,16 +3,17 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function PostEditor({
+  affiliateLink,
   postData,
   setEditorHtml,
   NewtBlog,
 }: {
+  affiliateLink: any;
   postData: any;
   setEditorHtml: any;
   NewtBlog: any;
 }) {
   const [input1, setInput1] = useState("");
-  const [link, setLink] = useState("");
 
   const _tags = [
     { id: 1, _openTag: "<p>", _closeTag: "</p>" },
@@ -38,7 +39,7 @@ export default function PostEditor({
     keyTag =
       `<a ` +
       `href=` +
-      `"${link}"` +
+      `"${affiliateLink}"` +
       " " +
       `target="_blank"` +
       `>` +
@@ -47,7 +48,11 @@ export default function PostEditor({
       `${_tags[htmlTags]?._closeTag}` +
       `</a>`;
   } else if (_tags[htmlTags]?._openTag === `<img>`) {
-    keyTag = `<img ` + `src=` + `"${link}"` + ` />`;
+    keyTag =
+      `<a href="${affiliateLink}" target="_blank" ><img ` +
+      `src=` +
+      `"${input1}"` +
+      ` /></a>`;
   } else {
     keyTag = `${_tags[htmlTags]?._openTag}${input1}${_tags[htmlTags]?._closeTag}`;
   }
@@ -58,7 +63,6 @@ export default function PostEditor({
 
   useEffect(() => {
     setInput1("");
-    setLink("");
   }, [postData.editorHtml.length]);
 
   return (
@@ -73,36 +77,25 @@ export default function PostEditor({
           </option>
         ))}
       </select>
-
-      <div className="d-flex align-items-center gap-2">
-        {_tags[htmlTags]?._openTag !== `<img>` && (
+      {affiliateLink.length > 0 && (
+        <div className="d-flex align-items-center gap-2">
           <textarea
             value={input1}
             onChange={(e) => setInput1(e.target.value)}
             className="auth-input mr-10 mb-10"
             placeholder={`Type ${_tags[htmlTags]?._openTag} text`}
           />
-        )}
-
-        {_tags[htmlTags]?._openTag === `<button>` ||
-        _tags[htmlTags]?._openTag === `<img>` ? (
-          <textarea
-            value={link}
-            onChange={(e) => setLink(e.target.value)}
-            placeholder={`${_tags[htmlTags]?._openTag} link`}
-            className="auth-input mr-10"
+          <img
+            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.webp"
+            width={30}
+            height={30}
+            onClick={addItem}
+            alt="Delete post"
+            className="cursor-pointer"
+            style={{ width: "30px" }}
           />
-        ) : null}
-        <img
-          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.webp"
-          width={30}
-          height={30}
-          onClick={addItem}
-          alt="Delete post"
-          className="cursor-pointer"
-          style={{ width: "30px" }}
-        />
-      </div>
+        </div>
+      )}
 
       <div className="d-flex align-items-end justify-content-between gap-2 mt-30">
         <h6 className="fw-800">Preview Post</h6>
@@ -126,7 +119,9 @@ export default function PostEditor({
           <h2 className="fw-900">{postData.blogTitle}</h2>
           <p>{postData.description}</p>
           <div className="d-flex justify-content-center">
-            <img src={postData.image} />
+            <a href={postData.affiliateLink} target="_blank">
+              <img src={postData.image} />
+            </a>
           </div>
           {postData.editorHtml.map((_html_editor: string, index: number) => (
             <div

@@ -21,7 +21,8 @@ export const metadata: Metadata = {
     default: "findbestone",
     template: "%s | findbestone",
   },
-  description: "This is the findbestone.com website",
+  description:
+    "Finding the best products for yourself can be a combination of several factors, including your needs, preferences, budget, and the quality of the product. This is the findbestone.com website.",
   keywords: [
     "find,best,one,findbestone,findbestone.com,product,offers,good,about,findbest,findone,bestone",
   ],
@@ -63,7 +64,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
