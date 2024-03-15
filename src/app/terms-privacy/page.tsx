@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "terms-privacy",
   description: "This is the terms-privacy page for findbestone.com",
   keywords: [
-    "find,best,one,findbestone,findbestone.com,product,offers,good,terms-privacy",
+    "find,best,one,findbestone,findbestone.com,product,offers,good,terms-privacy,findbest,findone,bestone",
   ],
   robots: {
     index: true,

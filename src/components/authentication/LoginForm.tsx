@@ -58,7 +58,9 @@ export default function LoginForm() {
         />
         <button className="auth-btn mb-20">Login</button>
         <Toaster position="top-center" />
-        <Link href={"/register"}>Register</Link>
+        <Link href={"/register"}>
+          Create a new account! <span className="fw-600">Register</span>
+        </Link>
       </form>
     </div>
   );

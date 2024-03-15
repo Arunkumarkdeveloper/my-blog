@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "register",
   description: "This is the register page for findbestone.com",
   keywords: [
-    "find,best,one,findbestone,findbestone.com,product,offers,good,register",
+    "find,best,one,findbestone,findbestone.com,product,offers,good,register,findbest,findone,bestone",
   ],
   robots: {
     index: true,

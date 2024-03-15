@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "disclaimer",
   description: "This is the disclaimer page for findbestone.com",
   keywords: [
-    "find,best,one,findbestone,findbestone.com,product,offers,good,disclaimer",
+    "find,best,one,findbestone,findbestone.com,product,offers,good,disclaimer,findbest,findone,bestone",
   ],
   robots: {
     index: true,

@@ -13,6 +13,8 @@ const EditPost = ({ post }: { post: any }) => {
   const [editorHtml, setEditorHtml] = useState(post.editorHtml);
   const [isEdit, setIsEdit] = useState(false);
 
+  const [isConfirm, setIsConfirm] = useState(false);
+
   let link = blogTitle
     ?.match(/[^!@#$%^&*?{},.;:/+~()<>]/g)
     ?.join("")
@@ -46,6 +48,7 @@ const EditPost = ({ post }: { post: any }) => {
   };
 
   const deletePost = async (id: string) => {
+    setIsConfirm(false);
     const response = await fetch(`/api/blog/${id}`, {
       method: "DELETE",
       headers: {
@@ -93,6 +96,25 @@ const EditPost = ({ post }: { post: any }) => {
 
   return (
     <>
+      {isConfirm && (
+        <div className="d-flex justify-content-center">
+          <div className="confirm-delete">
+            <p>Are you delete this post permanently?</p>
+            <button
+              className="home-button"
+              onClick={() => deletePost(post._id)}
+            >
+              Delete
+            </button>
+            <button
+              className="home-button ml-10"
+              onClick={() => setIsConfirm(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
       <Toaster position="top-center" />
       <div className="mb-30">
         <Link href={`/post/${post.urlLink}`}>
@@ -116,7 +138,7 @@ const EditPost = ({ post }: { post: any }) => {
           src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.webp"
           width={15}
           height={15}
-          onClick={() => deletePost(post._id)}
+          onClick={() => setIsConfirm(!isConfirm)}
           alt="Delete post"
           className="cursor-pointer mt-10"
         />

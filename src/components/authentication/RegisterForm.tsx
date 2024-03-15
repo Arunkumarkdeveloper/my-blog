@@ -83,7 +83,9 @@ export default function RegisterForm() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className="auth-btn mb-20">Register</button>
-        <Link href={"/login"}>login</Link>
+        <Link href={"/login"}>
+          Already have an account? <span className="fw-600">Login</span>
+        </Link>
       </form>
     </div>
   );

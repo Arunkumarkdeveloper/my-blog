@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   description: "This is the findbestone.com website",
   keywords: [
-    "find,best,one,findbestone,findbestone.com,product,offers,good,about",
+    "find,best,one,findbestone,findbestone.com,product,offers,good,about,findbest,findone,bestone",
   ],
   robots: {
     index: true,

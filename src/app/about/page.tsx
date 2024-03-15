@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "about",
   description: "This is the about page for findbestone.com",
   keywords: [
-    "find,best,one,findbestone,findbestone.com,product,offers,good,about",
+    "find,best,one,findbestone,findbestone.com,product,offers,good,about,findbest,findone,bestone",
   ],
   robots: {
     index: true,
