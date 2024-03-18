@@ -3,10 +3,6 @@
         width: 90%;
     }
 
-    #post img {
-        width: 90%;
-    }
-
     .posts {
         width: 90%;
         word-wrap: break-word;
@@ -16,12 +12,13 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: start;
         row-gap: 10px;
     }
 
     .posts-image {
-        width: 90%;
+        width: 100%;
+        margin-right: 0px !important;
     }
 
     .auth-page form {
@@ -74,10 +71,6 @@
 
 @media (min-width: 600px) {
     .view-post {
-        width: 80%;
-    }
-
-    #post img {
         width: 80%;
     }
 
@@ -159,10 +152,6 @@
         width: 70%;
     }
 
-    #post img {
-        width: 60%;
-    }
-
     .posts {
         width: 70%;
         word-wrap: break-word;
@@ -212,7 +201,7 @@
     }
 
     .posts {
-        width: 70%;
+        width: 60%;
         word-wrap: break-word;
     }
 
@@ -251,7 +240,7 @@
     }
 
     .posts {
-        width: 60%;
+        width: 50%;
         word-wrap: break-word;
     }
 
@@ -260,7 +249,7 @@
         flex-direction: row;
         justify-content: start;
         align-items: center;
-        column-gap: 10px;
+        column-gap: 20px;
         margin-bottom: 20px;
     }
 

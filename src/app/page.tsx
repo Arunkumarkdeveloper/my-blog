@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default async function Page() {
@@ -6,12 +5,12 @@ export default async function Page() {
     <div>
       <div className="home_bg mb-50">
         <div className="d-flex flex-column align-items-center">
-          <h2
+          <h1
             className="text mb-20 fw-900 text-center"
             data-text="Find Best One"
           >
             Find Best One
-          </h2>
+          </h1>
           <p
             className="text-center mb-20"
             style={{

@@ -22,10 +22,21 @@ export const metadata: Metadata = {
     default: "findbestone",
     template: "%s | findbestone",
   },
+
   description:
     "Finding the best products for yourself can be a combination of several factors, including your needs, preferences, budget, and the quality of the product. This is the findbestone.com website.",
   keywords: [
-    "find,best,one,findbestone,findbestone.com,product,offers,good,about,findbest,findone,bestone",
+    "findbestone",
+    "findbestone.com",
+    "find",
+    "best",
+    "one",
+    "product",
+    "offers",
+    "good",
+    "findbest",
+    "findone",
+    "bestone",
   ],
   robots: {
     index: true,
@@ -48,7 +59,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "About-findbestone",
+    title: "findbestone",
     description: "This is the findbestone.com",
     url: `${API_URL}`,
     siteName: "findbestone.com",
@@ -59,7 +70,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "findbestone.com",
-    title: "About-findbestone",
+    title: "findbestone",
     description: "This is the findbestone.com",
     creator: "Arunkumarkdeveloper",
   },

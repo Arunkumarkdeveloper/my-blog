@@ -27,7 +27,7 @@ export default function SearchFilter({ postData }: { postData: any }) {
                 <img src={post?.image} className="posts-image" />
                 <div>
                   <h6 className="fw-600 mb-10">{post?.blogTitle}</h6>
-                  <p>{post?.description.toString().slice(0, 145)} . . .</p>
+                  <p>{post?.description.toString().slice(0, 151)} . . .</p>
                 </div>
               </div>
             </Link>

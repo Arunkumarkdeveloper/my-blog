@@ -224,7 +224,7 @@ export default function ViewPost({
       <React.Fragment>
         <div id="post" className="d-flex justify-content-center">
           <div className="view-post mt-20">
-            <h2 className="fw-900">{blogTitle}</h2>
+            <h1 className="fw-900">{blogTitle}</h1>
             <hr />
             <p>{description}</p>
             <div className="d-flex justify-content-center">
