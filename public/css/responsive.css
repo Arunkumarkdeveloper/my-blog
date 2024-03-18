@@ -29,6 +29,11 @@
         width: 90%;
     }
 
+    #post img {
+        width: 100% !important;
+    }
+
+
     .editor-select {
         width: 40%;
     }
