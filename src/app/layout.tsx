@@ -11,6 +11,7 @@ import "../../public/css/home.css";
 import "../../public/css/responsive.css";
 import { API_URL } from "@/frontend/Path";
 import Loading from "@/frontend/Loading";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import ReduxProvider from "@/redux/ReduxProvider";
 import { Suspense } from "react";
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: `${API_URL}/about`,
+    canonical: `${API_URL}`,
     languages: {
       "en-US": `/en-US/`,
       "de-DE": `/de-DE/`,
@@ -48,8 +49,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "About-findbestone",
-    description: "This is the About page for findbestone.com",
-    url: `${API_URL}/about`,
+    description: "This is the findbestone.com",
+    url: `${API_URL}`,
     siteName: "findbestone.com",
     locale: "en_US",
     type: "article",
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "findbestone.com",
     title: "About-findbestone",
-    description: "This is the About page for findbestone.com",
+    description: "This is the findbestone.com",
     creator: "Arunkumarkdeveloper",
   },
 };
@@ -77,6 +78,7 @@ export default function RootLayout({
           rel="stylesheet"
         ></link>
       </head>
+      <GoogleAnalytics gaId="G-738JLNP7ZV" />
       <body>
         <ReduxProvider>
           <AuthProvider>
