@@ -60,7 +60,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     margin-top: 20px;
 }
 
@@ -70,7 +70,7 @@
 
 #post p {
     line-height: 2;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 #post u {
@@ -183,4 +183,8 @@ a {
 
 .edit-delete-post {
     width: 50%;
+}
+
+#activity img {
+    width: 100% !important;
 }

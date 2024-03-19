@@ -246,7 +246,7 @@ export default function ViewPost({
             ))}
             <div className="d-flex align-items-center gap-5 mt-40 mb-20">
               <span className="d-flex align-items-center gap-2">
-                <span>
+                <span id="activity">
                   <img
                     src={
                       _active_like.length === 0
@@ -257,13 +257,13 @@ export default function ViewPost({
                     width={20}
                     height={20}
                     onClick={AddLike}
-                    className="cursor-pointer w-100"
+                    className="cursor-pointer"
                   />
                 </span>
                 <span className="fw-600 mt-5">{_likes.length}</span>
               </span>
               <span className="d-flex align-items-center gap-2">
-                <span>
+                <span id="activity">
                   <img
                     src={
                       checkIsSavedPost.length === 0
@@ -280,7 +280,7 @@ export default function ViewPost({
                 <span className="fw-600 mt-5">{savedCount.length}</span>
               </span>
               <span className="d-flex align-items-center gap-2">
-                <span>
+                <span id="activity">
                   <img
                     src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/comments.webp"
                     alt="comments"
