@@ -53,9 +53,9 @@ export default function Header() {
       <div className="container">
         <Link href="/">
           <img
-            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.webp"
-            width={45}
-            height={45}
+            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.png"
+            width={40}
+            height={40}
             alt="Find Best One"
           />
         </Link>

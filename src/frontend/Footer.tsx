@@ -13,9 +13,9 @@ export default function Footer() {
         <div className="d-flex align-items-center mb-20">
           <Link href="/">
             <img
-              src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.webp"
-              width={45}
-              height={45}
+              src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.png"
+              width={40}
+              height={40}
               alt="Find Best One"
             />
           </Link>
