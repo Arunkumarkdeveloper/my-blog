@@ -383,8 +383,10 @@ export default function ViewPost({
                         <div className="post-group">
                           <img src={post.image} className="posts-image mr-15" />
                           <div>
-                            <h6 className="fw-600 mb-10">{post.blogTitle}</h6>
-                            <p>
+                            <h6 className="fw-600 mb-10 wrap">
+                              {post.blogTitle}
+                            </h6>
+                            <p className="wrap">
                               {post.description.toString().slice(0, 145)} . . .
                             </p>
                           </div>
