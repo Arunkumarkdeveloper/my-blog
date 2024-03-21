@@ -14,9 +14,10 @@ export default function Footer() {
           <Link href="/">
             <img
               src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.webp"
-              width={40}
-              height={40}
-              alt="Find Best One"
+              width={45}
+              height={45}
+              alt="findbestone"
+              title="findbestone"
             />
           </Link>
           <span className="fw-700 font-18 pl-10">FIND BEST ONE</span>

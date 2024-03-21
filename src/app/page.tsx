@@ -34,6 +34,7 @@ export default async function Page() {
               <img
                 src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/need.webp"
                 alt="Need"
+                title="Need"
                 width={70}
                 height={70}
                 className="finding-icon"
@@ -44,6 +45,7 @@ export default async function Page() {
               <img
                 src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/choice.webp"
                 alt="Preference"
+                title="Preference"
                 width={70}
                 height={70}
                 className="finding-icon"
@@ -54,6 +56,7 @@ export default async function Page() {
               <img
                 src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/budget.webp"
                 alt="Budget"
+                title="Budget"
                 width={70}
                 height={70}
                 className="finding-icon"
@@ -64,6 +67,7 @@ export default async function Page() {
               <img
                 src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/quality.webp"
                 alt="Quality"
+                title="Quality"
                 width={70}
                 height={70}
                 className="finding-icon"

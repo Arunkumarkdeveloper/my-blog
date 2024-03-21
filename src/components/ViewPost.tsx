@@ -229,7 +229,7 @@ export default function ViewPost({
             <p>{description}</p>
             <div className="d-flex justify-content-center">
               <a href={affiliateLink} target="_blank">
-                <img src={image} />
+                <img src={image} alt={blogTitle} title={blogTitle} />
               </a>
             </div>
             {editorHtml.map((_html_editor: string, index: number) => (
@@ -254,6 +254,7 @@ export default function ViewPost({
                         : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like_active.webp"
                     }
                     alt="like"
+                    title="like"
                     width={20}
                     height={20}
                     onClick={AddLike}
@@ -270,7 +271,8 @@ export default function ViewPost({
                         ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/unsaved.webp"
                         : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/saved.webp"
                     }
-                    alt="like"
+                    alt="saved"
+                    title="saved"
                     width={20}
                     height={20}
                     onClick={SavedPost}
@@ -284,6 +286,7 @@ export default function ViewPost({
                   <img
                     src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/comments.webp"
                     alt="comments"
+                    title="comments"
                     width={20}
                     height={20}
                     className="cursor-pointer w-100"
@@ -331,6 +334,7 @@ export default function ViewPost({
                           width={20}
                           height={20}
                           alt="Delete post"
+                          title="Delete post"
                           className="cursor-pointer"
                         />
                         <span className="ml-10">Update</span>
@@ -350,7 +354,8 @@ export default function ViewPost({
                         src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/edit.webp"
                         width={15}
                         height={15}
-                        alt="Delete post"
+                        alt="edit post"
+                        title="edit post"
                         className="cursor-pointer"
                         onClick={() => EditComment(cmts)}
                       />
@@ -359,6 +364,7 @@ export default function ViewPost({
                         width={15}
                         height={15}
                         alt="Delete post"
+                        title="Delete post"
                         className="cursor-pointer"
                         onClick={() => DeleteComment(cmts._id)}
                       />
@@ -381,7 +387,12 @@ export default function ViewPost({
                     <div className="posts w-100">
                       <Link href={`/post/${post.urlLink}`}>
                         <div className="post-group">
-                          <img src={post.image} className="posts-image mr-15" />
+                          <img
+                            src={post.image}
+                            className="posts-image mr-15"
+                            alt={post.blogTitle}
+                            title={post.blogTitle}
+                          />
                           <div>
                             <h6 className="fw-600 mb-10 wrap">
                               {post.blogTitle}

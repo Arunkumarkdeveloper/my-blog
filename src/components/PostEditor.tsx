@@ -91,6 +91,7 @@ export default function PostEditor({
             height={30}
             onClick={addItem}
             alt="Delete post"
+            title="Delete post"
             className="cursor-pointer"
             style={{ width: "30px" }}
           />
@@ -105,6 +106,7 @@ export default function PostEditor({
             <img
               src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add_post.webp"
               alt="Add post"
+              title="Add post"
               width={30}
               height={30}
               style={{ width: "30px" }}
@@ -120,7 +122,11 @@ export default function PostEditor({
           <p>{postData.description}</p>
           <div className="d-flex justify-content-center">
             <a href={postData.affiliateLink} target="_blank">
-              <img src={postData.image} />
+              <img
+                src={postData.image}
+                alt={postData.blogTitle}
+                title={postData.blogTitle}
+              />
             </a>
           </div>
           {postData.editorHtml.map((_html_editor: string, index: number) => (

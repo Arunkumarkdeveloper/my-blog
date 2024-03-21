@@ -119,7 +119,12 @@ const EditPost = ({ post }: { post: any }) => {
       <div className="mb-30">
         <Link href={`/post/${post.urlLink}`}>
           <div className="post-group">
-            <img src={post.image} className="posts-image mr-15" />
+            <img
+              src={post.image}
+              className="posts-image mr-15"
+              alt={post?.blogTitle}
+              title={post?.blogTitle}
+            />
             <div>
               <h6 className="fw-600 mb-10">{post.blogTitle}</h6>
               <p>{post.description.toString().slice(0, 145)} . . .</p>
@@ -132,6 +137,7 @@ const EditPost = ({ post }: { post: any }) => {
           height={15}
           onClick={() => setIsEdit(!isEdit)}
           alt="Edit post"
+          title="Edit post"
           className="cursor-pointer mr-15 mt-10"
         />
         <img
@@ -140,6 +146,7 @@ const EditPost = ({ post }: { post: any }) => {
           height={15}
           onClick={() => setIsConfirm(!isConfirm)}
           alt="Delete post"
+          title="Delete post"
           className="cursor-pointer mt-10"
         />
         {isEdit && (
@@ -192,6 +199,7 @@ const EditPost = ({ post }: { post: any }) => {
               height={20}
               onClick={() => editPost(post._id)}
               alt="Update post"
+              title="Update post"
               className="cursor-pointer mr-5"
             />
             <span>Update</span>

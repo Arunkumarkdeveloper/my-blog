@@ -37,6 +37,7 @@ export default function SEOKeywords({
             width={30}
             height={30}
             alt="Delete post"
+            title="Delete post"
             className="cursor-pointer"
             style={{ width: "30px" }}
           />

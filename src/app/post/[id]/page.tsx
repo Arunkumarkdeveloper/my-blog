@@ -32,8 +32,8 @@ export async function generateMetadata({
     alternates: {
       canonical: `${API_URL}/post/${post?.urlLink}`,
       languages: {
-        "en-US": `/en-US/post/${post?.blogTitle}`,
-        "de-DE": `/de-DE/post/${post?.blogTitle}`,
+        "en-US": `${API_URL}/en-US/post/${post?.urlLink}`,
+        "de-DE": `${API_URL}/de-DE/post/${post?.urlLink}`,
       },
     },
     openGraph: {
@@ -126,8 +126,6 @@ export default async function page({ params }: { params: { id: any } }) {
     _likes,
     _savedPosts,
   ]);
-
-
 
   return (
     <Suspense fallback={<Loading />}>

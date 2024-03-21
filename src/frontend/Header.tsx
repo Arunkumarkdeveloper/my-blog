@@ -54,9 +54,10 @@ export default function Header() {
         <Link href="/">
           <img
             src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.webp"
-            width={40}
-            height={40}
-            alt="Find Best One"
+            width={45}
+            height={45}
+            alt="findbestone"
+            title="findbestone"
           />
         </Link>
         <input
@@ -71,6 +72,7 @@ export default function Header() {
           width={30}
           height={30}
           alt="Hamburger"
+          title="Hamburger"
           onClick={handleShowNavbar}
         />
         <div className={showHeader ? "nav-elements active" : "nav-elements"}>
@@ -107,6 +109,7 @@ export default function Header() {
                       width={35}
                       height={35}
                       alt="Profile"
+                      title="Profile"
                       onClick={handleShowNavbar}
                     />
                   )
@@ -139,7 +142,8 @@ export default function Header() {
                         <span className="mr-10">
                           <img
                             src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logout.webp"
-                            alt="User Name"
+                            alt="logout"
+                            title="logout"
                             width={20}
                             height={20}
                           />
@@ -159,7 +163,8 @@ export default function Header() {
                       <span className="mr-15">
                         <img
                           src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/login.webp"
-                          alt="User Name"
+                          alt="login"
+                          title="login"
                           width={20}
                           height={20}
                         />
@@ -172,7 +177,8 @@ export default function Header() {
                       <span className="mr-15">
                         <img
                           src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/register.webp"
-                          alt="User Name"
+                          alt="register"
+                          title="register"
                           width={20}
                           height={20}
                         />
@@ -191,7 +197,8 @@ export default function Header() {
                       <span className="mr-10">
                         <img
                           src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/user.webp"
-                          alt="User Name"
+                          alt="User"
+                          title="User"
                           width={20}
                           height={20}
                         />
@@ -203,7 +210,8 @@ export default function Header() {
                         <span className="mr-10">
                           <img
                             src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/saved.webp"
-                            alt="User Name"
+                            alt="saved"
+                            title="saved"
                             width={20}
                             height={20}
                           />
@@ -220,7 +228,8 @@ export default function Header() {
                         <span className="mr-10">
                           <img
                             src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logout.webp"
-                            alt="User Name"
+                            alt="logout"
+                            title="logout"
                             width={20}
                             height={20}
                           />

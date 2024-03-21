@@ -21,7 +21,12 @@ export default async function page({ params }: { params: { id: any } }) {
           <div className="posts">
             <Link href={`/post/${post?.urlLink}`}>
               <div className="post-group">
-                <img src={post?.image} className="posts-image" />
+                <img
+                  src={post?.image}
+                  className="posts-image"
+                  alt={post?.blogTitle}
+                  title={post?.blogTitle}
+                />
                 <div>
                   <h6 className="fw-600 mb-10">{post?.blogTitle}</h6>
                   <p>{post?.description.toString().slice(0, 145)} . . .</p>
