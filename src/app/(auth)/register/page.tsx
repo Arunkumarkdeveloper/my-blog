@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${API_URL}/register`,
     languages: {
-      "en-US": `${API_URL}/en-US/register`,
-      "de-DE": `${API_URL}/de-DE/register`,
+      "en-US": `${API_URL}/register`,
+      "de-DE": `${API_URL}/register`,
     },
   },
   openGraph: {

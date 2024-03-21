@@ -32,8 +32,8 @@ export async function generateMetadata({
     alternates: {
       canonical: `${API_URL}/post/${post?.urlLink}`,
       languages: {
-        "en-US": `${API_URL}/en-US/post/${post?.urlLink}`,
-        "de-DE": `${API_URL}/de-DE/post/${post?.urlLink}`,
+        "en-US": `${API_URL}/post/${post?.urlLink}`,
+        "de-DE": `${API_URL}/post/${post?.urlLink}`,
       },
     },
     openGraph: {
