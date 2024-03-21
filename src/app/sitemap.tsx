@@ -20,11 +20,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: `${API_URL}/home`,
+      url: `${API_URL}/`,
       lastModified: new Date(),
     },
     {
       url: `${API_URL}/post`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${API_URL}/about`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${API_URL}/disclaimer`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${API_URL}/terms-privacy`,
       lastModified: new Date(),
     },
     ...postEntries,
