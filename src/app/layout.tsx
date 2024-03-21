@@ -76,14 +76,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <link
+          rel="icon"
+          href="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.webp"
+        ></link>
         <link
           href="https://fonts.googleapis.com/css?family=Poppins"
           rel="stylesheet"
