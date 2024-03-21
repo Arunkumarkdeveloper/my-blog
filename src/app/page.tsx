@@ -15,7 +15,7 @@ export default async function Page() {
             className="text-center mb-20"
             style={{
               lineHeight: "2",
-              color: "#c8c8c8",
+              color: "#292929",
               fontSize: "14px",
               opacity: "100%",
             }}

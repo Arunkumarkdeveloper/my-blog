@@ -40,7 +40,7 @@
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    background-color: #0ea900;
+    background-color: #0A6501;
     border: 1px solid transparent;
     padding: 10px 10px;
     border-radius: 20px;
@@ -48,7 +48,7 @@
 }
 
 .footer-btn:hover {
-    background-color: #0d8b01;
+    background-color: #0d9c00;
     color: #ebebeb;
 }
 

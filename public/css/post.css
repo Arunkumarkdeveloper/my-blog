@@ -120,7 +120,7 @@
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    background-color: #0ea900;
+    background-color: #0A6501;
     border: 1px solid transparent;
     padding: 12px 17px;
     border-radius: 100px;
@@ -130,7 +130,7 @@
 
 
 #post button:hover {
-    background-color: #0f8e03;
+    background-color: #0d9c00;
 }
 
 #post button a {
@@ -154,7 +154,7 @@
 }
 
 .user-circle {
-    background-color: #0ea900;
+    background-color: #0A6501;
     color: #ffffff;
     font-size: 17px;
     min-width: 40px;
@@ -178,7 +178,7 @@
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    background-color: #0ea900;
+    background-color: #0A6501;
     border: 1px solid transparent;
     padding: 10px 15px;
     border-radius: 100px;

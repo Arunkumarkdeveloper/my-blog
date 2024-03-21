@@ -25,7 +25,7 @@ export default function Footer() {
         <p>Copyright ©{new Date().getFullYear()} findbestone.com</p>
       </div>
       <div>
-        <h6 className="fw-700 mb-20 footer-header">Website</h6>
+        <p className="fw-700 mb-20 footer-header font-18">Website</p>
         <p>
           <Link href="/" className="footer-points">
             Home
@@ -48,7 +48,7 @@ export default function Footer() {
         </p>
       </div>
       <div>
-        <h6 className="fw-700 mb-20 footer-header">Company</h6>
+        <p className="fw-700 mb-20 footer-header font-18">Company</p>
         <p>Products</p>
         <p>New offers</p>
         <p>
@@ -67,7 +67,7 @@ export default function Footer() {
         )}
       </div>
       <div className="d-flex flex-column">
-        <h6 className="fw-700 mb-20 footer-header">Subscribe</h6>
+        <p className="fw-700 mb-20 footer-header font-18">Subscribe</p>
         <input className="footer-input mb-20" placeholder="Enter your name" />
         <input className="footer-input mb-20" placeholder="Enter your email" />
         <button className="footer-btn">Send</button>

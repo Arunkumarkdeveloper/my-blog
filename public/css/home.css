@@ -2,13 +2,13 @@
     color: #282828;
     height: 450px;
     place-items: center;
-    background-image: url("https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/home.webp");
+    /* background-image: url("https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/home.webp"); */
+        background-color: #eef3f5;
     background-size: cover;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* opacity: 80%; */
 }
 
 .home-button {
@@ -22,7 +22,7 @@
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    background-color: #0ea900;
+    background-color: #0A6501;
     border: 1px solid transparent;
     padding: 10px 17px;
     border-radius: 100px;
@@ -30,13 +30,13 @@
 }
 
 .home-button:hover {
-    background-color: #0c8501;
+    background-color: #0d9c00;
 }
 
 .text {
     font-weight: bolder;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #292929;
     letter-spacing: 4px;
     position: relative;
     width: fit-content;
@@ -49,12 +49,11 @@
     position: absolute;
     left: 0;
     top: 0;
-    color: #20d404;
-    text-shadow: 0 1.5px 1px #000000;
+    color: #0d9c00;
     width: 0;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 1px solid #20d404;
+    border-right: 1px solid #0d9c00;
     animation: text-fill 2s ease-in-out alternate infinite;
 }
 

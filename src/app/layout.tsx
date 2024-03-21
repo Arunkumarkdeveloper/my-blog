@@ -15,6 +15,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 import ReduxProvider from "@/redux/ReduxProvider";
 import { Suspense } from "react";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
@@ -76,7 +77,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
@@ -84,11 +89,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="icon"
           href="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.webp"
         ></link>
+        <link rel="stylesheet" href="/path/to/non-critical.css" media="all" />
         <link
           href="https://fonts.googleapis.com/css?family=Poppins"
           rel="stylesheet"
         ></link>
       </head>
+      <Script src="/path/to/non-critical.js" defer />
       <GoogleAnalytics gaId="G-738JLNP7ZV" />
       <body>
         <ReduxProvider>
