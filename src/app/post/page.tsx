@@ -11,7 +11,7 @@ const getPosts = async () => {
 };
 
 export const metadata: Metadata = {
-  title: "posts",
+  title: "Posts",
   description: "This is the posts page for findbestone.com",
   keywords: [
     "findbestone",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "posts",
+    title: "Posts",
     description: "This is the posts page for findbestone.com",
     url: `${API_URL}/posts`,
     siteName: "findbestone.com",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "findbestone.com",
-    title: "posts",
+    title: "Posts",
     description: "This is the posts page for findbestone.com",
     creator: "Arunkumarkdeveloper",
   },

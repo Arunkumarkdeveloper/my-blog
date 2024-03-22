@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import { API_URL } from "@/frontend/Path";
 
 export const metadata: Metadata = {
-  title: "register",
+  title: "Register",
   description: "This is the register page for findbestone.com",
   keywords: [
     "findbestone",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "register",
+    title: "Register",
     description: "This is the register page for findbestone.com",
     url: `${API_URL}/register`,
     siteName: "findbestone.com",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "findbestone.com",
-    title: "register",
+    title: "Register",
     description: "This is the register page for findbestone.com",
     creator: "Arunkumarkdeveloper",
   },

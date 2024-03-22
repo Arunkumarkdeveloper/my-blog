@@ -15,13 +15,12 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 import ReduxProvider from "@/redux/ReduxProvider";
 import { Suspense } from "react";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "",
-    default: "findbestone",
-    template: "%s | findbestone",
+    absolute: "Home | Findbestone",
+    default: "Findbestone",
+    template: "%s | Findbestone",
   },
 
   description:
@@ -60,7 +59,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "findbestone",
+    title: "Findbestone",
     description: "This is the findbestone.com",
     url: `${API_URL}`,
     siteName: "findbestone.com",
@@ -71,7 +70,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "findbestone.com",
-    title: "findbestone",
+    title: "Findbestone",
     description: "This is the findbestone.com",
     creator: "Arunkumarkdeveloper",
   },
@@ -88,14 +87,14 @@ export default function RootLayout({
         <link
           rel="icon"
           href="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.webp"
-        ></link>
-        <link rel="stylesheet" href="/path/to/non-critical.css" media="all" />
+          type="image/webp"
+          sizes="32x32"
+        />
         <link
           href="https://fonts.googleapis.com/css?family=Poppins"
           rel="stylesheet"
         ></link>
       </head>
-      <Script src="/path/to/non-critical.js" defer />
       <GoogleAnalytics gaId="G-738JLNP7ZV" />
       <body>
         <ReduxProvider>

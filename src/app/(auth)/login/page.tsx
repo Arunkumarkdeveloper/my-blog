@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import { API_URL } from "@/frontend/Path";
 
 export const metadata: Metadata = {
-  title: "login",
+  title: "Login",
   description: "This is the login page for findbestone.com",
   keywords: [
     "findbestone",
