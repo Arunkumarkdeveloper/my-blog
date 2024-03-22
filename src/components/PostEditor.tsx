@@ -52,7 +52,7 @@ export default function PostEditor({
       `<a href="${affiliateLink}" target="_blank" ><img ` +
       `src=` +
       `"${input1}"` +
-      ` /></a>`;
+      ` alt="${postData.blogTitle}" title="${postData.blogTitle}" /></a>`;
   } else {
     keyTag = `${_tags[htmlTags]?._openTag}${input1}${_tags[htmlTags]?._closeTag}`;
   }

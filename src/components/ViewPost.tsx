@@ -301,7 +301,7 @@ export default function ViewPost({
 
         <div id="post-comment" className="d-flex justify-content-center">
           <div className="view-post">
-            <h6 className="fw-700 mb-15 mt-10">Comments</h6>
+            <p className="fw-700 mb-15 mt-10 font-18">Comments</p>
             <div className="mb-10">
               <textarea
                 value={comments}

@@ -1029,6 +1029,9 @@
     /* width: 40%; */
 }
 
+.auth-btn:hover {
+    background-color: #0d9c00;
+}
 .h1 {
     line-height: 2;
 }

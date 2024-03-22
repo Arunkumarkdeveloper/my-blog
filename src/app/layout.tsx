@@ -84,12 +84,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
-          rel="icon"
-          href="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.webp"
-          type="image/webp"
-          sizes="32x32"
-        />
+        <link rel="icon" href="/favicon.ico" />
         <link
           href="https://fonts.googleapis.com/css?family=Poppins"
           rel="stylesheet"
