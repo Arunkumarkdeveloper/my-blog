@@ -963,10 +963,6 @@
     padding: 0 !important;
 }
 
-.font-18 {
-    font-size: 18px;
-}
-
 .home {
     background-color: #F4F5F7;
     height: 60vh;
@@ -1054,4 +1050,23 @@
 
 .h6 {
     line-height: 2;
+}
+.line-height-normal {
+    line-height: normal !important;
+}
+
+.font-30 {
+    font-size: 30px !important;
+}
+
+.font-25 {
+    font-size: 25px !important;
+}
+
+.font-18 {
+    font-size: 18px !important;
+}
+
+.font-16 {
+    font-size: 16px !important;
 }

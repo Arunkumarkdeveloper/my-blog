@@ -31,8 +31,12 @@ export default function SearchFilter({ postData }: { postData: any }) {
                   title={post?.blogTitle}
                 />
                 <div>
-                  <h6 className="fw-600 mb-10">{post?.blogTitle}</h6>
-                  <p>{post?.description.toString().slice(0, 151)} . . .</p>
+                  <h1 className="fw-600 mb-10 font-16 line-height-normal">
+                    {post?.blogTitle}
+                  </h1>
+                  <p className="line-height-normal">
+                    {post?.description.toString().slice(0, 151)} . . .
+                  </p>
                 </div>
               </div>
             </Link>

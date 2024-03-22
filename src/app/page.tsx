@@ -6,7 +6,7 @@ export default async function Page() {
       <div className="home_bg mb-50">
         <div className="d-flex flex-column align-items-center">
           <h1
-            className="text mb-20 fw-900 text-center"
+            className="text mb-20 fw-900 text-center font-30"
             data-text="Find Best One"
           >
             Find Best One

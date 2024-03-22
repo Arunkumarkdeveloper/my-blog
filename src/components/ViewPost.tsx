@@ -224,7 +224,7 @@ export default function ViewPost({
       <React.Fragment>
         <div id="post" className="d-flex justify-content-center">
           <div className="view-post mt-20">
-            <h1 className="fw-900">{blogTitle}</h1>
+            <h1 className="fw-900 line-height-normal font-25">{blogTitle}</h1>
             <hr />
             <p>{description}</p>
             <div className="d-flex justify-content-center">
@@ -301,7 +301,7 @@ export default function ViewPost({
 
         <div id="post-comment" className="d-flex justify-content-center">
           <div className="view-post">
-            <p className="fw-700 mb-15 mt-10 font-18">Comments</p>
+            <p className="fw-700 mb-15 mt-10 font-16">Comments</p>
             <div className="mb-10">
               <textarea
                 value={comments}
@@ -374,7 +374,7 @@ export default function ViewPost({
               </div>
             ))}
             <hr />
-            <h6 className="fw-700 mb-20">Suggests Posts</h6>
+            <p className="fw-700 mb-20 font-16">Suggests Posts</p>
             {_suggests
               ?.slice(0, 50)
               ?.reverse()
@@ -394,10 +394,10 @@ export default function ViewPost({
                             title={post.blogTitle}
                           />
                           <div>
-                            <h6 className="fw-600 mb-10 wrap">
+                            <h1 className="fw-600 mb-10 wrap font-16 line-height-normal">
                               {post.blogTitle}
-                            </h6>
-                            <p className="wrap">
+                            </h1>
+                            <p className="wrap line-height-normal">
                               {post.description.toString().slice(0, 145)} . . .
                             </p>
                           </div>

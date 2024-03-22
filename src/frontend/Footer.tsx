@@ -20,12 +20,12 @@ export default function Footer() {
               title="findbestone"
             />
           </Link>
-          <span className="fw-700 font-18 pl-10">FIND BEST ONE</span>
+          <span className="fw-700 font-16 pl-10">FIND BEST ONE</span>
         </div>
         <p>Copyright ©{new Date().getFullYear()} findbestone.com</p>
       </div>
       <div>
-        <p className="fw-700 mb-20 footer-header font-18">Website</p>
+        <p className="fw-700 mb-20 footer-header font-16">Website</p>
         <p>
           <Link href="/" className="footer-points">
             Home
@@ -48,7 +48,7 @@ export default function Footer() {
         </p>
       </div>
       <div>
-        <p className="fw-700 mb-20 footer-header font-18">Company</p>
+        <p className="fw-700 mb-20 footer-header font-16">Company</p>
         <p>Products</p>
         <p>New offers</p>
         <p>
@@ -67,7 +67,7 @@ export default function Footer() {
         )}
       </div>
       <div className="d-flex flex-column">
-        <p className="fw-700 mb-20 footer-header font-18">Subscribe</p>
+        <p className="fw-700 mb-20 footer-header font-16">Subscribe</p>
         <input className="footer-input mb-20" placeholder="Enter your name" />
         <input className="footer-input mb-20" placeholder="Enter your email" />
         <button className="footer-btn">Send</button>
