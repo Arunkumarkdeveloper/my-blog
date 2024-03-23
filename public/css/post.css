@@ -80,29 +80,28 @@
 }
 
 #post p {
-    line-height: 2;
+    line-height: 2.2;
     margin-bottom: 15px;
     margin-top: 10px;
 }
 
 #post u {
-    line-height: 2;
+    line-height: 2.2;
     margin-bottom: 25px;
 }
 
 #post b {
-    line-height: 2;
+    line-height: 2.2;
     margin-bottom: 25px;
 }
 
 #post i {
-    line-height: 2;
+    line-height: 2.2;
     margin-bottom: 25px;
 }
 
 #post ul li {
-    /* line-height: 2; */
-    /* margin-bottom: 25px; */
+    line-height: 2.2;
 }
 
 #post ul {
@@ -150,7 +149,7 @@
     outline: none !important;
     border: #b8b8b8 1px solid;
     border-radius: 20px;
-    line-height: 2;
+    line-height: 2.2;
 }
 
 .user-circle {
