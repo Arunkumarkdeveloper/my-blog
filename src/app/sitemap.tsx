@@ -13,18 +13,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const postEntries: MetadataRoute.Sitemap = posts.map(
     ({ urlLink, updatedAt }: any) => ({
-      url: `${API_URL}/post/${urlLink}`,
+      url: `${API_URL}/${urlLink}`,
       lastModified: new Date(updatedAt),
     })
   );
 
   return [
     {
-      url: `${API_URL}/`,
+      url: `${API_URL}`,
       lastModified: new Date(),
     },
     {
-      url: `${API_URL}/post`,
+      url: `${API_URL}/posts`,
       lastModified: new Date(),
     },
     {

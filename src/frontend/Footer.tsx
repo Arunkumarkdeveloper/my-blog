@@ -52,7 +52,7 @@ export default function Footer() {
         <p>Products</p>
         <p>New offers</p>
         <p>
-          <Link href="/post" className="footer-points">
+          <Link href="/posts" className="footer-points">
             Latest posts
           </Link>
         </p>

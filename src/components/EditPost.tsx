@@ -117,7 +117,7 @@ const EditPost = ({ post }: { post: any }) => {
       )}
       <Toaster position="top-center" />
       <div className="mb-30">
-        <Link href={`/post/${post.urlLink}`}>
+        <Link href={`/${post.urlLink}`}>
           <div className="post-group">
             <img
               src={post.image}

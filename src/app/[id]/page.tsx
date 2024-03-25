@@ -30,16 +30,16 @@ export async function generateMetadata({
       },
     },
     alternates: {
-      canonical: `${API_URL}/post/${post?.urlLink}`,
+      canonical: `${API_URL}/${post?.urlLink}`,
       languages: {
-        "en-US": `${API_URL}/post/${post?.urlLink}`,
-        "de-DE": `${API_URL}/post/${post?.urlLink}`,
+        "en-US": `${API_URL}/${post?.urlLink}`,
+        "de-DE": `${API_URL}/${post?.urlLink}`,
       },
     },
     openGraph: {
       title: post?.blogTitle,
       description: post?.description,
-      url: `${API_URL}/post/${post?.blogTitle}`,
+      url: `${API_URL}/${post?.blogTitle}`,
       siteName: "findbestone.com",
       locale: "en_US",
       type: "article",

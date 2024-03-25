@@ -385,7 +385,7 @@ export default function ViewPost({
                     className="d-flex justify-content-center mb-15"
                   >
                     <div className="posts w-100">
-                      <Link href={`/post/${post.urlLink}`}>
+                      <Link href={`/${post.urlLink}`}>
                         <div className="post-group">
                           <img
                             src={post.image}

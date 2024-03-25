@@ -23,7 +23,7 @@ export default function Header() {
   const _search = useSelector((state: any) => state.search.value);
 
   const handleChange = (e: any) => {
-    router.push("/post");
+    router.push("/posts");
     disPatch(setValue(e.target.value));
   };
 
@@ -86,7 +86,7 @@ export default function Header() {
               <Link href="/">Home</Link>
             </span>
             <span>
-              <Link href="/post">Posts</Link>
+              <Link href="/posts">Posts</Link>
             </span>
             <span>
               <Link href="/about">About</Link>

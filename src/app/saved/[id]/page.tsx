@@ -19,7 +19,7 @@ export default async function page({ params }: { params: { id: any } }) {
       {savedPostsLists?.reverse().map((post: any) => (
         <div key={post?._id} className="d-flex justify-content-center mb-15">
           <div className="posts">
-            <Link href={`/post/${post?.urlLink}`}>
+            <Link href={`/${post?.urlLink}`}>
               <div className="post-group">
                 <img
                   src={post?.image}
