@@ -15,6 +15,8 @@ const AddPost = () => {
   const [editorHtml, setEditorHtml] = useState([]);
   const [keywords, setKeywords] = useState([]);
 
+  console.log(editorHtml);
+
   let link = blogTitle
     ?.match(/[^!@#$%^&*?{},.;:/+~()<>]/g)
     ?.join("")
