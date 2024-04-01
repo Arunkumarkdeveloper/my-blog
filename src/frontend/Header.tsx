@@ -37,7 +37,7 @@ export default function Header() {
 
   const [screenWidth, setScreenWidth]: any = useState(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };

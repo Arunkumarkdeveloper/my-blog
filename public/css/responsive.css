@@ -8,20 +8,6 @@
         word-wrap: break-word;
     }
 
-    .post-group {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: start;
-        row-gap: 10px;
-        margin-bottom: 10px;
-    }
-
-    .posts-image {
-        width: 100%;
-        margin-right: 0px !important;
-    }
-
     .auth-page form {
         width: 70%;
     }
@@ -85,18 +71,6 @@
     .posts {
         width: 90%;
         word-wrap: break-word;
-    }
-
-    .post-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-        align-items: center;
-        column-gap: 10px;
-    }
-
-    .posts-image {
-        width: 25%;
     }
 
     .auth-page form {
@@ -165,18 +139,6 @@
         word-wrap: break-word;
     }
 
-    .post-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-        align-items: center;
-        column-gap: 10px;
-    }
-
-    .posts-image {
-        width: 25%;
-    }
-
     .auth-page form {
         width: 40%;
     }
@@ -213,18 +175,6 @@
         word-wrap: break-word;
     }
 
-    .post-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-        align-items: center;
-        column-gap: 10px;
-    }
-
-    .posts-image {
-        width: 25%;
-    }
-
     .auth-page form {
         width: 30%;
     }
@@ -250,19 +200,6 @@
     .posts {
         width: 50%;
         word-wrap: break-word;
-    }
-
-    .post-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-        align-items: center;
-        column-gap: 20px;
-        margin-bottom: 20px;
-    }
-
-    .posts-image {
-        width: 25%;
     }
 
     .auth-page form {

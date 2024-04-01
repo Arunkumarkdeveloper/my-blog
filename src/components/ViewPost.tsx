@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
@@ -219,6 +219,19 @@ export default function ViewPost({
     }
   };
 
+  const [screenWidth, setScreenWidth]: any = useState(null);
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <React.Suspense fallback={<Loading />}>
       <React.Fragment>
@@ -389,17 +402,25 @@ export default function ViewPost({
                         <div className="post-group">
                           <img
                             src={post.image}
-                            className="posts-image mr-15"
+                            className="posts-image"
                             alt={post.blogTitle}
                             title={post.blogTitle}
                           />
                           <div>
-                            <h1 className="fw-600 mb-10 wrap font-16 line-height-normal">
-                              {post.blogTitle}
+                            <h1
+                              className="fw-600 mb-10 line-height-normal"
+                              style={{
+                                fontSize: screenWidth < 600 ? "13px" : "14px",
+                              }}
+                            >
+                              {post?.blogTitle}
                             </h1>
-                            <p className="wrap line-height-normal">
-                              {post.description.toString().slice(0, 145)} . . .
-                            </p>
+                            {screenWidth > 600 && (
+                              <p className="line-height-normal">
+                                {post?.description.toString().slice(0, 141)} . .
+                                .
+                              </p>
+                            )}
                           </div>
                         </div>
                       </Link>

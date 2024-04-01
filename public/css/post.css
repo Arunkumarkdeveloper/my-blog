@@ -5,11 +5,15 @@
 
 .post-group {
     display: flex;
-    align-items: center;
+    align-items: start;
+        column-gap: 25px;
+        font-size: 13px !important;
+        margin-bottom: 15px;
+        word-break: break-word !important;
 }
 
 .posts-image {
-    width: 25%;
+    width: 20%;
 }
 
 .view-post {

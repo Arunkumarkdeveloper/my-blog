@@ -17,12 +17,7 @@ import ReduxProvider from "@/redux/ReduxProvider";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "Home | Findbestone",
-    default: "Findbestone",
-    template: "%s | Findbestone",
-  },
-
+  title: "Findbestone",
   description:
     "Finding the best products for yourself can be a combination of several factors, including your needs, preferences, budget, and the quality of the product. This is the findbestone.com website.",
   keywords: [
