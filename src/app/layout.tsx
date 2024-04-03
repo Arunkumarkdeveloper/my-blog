@@ -84,6 +84,10 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css?family=Poppins"
           rel="stylesheet"
         ></link>
+        <meta
+          name="impact-site-verification"
+          value="af41fa88-26aa-411f-a191-582e7b6b8818"
+        />
       </head>
       <GoogleAnalytics gaId="G-738JLNP7ZV" />
       <body>
