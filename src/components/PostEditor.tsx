@@ -20,41 +20,54 @@ export default function PostEditor({
     { id: 2, _openTag: "<b>", _closeTag: "</b>" },
     { id: 3, _openTag: "<u>", _closeTag: "</u>" },
     { id: 4, _openTag: "<i>", _closeTag: "</i>" },
-    { id: 5, _openTag: "<button>", _closeTag: "</button>" },
-    { id: 6, _openTag: "<img>", _closeTag: "</img>" },
-    { id: 7, _openTag: "<h1>", _closeTag: "</h1>" },
-    { id: 8, _openTag: "<h2>", _closeTag: "</h2>" },
-    { id: 9, _openTag: "<h3>", _closeTag: "</h3>" },
-    { id: 10, _openTag: "<h4>", _closeTag: "</h4>" },
-    { id: 11, _openTag: "<h5>", _closeTag: "</h5>" },
-    { id: 12, _openTag: "<h6>", _closeTag: "</h6>" },
-    { id: 13, _openTag: "<ul><li>", _closeTag: "</li></ul>" },
+    { id: 5, _openTag: "<h1>", _closeTag: "</h1>" },
+    { id: 6, _openTag: "<h2>", _closeTag: "</h2>" },
+    { id: 7, _openTag: "<ul><li>", _closeTag: "</li></ul>" },
+    { id: 8, _openTag: "<button>", _closeTag: "</button>" },
+    { id: 9, _openTag: "<img>", _closeTag: "</img>" },
+  ];
+
+  const _space = [
+    "mb-5",
+    "mb-7",
+    "mb-10",
+    "mb-12",
+    "mb-15",
+    "mb-17",
+    "mb-20",
+    "mb-25",
+    "mb-30",
+    "mb-35",
+    "mb-40",
+    "mb-45",
+    "mb-50",
   ];
 
   const [htmlTags, setHtmlTags]: any = useState(0);
+  const [space, setSpace]: any = useState(0);
 
   let keyTag: any;
 
   if (_tags[htmlTags]?._openTag === `<button>`) {
     keyTag =
-      `<a ` +
-      `href=` +
-      `"${affiliateLink}"` +
+      `<div class="d-flex justify-content-center ${_space[space]}"><a ` +
+      `href=" "` +
       " " +
       `target="_blank"` +
       `>` +
       _tags[htmlTags]?._openTag +
       `${input1}` +
       `${_tags[htmlTags]?._closeTag}` +
-      `</a>`;
+      `</a></div>`;
   } else if (_tags[htmlTags]?._openTag === `<img>`) {
     keyTag =
-      `<a href="${affiliateLink}" target="_blank" ><img ` +
+      `<div class="d-flex justify-content-center ${_space[space]}">
+      <a href=" " target="_blank" ><img ` +
       `src=` +
       `"${input1}"` +
-      ` alt="${postData.blogTitle}" title="${postData.blogTitle}" /></a>`;
+      ` alt="${postData.blogTitle}" title="${postData.blogTitle}" /></a></div>`;
   } else {
-    keyTag = `${_tags[htmlTags]?._openTag}${input1}${_tags[htmlTags]?._closeTag}`;
+    keyTag = `<div class=${_space[space]} >${_tags[htmlTags]?._openTag} ${input1}${_tags[htmlTags]?._closeTag}</div>`;
   }
 
   const addItem = () => {
@@ -69,7 +82,7 @@ export default function PostEditor({
     <div style={{ height: "100%" }}>
       <select
         onChange={(e: any) => setHtmlTags(e.target.value)}
-        className="auth-input mb-10 mt-25 editor-select"
+        className="auth-input mb-10 mt-25 editor-select mr-20"
       >
         {_tags.map((tag, index) => (
           <option key={tag.id} value={index}>
@@ -77,26 +90,34 @@ export default function PostEditor({
           </option>
         ))}
       </select>
-      {affiliateLink.length > 0 && (
-        <div className="d-flex align-items-center gap-2">
-          <textarea
-            value={input1}
-            onChange={(e) => setInput1(e.target.value)}
-            className="auth-input mr-10 mb-10"
-            placeholder={`Type ${_tags[htmlTags]?._openTag} text`}
-          />
-          <img
-            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.webp"
-            width={30}
-            height={30}
-            onClick={addItem}
-            alt="Delete post"
-            title="Delete post"
-            className="cursor-pointer"
-            style={{ width: "30px" }}
-          />
-        </div>
-      )}
+      <select
+        onChange={(e: any) => setSpace(e.target.value)}
+        className="auth-input mb-10 mt-25 editor-select"
+      >
+        {_space.map((tag, index) => (
+          <option key={index} value={index}>
+            {tag}
+          </option>
+        ))}
+      </select>
+      <div className="d-flex align-items-center gap-2">
+        <textarea
+          value={input1}
+          onChange={(e) => setInput1(e.target.value)}
+          className="auth-input mr-10 mb-10"
+          placeholder={`Type ${_tags[htmlTags]?._openTag} text`}
+        />
+        <img
+          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.webp"
+          width={30}
+          height={30}
+          onClick={addItem}
+          alt="Delete post"
+          title="Delete post"
+          className="cursor-pointer"
+          style={{ width: "30px" }}
+        />
+      </div>
 
       <div className="d-flex align-items-end justify-content-between gap-2 mt-30">
         <h6 className="fw-800">Preview Post</h6>
@@ -119,8 +140,8 @@ export default function PostEditor({
       <div id="post">
         <div className="mt-20">
           <h2 className="fw-900">{postData.blogTitle}</h2>
-          <p>{postData.description}</p>
-          <div className="d-flex justify-content-center">
+          <p className="mb-25">{postData.description}</p>
+          <div className="d-flex justify-content-center mb-25">
             <a href={postData.affiliateLink} target="_blank">
               <img
                 src={postData.image}
@@ -131,12 +152,6 @@ export default function PostEditor({
           </div>
           {postData.editorHtml.map((_html_editor: string, index: number) => (
             <div
-              className={
-                _html_editor.slice(0, 2) == "<a" ||
-                _html_editor.slice(0, 4) == "<img"
-                  ? "d-flex justify-content-center"
-                  : ""
-              }
               key={index}
               dangerouslySetInnerHTML={{ __html: _html_editor }}
             ></div>

@@ -237,22 +237,16 @@ export default function ViewPost({
       <React.Fragment>
         <div id="post" className="d-flex justify-content-center">
           <div className="view-post mt-20">
-            <h1 className="fw-900 line-height-normal font-25">{blogTitle}</h1>
+            <h1 className="fw-900 font-20">{blogTitle}</h1>
             <hr />
-            <p>{description}</p>
-            <div className="d-flex justify-content-center">
+            <p className="mb-25">{description}</p>
+            <div className="d-flex justify-content-center mb-25">
               <a href={affiliateLink} target="_blank">
                 <img src={image} alt={blogTitle} title={blogTitle} />
               </a>
             </div>
             {editorHtml.map((_html_editor: string, index: number) => (
               <div
-                className={
-                  _html_editor.slice(0, 2) == "<a" ||
-                  _html_editor.slice(0, 4) == "<img"
-                    ? "d-flex justify-content-center"
-                    : ""
-                }
                 key={index}
                 dangerouslySetInnerHTML={{ __html: _html_editor }}
               ></div>

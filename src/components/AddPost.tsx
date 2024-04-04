@@ -39,7 +39,6 @@ const AddPost = () => {
   const NewtBlog = async () => {
     if (
       image.length > 0 &&
-      affiliateLink.length > 0 &&
       blogTitle.length > 0 &&
       description.length > 0 &&
       editorHtml.length > 0 &&
@@ -66,11 +65,11 @@ const AddPost = () => {
     <React.Fragment>
       <Toaster position="top-center" />
       <div className="d-flex flex-column justify-content-center gap-2 editor-post">
-        <input
+        {/* <input
           placeholder="Affilite Link"
           onChange={(e) => setAffiliateLink(e.target.value)}
           className="auth-input"
-        />
+        /> */}
         <SEOKeywords postData={postData} setKeywords={setKeywords} />
         {postData.seoKeywords.map((keyword: any, index: number) => (
           <ul key={index}>

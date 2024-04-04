@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -94,6 +94,19 @@ const EditPost = ({ post }: { post: any }) => {
     setEditorHtml(updatedEditorHtml);
   };
 
+  const [screenWidth, setScreenWidth]: any = useState(null);
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       {isConfirm && (
@@ -121,13 +134,24 @@ const EditPost = ({ post }: { post: any }) => {
           <div className="post-group">
             <img
               src={post.image}
-              className="posts-image mr-15"
+              className="posts-image"
               alt={post?.blogTitle}
               title={post?.blogTitle}
             />
             <div>
-              <h6 className="fw-600 mb-10">{post.blogTitle}</h6>
-              <p>{post.description.toString().slice(0, 145)} . . .</p>
+              <h1
+                className="fw-600 mb-10"
+                style={{
+                  fontSize: screenWidth < 600 ? "13px" : "14px",
+                }}
+              >
+                {post?.blogTitle}
+              </h1>
+              {screenWidth > 600 && (
+                <p className="line-height-normal">
+                  {post?.description.toString().slice(0, 141)} . . .
+                </p>
+              )}
             </div>
           </div>
         </Link>
@@ -138,7 +162,7 @@ const EditPost = ({ post }: { post: any }) => {
           onClick={() => setIsEdit(!isEdit)}
           alt="Edit post"
           title="Edit post"
-          className="cursor-pointer mr-15 mt-10"
+          className="cursor-pointer mr-15"
         />
         <img
           src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.webp"
@@ -147,7 +171,7 @@ const EditPost = ({ post }: { post: any }) => {
           onClick={() => setIsConfirm(!isConfirm)}
           alt="Delete post"
           title="Delete post"
-          className="cursor-pointer mt-10"
+          className="cursor-pointer"
         />
         {isEdit && (
           <div id="post" className="d-flex flex-column gap-3 mb-10 mt-20">
