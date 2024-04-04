@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Terms-Privacy",
     description: "This is the terms-privacy page for findbestone.com",
-    url: `${API_URL}/about`,
+    url: `${API_URL}/terms-privacy`,
     siteName: "findbestone.com",
     locale: "en_US",
     type: "article",
@@ -135,7 +135,7 @@ export default function page() {
         <h6 className="fw-600 mb-15">Contact Us</h6>
         <p className="mb-25">
           If you have any questions about these Terms, please contact us at{" "}
-          <b>findbestone1@gmail.com.</b>
+          <b>arunkumarkdeveloper@gmail.com.</b>
         </p>
       </div>
     </div>

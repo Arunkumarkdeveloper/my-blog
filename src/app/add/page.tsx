@@ -20,7 +20,7 @@ export default async function Page() {
 
   const session = await getServerSession(authOptions);
 
-  if (session?.user?.email !== "findbestone1@gmail.com") {
+  if (session?.user?.email !== "arunkumarkdeveloper@gmail.com") {
     redirect("/");
   }
 

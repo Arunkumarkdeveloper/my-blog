@@ -54,8 +54,8 @@ export default function Header() {
         <Link href="/">
           <img
             src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.webp"
-            width={45}
-            height={45}
+            width={40}
+            height={40}
             alt="findbestone"
             title="findbestone"
           />
@@ -91,7 +91,7 @@ export default function Header() {
             <span>
               <Link href="/about">About</Link>
             </span>
-            {session?.user?.email === "findbestone1@gmail.com" && (
+            {session?.user?.email === "arunkumarkdeveloper@gmail.com" && (
               <span>
                 <Link href="/add">Editor</Link>
               </span>
