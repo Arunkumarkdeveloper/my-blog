@@ -90,7 +90,7 @@ export default function RootLayout({
         ></link>
       </head>
 
-      <GoogleAnalytics gaId="G-738JLNP7ZV" />
+      <GoogleAnalytics gaId="G-7PJNFMLSTY" />
       <body>
         <ReduxProvider>
           <AuthProvider>
