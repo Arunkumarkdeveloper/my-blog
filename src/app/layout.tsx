@@ -80,6 +80,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta
+          name="google-site-verification"
+          content="sDW33ajqCYACJEh6-3YqjWWmkWbI6ttHgdtPfPGU8Q8"
+        />
+        <meta
           name="impact-site-verification"
           content="9ed71ba5-89a3-477d-ac34-1dcd8b814352"
         ></meta>
