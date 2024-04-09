@@ -9,11 +9,14 @@ import Image from "next/image";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { decode as base64_decode, encode as base64_encode } from "base-64";
+import ScreenWidth from "./ScreenWidth";
 
 export default function Header() {
   const router = useRouter();
   const { data: session } = useSession();
   const [showHeader, setShowHeader] = useState(false);
+
+  const [screenWidth] = ScreenWidth();
 
   const handleShowNavbar = () => {
     setShowHeader(!showHeader);
@@ -34,19 +37,6 @@ export default function Header() {
 
   const openProfile = () => setIsPrifile(!isProfile);
   const closeProfile = () => setIsPrifile(false);
-
-  const [screenWidth, setScreenWidth]: any = useState(null);
-
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-    setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <nav className="navbar">

@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
+import ScreenWidth from "@/frontend/ScreenWidth";
 
 export default function SearchFilter({ postData }: { postData: any }) {
   const _search = useSelector((state: any) => state.search.value);
@@ -17,18 +18,7 @@ export default function SearchFilter({ postData }: { postData: any }) {
     );
   });
 
-  const [screenWidth, setScreenWidth]: any = useState(null);
-
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-    setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const [screenWidth] = ScreenWidth();
 
   return (
     <div className="mt-30">

@@ -108,13 +108,13 @@ export default function PostEditor({
         />
         <img
           src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.webp"
-          width={30}
-          height={30}
+          width={25}
+          height={25}
           onClick={addItem}
           alt="Delete post"
           title="Delete post"
           className="cursor-pointer"
-          style={{ width: "30px" }}
+          style={{ width: "25px" }}
         />
       </div>
 
@@ -127,9 +127,9 @@ export default function PostEditor({
               src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add_post.webp"
               alt="Add post"
               title="Add post"
-              width={30}
-              height={30}
-              style={{ width: "30px" }}
+              width={25}
+              height={25}
+              style={{ width: "25px" }}
             />
           </span>
           <span className="fw-600">Add New Post</span>

@@ -20,29 +20,24 @@ export default function SEOKeywords({
   }, [postData.seoKeywords.length]);
 
   return (
-    <div className="d-flex gap-3">
-      <input
+    <div className="d-flex gap-3 mb-20 mt-20">
+      <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
         className="auth-input"
         placeholder="SEO Keywords"
       />
-      <div
-        className="cursor-pointer d-flex align-items-center"
-        onClick={addItem}
-      >
-        <span className="mr-10">
-          <img
-            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.webp"
-            width={30}
-            height={30}
-            alt="Delete post"
-            title="Delete post"
-            className="cursor-pointer"
-            style={{ width: "30px" }}
-          />
-        </span>
-        <span className="fw-600">keyword</span>
+      <div className="cursor-pointer d-flex align-items-center">
+        <img
+          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.webp"
+          width={25}
+          height={25}
+          alt="Delete post"
+          title="Delete post"
+          className="cursor-pointer"
+          style={{ width: "25px" }}
+          onClick={addItem}
+        />
       </div>
     </div>
   );

@@ -4,14 +4,19 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import toast, { Toaster } from "react-hot-toast";
+import SEOKeywords from "./SEOKeywords";
+import ScreenWidth from "@/frontend/ScreenWidth";
 
 const EditPost = ({ post }: { post: any }) => {
   const router = useRouter();
+  const [screenWidth] = ScreenWidth();
+
   const [image, setImage] = useState(post.image);
   const [blogTitle, setBlogTitle] = useState(post.blogTitle);
   const [description, setDescription] = useState(post.description);
   const [editorHtml, setEditorHtml] = useState(post.editorHtml);
   const [isEdit, setIsEdit] = useState(false);
+  const [keywords, setKeywords] = useState(post.seoKeywords);
 
   const [isConfirm, setIsConfirm] = useState(false);
 
@@ -27,6 +32,7 @@ const EditPost = ({ post }: { post: any }) => {
     description: description,
     urlLink: link,
     editorHtml: editorHtml,
+    seoKeywords: keywords,
   };
 
   const post_deleted = () => toast.success("Post deleted!");
@@ -94,18 +100,10 @@ const EditPost = ({ post }: { post: any }) => {
     setEditorHtml(updatedEditorHtml);
   };
 
-  const [screenWidth, setScreenWidth]: any = useState(null);
-
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-    setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const deleteKeyword = (index: number) => {
+    keywords.splice(index, 1);
+    router.refresh();
+  };
 
   return (
     <>
@@ -171,63 +169,81 @@ const EditPost = ({ post }: { post: any }) => {
           onClick={() => setIsConfirm(!isConfirm)}
           alt="Delete post"
           title="Delete post"
-          className="cursor-pointer"
+          className="cursor-pointer mr-15"
         />
         {isEdit && (
-          <div id="post" className="d-flex flex-column gap-3 mb-10 mt-20">
-            <span className="fw-700">BlogTitle</span>
-            <textarea
-              placeholder="BlogTitle"
-              value={blogTitle}
-              onChange={(e) => setBlogTitle(e.target.value)}
-              className="auth-input"
-              style={{ lineHeight: "2.5" }}
-              rows={1}
-            />
-            <span className="fw-700">Description</span>
-            <textarea
-              placeholder="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="auth-input"
-              style={{ lineHeight: "2.5" }}
-              rows={2}
-            />
-            <span className="fw-700">Image URL</span>
-            <textarea
-              placeholder="image"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              className="auth-input"
-              style={{ lineHeight: "2.5" }}
-              rows={1}
-            />
-            <span className="fw-700">EditorHtml</span>
-            {editorHtml.map((_editHtml: string, index: number) => (
-              <textarea
-                key={index}
-                value={_editHtml}
-                onChange={(e) => handleChange(e, index)}
-                className="auth-input"
-                style={{ lineHeight: "2.5" }}
-                rows={4}
-              />
-            ))}
-          </div>
+          <img
+            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/update.webp"
+            width={20}
+            height={20}
+            onClick={() => editPost(post._id)}
+            alt="Update post"
+            title="Update post"
+            className="cursor-pointer"
+          />
         )}
         {isEdit && (
-          <div onClick={() => editPost(post._id)} className="cursor-pointer">
-            <img
-              src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/update.webp"
-              width={20}
-              height={20}
-              onClick={() => editPost(post._id)}
-              alt="Update post"
-              title="Update post"
-              className="cursor-pointer mr-5"
-            />
-            <span>Update</span>
-          </div>
+          <React.Fragment>
+            <SEOKeywords postData={postData} setKeywords={setKeywords} />
+            <ol className="mb-10">
+              {keywords?.reverse()?.map((keyword: any, index: number) => (
+                <li key={index}>
+                  <span>{keyword} </span>
+                  <span>
+                    <img
+                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.webp"
+                      width={15}
+                      height={15}
+                      onClick={() => deleteKeyword(index)}
+                      alt="Delete post"
+                      title="Delete post"
+                      className="cursor-pointer"
+                    />
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <div id="post" className="d-flex flex-column gap-3 mb-10 mt-20">
+              <span className="fw-700">BlogTitle</span>
+              <textarea
+                placeholder="BlogTitle"
+                value={blogTitle}
+                onChange={(e) => setBlogTitle(e.target.value)}
+                className="auth-input"
+                style={{ lineHeight: "2.5" }}
+                rows={1}
+              />
+              <span className="fw-700">Description</span>
+              <textarea
+                placeholder="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="auth-input"
+                style={{ lineHeight: "2.5" }}
+                rows={2}
+              />
+              <span className="fw-700">Image URL</span>
+              <textarea
+                placeholder="image"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                className="auth-input"
+                style={{ lineHeight: "2.5" }}
+                rows={1}
+              />
+              <span className="fw-700">EditorHtml</span>
+              {editorHtml.map((_editHtml: string, index: number) => (
+                <textarea
+                  key={index}
+                  value={_editHtml}
+                  onChange={(e) => handleChange(e, index)}
+                  className="auth-input"
+                  style={{ lineHeight: "2.5" }}
+                  rows={4}
+                />
+              ))}
+            </div>
+          </React.Fragment>
         )}
       </div>
     </>

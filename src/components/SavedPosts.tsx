@@ -2,24 +2,14 @@
 import React, { useState, useLayoutEffect } from "react";
 import { decode as base64_decode, encode as base64_encode } from "base-64";
 import Link from "next/link";
+import ScreenWidth from "@/frontend/ScreenWidth";
 
 export default function SavedPosts({
   savedPostsLists,
 }: {
   savedPostsLists: any;
 }) {
-  const [screenWidth, setScreenWidth]: any = useState(null);
-
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-    setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const [screenWidth] = ScreenWidth();
   return (
     <div className="mt-30 mb-30" style={{ minHeight: "50vh" }}>
       {savedPostsLists?.reverse().map((post: any) => (

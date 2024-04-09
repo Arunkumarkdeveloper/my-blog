@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import PostEditor from "./PostEditor";
 import toast, { Toaster } from "react-hot-toast";
-import SEOKeywords from "./SEOKeywords";
+
 
 const AddPost = () => {
   const router = useRouter();
@@ -14,8 +14,6 @@ const AddPost = () => {
   const [description, setDescription] = useState("");
   const [editorHtml, setEditorHtml] = useState([]);
   const [keywords, setKeywords] = useState([]);
-
-  console.log(editorHtml);
 
   let link = blogTitle
     ?.match(/[^!@#$%^&*?{},.;:/+~()<>]/g)
@@ -41,8 +39,7 @@ const AddPost = () => {
       image.length > 0 &&
       blogTitle.length > 0 &&
       description.length > 0 &&
-      editorHtml.length > 0 &&
-      keywords.length > 0
+      editorHtml.length > 0
     ) {
       const response = await fetch(`/api/blog`, {
         method: "POST",
@@ -70,24 +67,17 @@ const AddPost = () => {
           onChange={(e) => setAffiliateLink(e.target.value)}
           className="auth-input"
         /> */}
-        <SEOKeywords postData={postData} setKeywords={setKeywords} />
-        {postData.seoKeywords.map((keyword: any, index: number) => (
-          <ul key={index}>
-            <li>{keyword}</li>
-          </ul>
-        ))}
-        <br />
-        <input
+        <textarea
           placeholder="BlogTitle"
           onChange={(e) => setBlogTitle(e.target.value)}
           className="auth-input"
         />
-        <input
+        <textarea
           placeholder="description"
           onChange={(e) => setDescription(e.target.value)}
           className="auth-input"
         />
-        <input
+        <textarea
           placeholder="image"
           onChange={(e) => setImage(e.target.value)}
           className="auth-input"

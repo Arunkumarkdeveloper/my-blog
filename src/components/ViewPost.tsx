@@ -7,6 +7,7 @@ import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import Loading from "@/frontend/Loading";
+import ScreenWidth from "@/frontend/ScreenWidth";
 
 export default function ViewPost({
   post,
@@ -34,6 +35,8 @@ export default function ViewPost({
 
   const router = useRouter();
   const { data: session } = useSession();
+
+  const [screenWidth] = ScreenWidth();
 
   const [comments, setComments] = useState("");
   const [isLike, setIsLike] = useState(false);
@@ -218,19 +221,6 @@ export default function ViewPost({
       }
     }
   };
-
-  const [screenWidth, setScreenWidth]: any = useState(null);
-
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-    setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <React.Suspense fallback={<Loading />}>

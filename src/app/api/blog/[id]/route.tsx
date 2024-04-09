@@ -12,7 +12,7 @@ export const PUT = async (
   if (session) {
     await ConnectDB();
     const id = params.id;
-    const { image, blogTitle, description, urlLink, editorHtml } =
+    const { image, blogTitle, description, urlLink, editorHtml, seoKeywords } =
       await request.json();
     await BlogShcema.findByIdAndUpdate(id, {
       image,
@@ -20,6 +20,7 @@ export const PUT = async (
       description,
       urlLink,
       editorHtml,
+      seoKeywords,
     });
     return NextResponse.json({ message: "blog updated..." }, { status: 201 });
   } else {
