@@ -28,8 +28,7 @@ export default function PostEditor({
   ];
 
   const _space = [
-    "mb-5",
-    "mb-7",
+    "mb-0",
     "mb-10",
     "mb-12",
     "mb-15",
