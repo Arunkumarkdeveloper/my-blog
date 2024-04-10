@@ -12,7 +12,9 @@ export default function SEOKeywords({
   const [input, setInput]: any = useState("");
 
   const addItem = () => {
-    setKeywords([...postData.seoKeywords, input.toLowerCase()]);
+    if (input.length > 1) {
+      setKeywords([...postData.seoKeywords, input.toLowerCase()]);
+    }
   };
 
   useEffect(() => {
