@@ -31,7 +31,7 @@ export default function SEOKeywords({
       />
       <div className="cursor-pointer d-flex align-items-center">
         <img
-          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/add.webp"
+          src="/image/add.webp"
           width={25}
           height={25}
           alt="Delete post"

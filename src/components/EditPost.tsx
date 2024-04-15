@@ -154,7 +154,7 @@ const EditPost = ({ post }: { post: any }) => {
           </div>
         </Link>
         <img
-          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/edit.webp"
+          src="/image/edit.webp"
           width={15}
           height={15}
           onClick={() => setIsEdit(!isEdit)}
@@ -163,7 +163,7 @@ const EditPost = ({ post }: { post: any }) => {
           className="cursor-pointer mr-15"
         />
         <img
-          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.webp"
+          src="/image/delete.webp"
           width={15}
           height={15}
           onClick={() => setIsConfirm(!isConfirm)}
@@ -173,7 +173,7 @@ const EditPost = ({ post }: { post: any }) => {
         />
         {isEdit && (
           <img
-            src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/update.webp"
+            src="/image/update.webp"
             width={20}
             height={20}
             onClick={() => editPost(post._id)}
@@ -191,7 +191,7 @@ const EditPost = ({ post }: { post: any }) => {
                   <span>{keyword} </span>
                   <span>
                     <img
-                      src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.webp"
+                      src="/image/delete.webp"
                       width={15}
                       height={15}
                       onClick={() => deleteKeyword(index)}

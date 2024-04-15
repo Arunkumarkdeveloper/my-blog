@@ -115,7 +115,7 @@
     background-color: #009aff;
     border: 1px solid transparent;
     padding: 10px 15px;
-    border-radius: 100px;
+    border-radius: 10px;
 }
 
 #post button:hover {
@@ -138,19 +138,18 @@
     padding: 10px 15px;
     outline: none !important;
     border: #b8b8b8 1px solid;
-    border-radius: 20px;
+    border-radius: 10px;
     line-height: 2.2;
 }
 
 .user-circle {
-    background-color: #0A6501;
+    background-color: #009aff;
     color: #ffffff;
     font-size: 17px;
-    min-width: 40px;
-    height: 40px;
+    min-width: 35px;
+        height: 35px;
     padding: 10px;
     border-radius: 100px;
-    border: #aeffa7 1px solid;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,7 +169,7 @@
     background-color: #009aff;
     border: 1px solid transparent;
     padding: 10px 15px;
-    border-radius: 100px;
+    border-radius: 10px;
 }
 
 .cmt-btn:hover {

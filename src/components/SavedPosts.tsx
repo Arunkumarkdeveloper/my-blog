@@ -41,6 +41,11 @@ export default function SavedPosts({
           </div>
         </div>
       ))}
+      {savedPostsLists?.length === 0 && (
+        <div className="no-posts">
+          <h2 className="fw-600 font-16">No Saved Posts!</h2>
+        </div>
+      )}
     </div>
   );
 }

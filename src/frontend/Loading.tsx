@@ -4,7 +4,7 @@ export default function Loading() {
   return (
     <div className="d-flex justify-content-center align-items-center mt-50 mb-50">
       <div className="no-posts">
-        <p className="fw-600 font-20">Loading . . .</p>
+        <p className="fw-600 font-16">Loading . . .</p>
       </div>
     </div>
   );

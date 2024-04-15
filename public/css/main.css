@@ -1039,14 +1039,13 @@
 }
 
 .auth-page {
-    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .auth-page form {
-    width: 20%;
+    width: 50%;
 }
 
 .auth-input {
@@ -1058,7 +1057,7 @@
     background-position: 10px 10px;
     background-size: 20px 20px;
     border: 1px solid #ced4da;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 100%;
     padding: 12px 20px;
     outline: none;
@@ -1077,7 +1076,7 @@
     background-color: #009aff;
     border: 1px solid transparent;
     padding: 10px 5px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .auth-btn:hover {

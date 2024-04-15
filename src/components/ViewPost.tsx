@@ -8,6 +8,8 @@ import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import Loading from "@/frontend/Loading";
 import ScreenWidth from "@/frontend/ScreenWidth";
+import { setIsAuth } from "@/redux/searchSlice";
+import { useDispatch } from "react-redux";
 
 export default function ViewPost({
   post,
@@ -35,6 +37,7 @@ export default function ViewPost({
 
   const router = useRouter();
   const { data: session } = useSession();
+  const disPatch = useDispatch();
 
   const [screenWidth] = ScreenWidth();
 
@@ -47,7 +50,6 @@ export default function ViewPost({
   const [isEditComment, setIsEditComment] = useState(false);
 
   const toast_success = () => toast.success("Comment added!");
-  const please_login = () => toast.error("Login please!");
 
   const liked = () => toast.success("You are Liked this post!");
   const unliked = () => toast.success("You are Unliked this post!");
@@ -100,10 +102,7 @@ export default function ViewPost({
         toast_success();
       }
     } else {
-      please_login();
-      setTimeout(() => {
-        router.push("/login");
-      }, 3000);
+      disPatch(setIsAuth(true));
     }
   };
 
@@ -166,10 +165,7 @@ export default function ViewPost({
         liked();
       }
     } else if (!session) {
-      please_login();
-      setTimeout(() => {
-        router.push("/login");
-      }, 3000);
+      disPatch(setIsAuth(true));
     } else if (session && _active_like.length === 1) {
       const response_likes = await fetch(`/api/like/${_id}`, {
         method: "PUT",
@@ -202,10 +198,7 @@ export default function ViewPost({
         saved();
       }
     } else if (!session) {
-      please_login();
-      setTimeout(() => {
-        router.push("/login");
-      }, 3000);
+      disPatch(setIsAuth(true));
     } else if (session && checkIsSavedPost.length === 1) {
       const response = await fetch(`/api/saved-post/${_id}`, {
         method: "PUT",
@@ -247,8 +240,8 @@ export default function ViewPost({
                   <img
                     src={
                       _active_like.length === 0
-                        ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like.webp"
-                        : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/like_active.webp"
+                        ? "/image/like.webp"
+                        : "/image/like_active.webp"
                     }
                     alt="like"
                     title="like"
@@ -265,8 +258,8 @@ export default function ViewPost({
                   <img
                     src={
                       checkIsSavedPost.length === 0
-                        ? "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/unsaved.webp"
-                        : "https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/saved.webp"
+                        ? "/image/unsaved.webp"
+                        : "/image/saved.webp"
                     }
                     alt="saved"
                     title="saved"
@@ -281,7 +274,7 @@ export default function ViewPost({
               <span className="d-flex align-items-center gap-2">
                 <span id="activity">
                   <img
-                    src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/comments.webp"
+                    src="/image/comments.webp"
                     alt="comments"
                     title="comments"
                     width={20}
@@ -295,7 +288,6 @@ export default function ViewPost({
             <hr />
           </div>
         </div>
-
         <div id="post-comment" className="d-flex justify-content-center">
           <div className="view-post">
             <p className="fw-700 mb-15 mt-10 font-16">Comments</p>
@@ -327,7 +319,7 @@ export default function ViewPost({
                         onClick={() => UpdateComment(cmts)}
                       >
                         <img
-                          src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/update.webp"
+                          src="/image/update.webp"
                           width={20}
                           height={20}
                           alt="Delete post"
@@ -348,7 +340,7 @@ export default function ViewPost({
                   {session?.user?.email === cmts.userId && (
                     <div className="d-flex gap-3 mb-15">
                       <img
-                        src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/edit.webp"
+                        src="/image/edit.webp"
                         width={15}
                         height={15}
                         alt="edit post"
@@ -357,7 +349,7 @@ export default function ViewPost({
                         onClick={() => EditComment(cmts)}
                       />
                       <img
-                        src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/delete.webp"
+                        src="/image/delete.webp"
                         width={15}
                         height={15}
                         alt="Delete post"

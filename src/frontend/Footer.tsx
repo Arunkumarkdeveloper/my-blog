@@ -2,18 +2,16 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 
 export default function Footer() {
-  const { data: session } = useSession();
   return (
     <div className="footer pt-50 pb-50">
       <div>
         <div className="d-flex align-items-center mb-20">
           <Link href="/">
             <img
-              src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/logo.webp"
+              src="/image/logo.webp"
               width={40}
               height={40}
               alt="findbestone"
@@ -56,15 +54,6 @@ export default function Footer() {
             Latest posts
           </Link>
         </p>
-        {!session ? (
-          <p>
-            <Link href="/login" className="footer-points">
-              Login
-            </Link>
-          </p>
-        ) : (
-          <p onClick={() => signOut()}>Logout</p>
-        )}
       </div>
       <div className="d-flex flex-column">
         <p className="fw-700 mb-20 footer-header font-16">Subscribe</p>

@@ -2,14 +2,6 @@ import { Metadata } from "next";
 import SearchFilter from "@/components/SearchFilter";
 import { API_URL } from "@/frontend/Path";
 
-const getPosts = async () => {
-  const response = await fetch(`${API_URL}/api/blog`, {
-    cache: "no-store",
-  });
-
-  return response.json();
-};
-
 export const metadata: Metadata = {
   title: "Posts",
   description: "This is the posts page for findbestone.com",
@@ -63,6 +55,13 @@ export const metadata: Metadata = {
     description: "This is the posts page for findbestone.com",
     creator: "Arunkumarkdeveloper",
   },
+};
+
+const getPosts = async () => {
+  const response = await fetch(`${API_URL}/api/blog`, {
+    cache: "no-store",
+  });
+  return response.json();
 };
 
 export default async function post() {

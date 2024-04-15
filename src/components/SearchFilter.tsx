@@ -32,6 +32,7 @@ export default function SearchFilter({ postData }: { postData: any }) {
                   className="posts-image"
                   alt={post?.blogTitle}
                   title={post?.blogTitle}
+                  style={{ minWidth: "20%" }}
                 />
                 <div>
                   <h1
@@ -53,7 +54,7 @@ export default function SearchFilter({ postData }: { postData: any }) {
       ))}
       {data.length === 0 && (
         <div className="no-posts">
-          <h2 className="fw-600">No Related Posts!</h2>
+          <h2 className="fw-600 font-16">No Related Posts!</h2>
         </div>
       )}
     </div>

@@ -1,5 +1,5 @@
 .footer {
-    background-color: #0c0d0e;
+    background-color: #1a2225;
     height: max-content;
     color: #f1f1f1;
     display: flex;
@@ -20,7 +20,7 @@
     background-position: 10px 10px;
     background-size: 20px 20px;
     border: 1px solid #ced4da;
-    border-radius: 20px;
+    border-radius: 10px;
     min-width: 40%;
     padding: 10px 20px;
     outline: none;
@@ -43,7 +43,7 @@
     background-color: #0087e0;
     border: 1px solid transparent;
     padding: 10px 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 40%;
 }
 

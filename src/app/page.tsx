@@ -32,7 +32,7 @@ export default async function Page() {
           <div className="finding-group-icons mb-40">
             <div className="d-flex flex-column align-items-center justify-content-center card">
               <img
-                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/need.webp"
+                src="/image/need.webp"
                 alt="Need"
                 title="Need"
                 width={70}
@@ -43,7 +43,7 @@ export default async function Page() {
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center card">
               <img
-                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/choice.webp"
+                src="/image/choice.webp"
                 alt="Preference"
                 title="Preference"
                 width={70}
@@ -54,7 +54,7 @@ export default async function Page() {
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center card">
               <img
-                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/budget.webp"
+                src="/image/budget.webp"
                 alt="Budget"
                 title="Budget"
                 width={70}
@@ -65,7 +65,7 @@ export default async function Page() {
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center card">
               <img
-                src="https://raw.githubusercontent.com/Arunkumarkdeveloper/BlogAppImages/main/icons/quality.webp"
+                src="/image/quality.webp"
                 alt="Quality"
                 title="Quality"
                 width={70}

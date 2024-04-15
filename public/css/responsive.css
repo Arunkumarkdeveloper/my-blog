@@ -8,10 +8,6 @@
         word-wrap: break-word;
     }
 
-    .auth-page form {
-        width: 70%;
-    }
-
     .editor-post {
         width: 90%;
     }
@@ -63,6 +59,9 @@
             line-height: 1.8 !important;
                 font-size: 20px !important;
         }
+                                .auth-page form {
+                                    width: 80%;
+                                }
 }
 
 @media (min-width: 600px) {
@@ -73,10 +72,6 @@
     .posts {
         width: 90%;
         word-wrap: break-word;
-    }
-
-    .auth-page form {
-        width: 40%;
     }
 
     .editor-post {
@@ -94,7 +89,9 @@
     .feedback {
         width: 80%;
     }
-
+                .auth-page form {
+                    width: 60%;
+                }
 }
 
 @media (max-width: 768px) {
@@ -141,10 +138,6 @@
         word-wrap: break-word;
     }
 
-    .auth-page form {
-        width: 40%;
-    }
-
     .edit-delete-post {
         width: 70%;
     }
@@ -165,6 +158,9 @@
         row-gap: 25px;
         column-gap: 25px;
     }
+                .auth-page form {
+                    width: 50%;
+                }
 }
 
 @media (min-width: 992px) {
@@ -175,10 +171,6 @@
     .posts {
         width: 60%;
         word-wrap: break-word;
-    }
-
-    .auth-page form {
-        width: 30%;
     }
 
     .feedback {
@@ -192,6 +184,9 @@
         align-items: center;
         column-gap: 50px;
     }
+                 .auth-page form {
+                     width: 40%;
+                 }
 }
 
 @media (min-width: 1200px) {
@@ -202,10 +197,6 @@
     .posts {
         width: 50%;
         word-wrap: break-word;
-    }
-
-    .auth-page form {
-        width: 20%;
     }
 
     .editor-post {
@@ -227,4 +218,7 @@
     .feedback {
         width: 60%;
     }
+                .auth-page form {
+                    width: 25%;
+                }
 }
