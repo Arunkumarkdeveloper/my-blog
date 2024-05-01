@@ -108,7 +108,7 @@ export default function PostEditor({
       </div>
       <p className="fw-700">EditorHtml</p>
       {editorHtml.map((_editHtml: string, index: number) => (
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center" key={index}>
           <textarea
             key={index}
             value={_editHtml}
