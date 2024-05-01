@@ -62,11 +62,6 @@ const AddPost = () => {
     <React.Fragment>
       <Toaster position="top-center" />
       <div className="d-flex flex-column justify-content-center gap-2 editor-post">
-        {/* <input
-          placeholder="Affilite Link"
-          onChange={(e) => setAffiliateLink(e.target.value)}
-          className="auth-input"
-        /> */}
         <textarea
           placeholder="BlogTitle"
           onChange={(e) => setBlogTitle(e.target.value)}
@@ -82,12 +77,13 @@ const AddPost = () => {
           onChange={(e) => setImage(e.target.value)}
           className="auth-input"
         />
-
         <PostEditor
           affiliateLink={affiliateLink}
           postData={postData}
           setEditorHtml={setEditorHtml}
+          editorHtml={editorHtml}
           NewtBlog={NewtBlog}
+          router={router}
         />
       </div>
     </React.Fragment>

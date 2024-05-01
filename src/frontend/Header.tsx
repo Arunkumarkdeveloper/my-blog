@@ -112,11 +112,11 @@ export default function Header() {
               <Link href="/posts">Posts</Link>
             </span>
             <span>
-              <Link href="/about">About</Link>
+              <Link href="/ecommerce">E-commerce</Link>
             </span>
             {session?.user?.email === "arunkumarkdeveloper@gmail.com" && (
               <span>
-                <Link href="/add">Editor</Link>
+                <Link href="/add">Create</Link>
               </span>
             )}
             {screenWidth > 1200 && (
