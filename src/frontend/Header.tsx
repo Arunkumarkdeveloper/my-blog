@@ -72,7 +72,7 @@ export default function Header() {
         <input
           value={_search}
           className="search"
-          placeholder="Search"
+          placeholder="Search posts"
           onChange={handleChange}
           onFocus={() => setInput("searchPosts")}
         />
@@ -108,17 +108,12 @@ export default function Header() {
             <span>
               <Link href="/">Home</Link>
             </span>
+            {/* <span>
+              <Link href="/ecommerce">E-commerce</Link>
+            </span> */}
             <span>
               <Link href="/posts">Posts</Link>
             </span>
-            <span>
-              <Link href="/ecommerce">E-commerce</Link>
-            </span>
-            {session?.user?.email === "arunkumarkdeveloper@gmail.com" && (
-              <span>
-                <Link href="/add">Create</Link>
-              </span>
-            )}
             {screenWidth > 1200 && (
               <span className="cursor-pointer">
                 {session ? (

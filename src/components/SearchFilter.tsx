@@ -3,8 +3,10 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import ScreenWidth from "@/frontend/ScreenWidth";
+import { useSession } from "next-auth/react";
 
 export default function SearchFilter({ postData }: { postData: any }) {
+  const { data: session } = useSession();
   const _search = useSelector((state: any) => state.search.value);
 
   const data = postData?.filter((post: any) => {
@@ -21,9 +23,22 @@ export default function SearchFilter({ postData }: { postData: any }) {
   const [screenWidth] = ScreenWidth();
 
   return (
-    <div className="mt-30">
+    <React.Fragment>
+      {session?.user?.email === "arunkumarkdeveloper@gmail.com" && (
+        <div className="mt-10 d-flex justify-content-center">
+          <span className="mr-10">
+            <Link href="/add">Create</Link>
+          </span>
+          <span>
+            <Link href="/edit-post">Edit</Link>
+          </span>
+        </div>
+      )}
       {data?.map((post: any) => (
-        <div key={post?._id} className="d-flex justify-content-center mb-15">
+        <div
+          key={post?._id}
+          className="d-flex justify-content-center mb-15 mt-30"
+        >
           <div className="posts">
             <Link href={`/${post?.urlLink}`}>
               <div className="post-group">
@@ -57,6 +72,6 @@ export default function SearchFilter({ postData }: { postData: any }) {
           <h2 className="fw-600 font-16">No Related Posts!</h2>
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 }
