@@ -1,224 +1,148 @@
 @media (max-width: 600px) {
-    .view-post {
+    .navbar {
+        padding: 0px !important;
+    }
+
+    .input-search {
+        width: 100%;
+    }
+
+    .home-content {
+        width: 90%;
+        margin-left: 0;
+    }
+
+    .subscribe input {
+        width: 40%;
+    }
+
+    .home-section-width {
         width: 90%;
     }
 
-    .posts {
-        width: 90%;
-        word-wrap: break-word;
+    .choose-image-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .editor-post {
+    .footer-group {
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: space-evenly;
+        row-gap: 20px;
+    }
+
+    .blog-edit-layout {
         width: 90%;
     }
 
-    #post img {
+    .blog-responsive {
+        width: 90%;
+    }
+
+    .blog-card {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    .blog-card-image {
         width: 100% !important;
     }
 
-    .editor-select {
-        width: 40%;
+    #blog h1 {
+        font-size: 20px !important;
     }
 
-    .edit-delete-post {
-        width: 90%;
+    #blog h2 {
+        font-size: 17px !important;
     }
 
-    .about-page {
-        width: 90%;
-    }
-
-    .finding-group {
-        background-color: #edefee;
-        padding: 50px 10%;
-    }
-
-    .finding-group-icons {
-        display: grid;
-        grid-template-columns: auto auto !important;
-        justify-content: center;
-        align-items: center;
-        row-gap: 25px;
-        column-gap: 25px;
-    }
-
-    .feedback {
-        width: 90%;
-        line-height: 2;
-    }
-
-    .feed-group {
-        width: 100%;
-    }
-
-    .not-found {
-        width: 90%;
-    }
-        #post h1 {
-            font-size: 20px !important;
-            line-height: 1.8 !important;
-                font-size: 20px !important;
-        }
-                                .auth-page form {
-                                    width: 80%;
-                                }
-}
-
-@media (min-width: 600px) {
-    .view-post {
-        width: 80%;
-    }
-
-    .posts {
-        width: 90%;
-        word-wrap: break-word;
-    }
-
-    .editor-post {
-        width: 70%;
-    }
-
-    .editor-select {
-        width: 40%;
-    }
-
-    .about-page {
-        width: 70%;
-    }
-
-    .feedback {
-        width: 80%;
-    }
-                .auth-page form {
-                    width: 60%;
-                }
-}
-
-@media (max-width: 768px) {
-    .home_bg {
+    .react-paginate {
         display: flex;
-        flex-direction: column;
-        height: 70vh;
-        padding-left: 10%;
-        padding-right: 10%;
-        justify-content: center;
-        align-items: start;
+        align-items: center;
+        column-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
     }
 
-    .home_bg_text {
-        width: 100%;
+    .search-container {
+        position: static;
+    }
+.form-group {
+    width: 90% !important;
+}
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+    .input-search {
+        width: 350px;
     }
 
-    .edit-delete-post {
+    .home-content {
+        width: 90%;
+        margin-left: 0;
+    }
+
+    .home-section-width {
         width: 90%;
     }
 
-    .finding-group {
-        background-color: #edefee;
-        padding: 50px 10%;
+    .footer-group {
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: space-evenly;
+        row-gap: 20px;
     }
 
-    .finding-group-icons {
-        display: grid;
-        grid-template-columns: auto auto !important;
-        justify-content: center;
-        align-items: center;
-        row-gap: 25px;
-        column-gap: 25px;
+    .blog-edit-layout {
+        width: 90%;
+    }
+
+    .blog-responsive {
+        width: 80%;
+    }
+
+    .search-container {
+        position: static;
     }
 }
 
-@media (min-width: 768px) {
-    .view-post {
-        width: 70%;
+@media (min-width: 768px) and (max-width: 992px) {
+    .home-content {
+        width: 50%;
+        margin-left: 5%;
     }
 
-    .posts {
-        width: 70%;
-        word-wrap: break-word;
+    .home-section-width {
+        width: 80%;
     }
 
-    .edit-delete-post {
-        width: 70%;
-    }
-
-    .about-page {
-        width: 60%;
-    }
-
-    .feedback {
-        width: 75%;
-    }
-
-    .finding-group-icons {
+    .footer-group {
         display: grid;
-        grid-template-columns: auto auto !important;
-        justify-content: center;
-        align-items: center;
-        row-gap: 25px;
-        column-gap: 25px;
+        grid-template-columns: auto;
+        justify-content: space-evenly;
+        row-gap: 20px;
     }
-                .auth-page form {
-                    width: 50%;
-                }
+
+    .blog-edit-layout {
+        width: 80%;
+    }
+
+    .blog-responsive {
+        width: 80%;
+    }
 }
 
-@media (min-width: 992px) {
-    .view-post {
-        width: 60%;
+@media (min-width: 992px) and (max-width: 1200px) {
+    .home-content {
+        width: 50%;
+        margin-left: 10%;
     }
 
-    .posts {
-        width: 60%;
-        word-wrap: break-word;
-    }
-
-    .feedback {
+    .blog-responsive {
         width: 70%;
     }
-
-    .finding-group-icons {
-        display: grid;
-        grid-template-columns: auto auto auto auto !important;
-        justify-content: center;
-        align-items: center;
-        column-gap: 50px;
-    }
-                 .auth-page form {
-                     width: 40%;
-                 }
-}
-
-@media (min-width: 1200px) {
-    .view-post {
-        width: 50%;
-    }
-
-    .posts {
-        width: 50%;
-        word-wrap: break-word;
-    }
-
-    .editor-post {
-        width: 50%;
-    }
-
-    .editor-select {
-        width: 20%;
-    }
-
-    .edit-delete-post {
-        width: 50%;
-    }
-
-    .about-page {
-        width: 50%;
-    }
-
-    .feedback {
-        width: 60%;
-    }
-                .auth-page form {
-                    width: 25%;
-                }
 }
